@@ -152,7 +152,7 @@
             this.Lbl_Resultado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Lbl_Resultado.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold);
             this.Lbl_Resultado.ForeColor = System.Drawing.Color.Transparent;
-            this.Lbl_Resultado.Location = new System.Drawing.Point(457, 299);
+            this.Lbl_Resultado.Location = new System.Drawing.Point(490, 314);
             this.Lbl_Resultado.Name = "Lbl_Resultado";
             this.Lbl_Resultado.Size = new System.Drawing.Size(0, 29);
             this.Lbl_Resultado.TabIndex = 10;
@@ -213,7 +213,6 @@
             this.Controls.Add(this.Lbl_NomeUsuario);
             this.Controls.Add(this.Lbl_Cadastro);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

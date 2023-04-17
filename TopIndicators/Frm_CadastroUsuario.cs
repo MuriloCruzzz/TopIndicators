@@ -125,6 +125,24 @@ namespace TopIndicators
             ChecaForcaSenha.ForcaDaSenha forca;
             forca = Verifica.GetForcaDaSenha(Txt_Senha.Text);
             Lbl_Resultado.Text = forca.ToString();
+
+            if (Lbl_Resultado.Text == "Inaceitavel" | Lbl_Resultado.Text == "Fraca")
+            {
+                Lbl_Resultado.ForeColor= Color.Red;
+            }
+            else if (Lbl_Resultado.Text == "Aceitavel")
+            {
+                Lbl_Resultado.ForeColor = Color.Yellow;
+            }
+            else if (Lbl_Resultado.Text == "Forte")
+            {
+                Lbl_Resultado.ForeColor = Color.Green;
+            }
+            else if (Lbl_Resultado.Text == "Segura")
+            {
+                Lbl_Resultado.ForeColor = Color.DarkGreen;
+            }
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -162,12 +180,13 @@ namespace TopIndicators
             }
             if (Lbl_Resultado.Text == "Inaceitavel")
             {
-                MessageBox.Show("Senhas Inaceitavel \n Entre com Uma Senha Valida");
+                MessageBox.Show("Senha Inaceitavel \n Entre com Uma Senha Valida");
                 Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
                 Txt_Senha.Text = Txt_Senha.Text = "";
                 Txt_Senha.Focus();
                 return;
             }
+
 
         }
     }
