@@ -118,11 +118,11 @@ namespace TopIndicators
                 VerSenha = false;
 
             }
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
         }
     }
 

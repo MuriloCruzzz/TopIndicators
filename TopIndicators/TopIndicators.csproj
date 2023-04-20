@@ -126,7 +126,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DadosUsuarios.cs" />
     <Compile Include="ConnectionMariaDB.cs" />
     <Compile Include="Frm_CadastroUsuario.cs">
       <SubType>Form</SubType>
@@ -146,6 +146,7 @@
     <Compile Include="Frm_Login.Designer.cs">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySqlClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Frm_CadastroUsuario.resx">

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TopIndicators;
+using ConnectionMaria;
 
 
-/* namespace TopIndicators
+ namespace TopIndicators
 {
     internal static class Program
     {
@@ -24,4 +25,3 @@ using TopIndicators;
     }
 }
 
-*/
