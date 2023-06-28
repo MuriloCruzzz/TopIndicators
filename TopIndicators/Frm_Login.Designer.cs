@@ -36,6 +36,8 @@
             this.Txb_SenhaLogin = new System.Windows.Forms.TextBox();
             this.Txb_NomeLogin = new System.Windows.Forms.TextBox();
             this.Lbl_Saudacoes = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Pnl_Login.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,13 +133,37 @@
             this.Lbl_Saudacoes.Text = "Saudações";
             this.Lbl_Saudacoes.AutoSizeChanged += new System.EventHandler(this.Lbl_Saudacoes_AutoSizeChanged);
             this.Lbl_Saudacoes.Click += new System.EventHandler(this.Lbl_Saudacoes_Click);
-
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(383, 243);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "USUARIO: admin";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(383, 290);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "SENHA: admin";
+            // 
+            // Frm_Login
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(859, 539);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Pnl_Login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -149,6 +175,7 @@
             this.Pnl_Login.ResumeLayout(false);
             this.Pnl_Login.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -161,6 +188,8 @@
         private System.Windows.Forms.TextBox Txb_NomeLogin;
         private System.Windows.Forms.Button Btn_OlharSenha;
         private System.Windows.Forms.LinkLabel Llbl_LinkSuporte;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
