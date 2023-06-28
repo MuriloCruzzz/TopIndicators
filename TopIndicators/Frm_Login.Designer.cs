@@ -36,7 +36,6 @@
             this.Txb_SenhaLogin = new System.Windows.Forms.TextBox();
             this.Txb_NomeLogin = new System.Windows.Forms.TextBox();
             this.Lbl_Saudacoes = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.Pnl_Login.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,16 +132,6 @@
             this.Lbl_Saudacoes.AutoSizeChanged += new System.EventHandler(this.Lbl_Saudacoes_AutoSizeChanged);
             this.Lbl_Saudacoes.Click += new System.EventHandler(this.Lbl_Saudacoes_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(467, 156);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -151,7 +140,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(859, 539);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Pnl_Login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -175,7 +163,6 @@
         private System.Windows.Forms.TextBox Txb_NomeLogin;
         private System.Windows.Forms.Button Btn_OlharSenha;
         private System.Windows.Forms.LinkLabel Llbl_LinkSuporte;
-        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -8,7 +8,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 using static TopIndicators.Frm_CadastroUsuario.ChecaForcaSenha;
+using DadosUsuarios;
+using Connection;
 
 namespace TopIndicators
 {
@@ -187,7 +190,50 @@ namespace TopIndicators
                 return;
             }
 
+            else if (Txt_NomeUsuario.Text == "" || Txt_NomeUsuario.Text == " ")
+            {
+                MessageBox.Show("Campo Nome Em Branco");
+                Txt_NomeUsuario.Text = Txt_NomeUsuario.Text = "";
+                Txt_Senha.Text = Txt_Senha.Text = "";
+                Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
+                Txt_NomeUsuario.Focus();
+                return;
+            }
+            else if (Txt_NomeSetor.Text == "" || Txt_NomeSetor.Text == " ")
+            {
+                MessageBox.Show("Campo Setor Em Branco");
+                Txt_NomeSetor.Text = Txt_NomeSetor.Text = "";
+                Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
+                Txt_Senha.Text = Txt_Senha.Text = "";
+                Txt_NomeSetor.Focus();
+                return;
+            }
+            else
+            {
+                Usuario usuario = new Usuario();
 
+                usuario.Id++;
+                usuario.Nome = Txt_NomeUsuario.Text;
+                usuario.Setor = Txt_NomeSetor.Text;
+                usuario.Senha = Txt_Senha.Text;
+
+                Txt_NomeSetor.Text = Txt_NomeSetor.Text = "";
+                Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
+                Txt_Senha.Text = Txt_Senha.Text = "";
+                Txt_NomeUsuario.Text = Txt_NomeUsuario.Text = "";
+
+                Connection.ProcessoDados criarUsuario = new Connection.ProcessoDados();
+                criarUsuario.CriarUsuario(usuario);
+
+                MessageBox.Show("Usuario Cadastrado Com Sucesso!!!");
+
+            }
+
+        }
+
+        private void Txt_NomeUsuario_TextChanged(object sender, EventArgs e)
+        {
+            //Txt_NomeUsuario.Text 
         }
     }
 }
