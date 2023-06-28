@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TopIndicators;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 using Connection;
-=======
+//=======
 using ConnectionMaria;
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
 
 
  namespace TopIndicators

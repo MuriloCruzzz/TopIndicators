@@ -126,7 +126,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Frm_DeletarDemanda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,10 +173,8 @@
     <Compile Include="Frm_FuncUsuarios.Designer.cs">
       <DependentUpon>Frm_FuncUsuarios.cs</DependentUpon>
     </Compile>
-=======
     <Compile Include="DadosUsuarios.cs" />
     <Compile Include="ConnectionMariaDB.cs" />
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
     <Compile Include="Frm_CadastroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,14 +193,8 @@
     <Compile Include="Frm_Login.Designer.cs">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="..\..\..\..\Desktop\PROJETO IFSP\IFSP-SEMESTRE4\Linguagem de Programação II\Program.cs">
-      <Link>Program.cs</Link>
-    </Compile>
-=======
     <Compile Include="MySqlClient.cs" />
     <Compile Include="Program.cs" />
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Frm_DeletarDemanda.resx">
       <DependentUpon>Frm_DeletarDemanda.cs</DependentUpon>

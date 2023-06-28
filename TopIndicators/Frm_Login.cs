@@ -118,13 +118,13 @@ namespace TopIndicators
             }
         }
 
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
         private void button1_Click(object sender, EventArgs e)
         {
 
         }
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
     }
 
 }

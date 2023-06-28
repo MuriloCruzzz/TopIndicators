@@ -11,11 +11,11 @@ using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using static TopIndicators.Frm_CadastroUsuario.ChecaForcaSenha;
 using DadosUsuarios;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 using Connection;
-=======
+//=======
 using ConnectionMaria;
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
 
 namespace TopIndicators
 {
@@ -208,11 +208,11 @@ namespace TopIndicators
                 MessageBox.Show("Campo Setor Em Branco");
                 Txt_NomeSetor.Text = Txt_NomeSetor.Text = "";
                 Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
-<<<<<<< HEAD
+//<<<<<<< HEAD
                 Txt_Senha.Text = Txt_Senha.Text = "";
-=======
+//=======
                 Txt_Senha.Text = Txt_Senha.Text = "";              
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
                 Txt_NomeSetor.Focus();
                 return;
             }
@@ -230,25 +230,25 @@ namespace TopIndicators
                 Txt_Senha.Text = Txt_Senha.Text = "";
                 Txt_NomeUsuario.Text = Txt_NomeUsuario.Text = "";
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
                 Connection.ProcessoDados criarUsuario = new Connection.ProcessoDados();
-=======
-                ConnectionMaria.ProcessoDadosUsuarios criarUsuario = new ConnectionMaria.ProcessoDadosUsuarios();
-                
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+                //=======
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                // b5d070ecba66bd63fff6f2926b82ec99ac503113
                 criarUsuario.CriarUsuario(usuario);
 
                 MessageBox.Show("Usuario Cadastrado Com Sucesso!!!");
 
             }
 
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 
 
 
 
->>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
         }
 
         private void Txt_NomeUsuario_TextChanged(object sender, EventArgs e)
