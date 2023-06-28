@@ -30,15 +30,17 @@ namespace TopIndicators
         {
             int Hora = DateTime.Now.Hour;
 
-            if (Hora >= 6 && Hora < 12)
+
+
+            if (Hora >= 6 && Hora <= 12)
             {
                 Lbl_Saudacoes.Text = "Bom Dia!";
             }
-            else if (Hora >= 12 && Hora < 18)
+            else if (Hora > 12 && Hora <= 18)
             {
                 Lbl_Saudacoes.Text = "Boa Tarde!";
             }
-            else
+            else if (Hora > 18 && Hora < 6)
             {
                 Lbl_Saudacoes.Text = "Boa Noite!";
             }
@@ -88,7 +90,7 @@ namespace TopIndicators
 
             else
             {
-                Frm_MenuDemanda form = new Frm_MenuDemanda();
+                Frm_Menu form = new Frm_Menu();
                 this.Hide();
                 form.Show();
             }
@@ -116,8 +118,12 @@ namespace TopIndicators
                 VerSenha = false;
 
             }
+            
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
     }
 
 }

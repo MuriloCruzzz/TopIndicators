@@ -116,7 +116,6 @@
             this.Txt_NomeUsuario.Name = "Txt_NomeUsuario";
             this.Txt_NomeUsuario.Size = new System.Drawing.Size(448, 22);
             this.Txt_NomeUsuario.TabIndex = 6;
-            this.Txt_NomeUsuario.TextChanged += new System.EventHandler(this.Txt_NomeUsuario_TextChanged);
             // 
             // Txt_ConfirmacaoSenha
             // 
@@ -214,7 +213,6 @@
             this.Controls.Add(this.Lbl_NomeUsuario);
             this.Controls.Add(this.Lbl_Cadastro);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
