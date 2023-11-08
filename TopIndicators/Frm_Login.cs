@@ -13,19 +13,11 @@ namespace TopIndicators
 {
     public partial class Frm_Login : Form
     {
-
-
         public Frm_Login()
         {
             InitializeComponent();
         }
-
         bool VerSenha = false;
-        private void Lbl_Saudacoes_AutoSizeChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             int Hora = DateTime.Now.Hour;
@@ -43,7 +35,6 @@ namespace TopIndicators
                 Lbl_Saudacoes.Text = "Boa Noite!";
             }
         }
-
         private void Llbl_LinkSuporte_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -54,18 +45,12 @@ namespace TopIndicators
             {
                 MessageBox.Show("Não foi possível abrir o link que foi clicado.");
             }
-
         }
         private void VisitLink()
         {
-            // Change the color of the link text by setting LinkVisited
-            // to true.
             Llbl_LinkSuporte.LinkVisited = true;
-            //Call the Process.Start method to open the default browser
-            //with a URL:
             System.Diagnostics.Process.Start("https://contate.me/supportetopindicators");
         }
-
         private void Btn_Login_Click(object sender, EventArgs e)
         {
 
@@ -92,39 +77,28 @@ namespace TopIndicators
                 this.Hide();
                 form.Show();
             }
-
-
-
         }
-
-        private void Lbl_Saudacoes_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Btn_OlharSenha_Click(object sender, EventArgs e)
         {
             if (VerSenha == false)
             {
                 Txb_SenhaLogin.PasswordChar = '\0';
                 VerSenha = true;
-
             }
             else
             {
                 Txb_SenhaLogin.PasswordChar = '*';
                 VerSenha = false;
-
             }
         }
-
-//<<<<<<< HEAD
-//=======
-        private void button1_Click(object sender, EventArgs e)
+        private void Btn_Parar_Click(object sender, EventArgs e)
         {
+            this.Close();
 
         }
-//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
-
 }

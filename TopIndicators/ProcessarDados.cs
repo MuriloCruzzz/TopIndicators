@@ -12,6 +12,8 @@ using DadosDemanda;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.Remoting.Messaging;
 using System.Data.SqlClient;
+using ExcelDataReader;
+using System.IO;
 //using ListagemUsuario;
 
 
@@ -19,7 +21,7 @@ namespace Connection
 {
     public class ProcessoDados
     {
-        public static MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;Database=teste1;Uid=root;Pwd=123456789;");
+        public static MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;");
 
         public void CriarUsuario(Usuario usuario)
         {
@@ -67,7 +69,6 @@ namespace Connection
                         }
                         reader.Close();
                     }
-                    
                     connection.Close();
 
                 }
@@ -81,7 +82,6 @@ namespace Connection
 
         public void AtualizarDadosUsuario()
         {
-            
             string queryUpdate = "UPDATE usuarios SET senha = @novaSenha WHERE id = @id";
             MySqlCommand commandUpdate = new MySqlCommand(queryUpdate, connection);
             commandUpdate.Parameters.AddWithValue("@novaSenha", "654321");
@@ -154,7 +154,185 @@ namespace Connection
             }
             connection.Close();
         }
+        public void InserirTabelaClientes()
+        {
+            connection.Open();
 
+            // Diálogo para selecionar o arquivo Excel
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos do Excel|*.xlsx;*.xls";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    IExcelDataReader reader;
+                    if (openFileDialog.FileName.EndsWith(".xls"))
+                    {
+                        reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                    }
+                    else if (openFileDialog.FileName.EndsWith(".xlsx"))
+                    {
+                        reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                    }
+                    else
+                    {
+                        throw new Exception("Tipo de arquivo não suportado.");
+                    }
+
+                    // Ler os dados do arquivo Excel
+                    try
+                    {
+                        do
+                        {
+                            while (reader.Read())
+                            {
+                                string idCliente = (reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
+                                string nome = reader.GetString(1);
+                                int idClienteINT = int.Parse(idCliente);// Assumindo que a segunda coluna contém Nome
+
+                                // Inserir os dados na tabela do banco de dados
+                                string queryCreate = "INSERT INTO cliente (id_Cliente, nome) VALUES (@id_Cliente, @nome)";
+                                MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
+                                {
+                                    commandCreate.Parameters.AddWithValue("@id_Cliente", idClienteINT);
+                                    commandCreate.Parameters.AddWithValue("@nome", nome);
+
+                                    commandCreate.ExecuteNonQuery();
+                                }
+
+                            }
+                        } while (reader.NextResult());
+                    }
+                    catch (Exception ex)
+                    {
+                        // Exibir a mensagem de erro
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            connection.Close();
+        }
+        public void InserirTabelaMateriaPrima()
+        {
+            connection.Open();
+
+            // Diálogo para selecionar o arquivo Excel
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos do Excel|*.xlsx;*.xls";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    IExcelDataReader reader;
+                    if (openFileDialog.FileName.EndsWith(".xls"))
+                    {
+                        reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                    }
+                    else if (openFileDialog.FileName.EndsWith(".xlsx"))
+                    {
+                        reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                    }
+                    else
+                    {
+                        throw new Exception("Tipo de arquivo não suportado.");
+                    }
+
+                    // Ler os dados do arquivo Excel
+                    try
+                    {
+                        do
+                        {
+                            while (reader.Read())
+                            {
+                                int idProduto = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
+                                int quantidade = int.Parse(reader.GetString(1));
+                                DateTime Data_Validade = DateTime.Parse(reader.GetString(2));
+                                string Nome = reader.GetString(3);
+
+                                // Inserir os dados na tabela do banco de dados
+                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto, Quantidade, Data_Validade, Nome) VALUES (@id_produto, @Quantidade, @Data_Validade, @Nome)";
+                                MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
+                                {
+                                    commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
+                                    commandCreate.Parameters.AddWithValue("@Quantidade", quantidade);
+                                    commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
+                                    commandCreate.Parameters.AddWithValue("@Nome", Nome);
+
+                                    commandCreate.ExecuteNonQuery();
+                                }
+
+                            }
+                        } while (reader.NextResult());
+                    }
+                    catch (Exception ex)
+                    {
+                        // Exibir a mensagem de erro
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            connection.Close();
+        }
+        public void InserirTabelaMaterial()
+        {
+            connection.Open();
+
+            // Diálogo para selecionar o arquivo Excel
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos do Excel|*.xlsx;*.xls";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    IExcelDataReader reader;
+                    if (openFileDialog.FileName.EndsWith(".xls"))
+                    {
+                        reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                    }
+                    else if (openFileDialog.FileName.EndsWith(".xlsx"))
+                    {
+                        reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                    }
+                    else
+                    {
+                        throw new Exception("Tipo de arquivo não suportado.");
+                    }
+
+                    // Ler os dados do arquivo Excel
+                    try
+                    {
+                        do
+                        {
+                            while (reader.Read())
+                            {
+                                int idProduto = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
+                                int quantidade = int.Parse(reader.GetString(1));
+                                DateTime Data_Validade = DateTime.Parse(reader.GetString(2));
+                                string Nome = reader.GetString(3);
+
+                                // Inserir os dados na tabela do banco de dados
+                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Quantidade, Data_Validade, Nome) VALUES (@id_produto, @Quantidade, @Data_Validade, @Nome)";
+                                MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
+                                {
+                                    commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
+                                    commandCreate.Parameters.AddWithValue("@Quantidade", quantidade);
+                                    commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
+                                    commandCreate.Parameters.AddWithValue("@Nome", Nome);
+
+                                    commandCreate.ExecuteNonQuery();
+                                }
+
+                            }
+                        } while (reader.NextResult());
+                    }
+                    catch (Exception ex)
+                    {
+                        // Exibir a mensagem de erro
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            connection.Close();
+        }
     }
-
 }

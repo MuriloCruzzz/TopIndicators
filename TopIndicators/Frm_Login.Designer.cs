@@ -36,8 +36,8 @@
             this.Txb_SenhaLogin = new System.Windows.Forms.TextBox();
             this.Txb_NomeLogin = new System.Windows.Forms.TextBox();
             this.Lbl_Saudacoes = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Btn_Parar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.Pnl_Login.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,28 +131,33 @@
             this.Lbl_Saudacoes.Size = new System.Drawing.Size(114, 25);
             this.Lbl_Saudacoes.TabIndex = 0;
             this.Lbl_Saudacoes.Text = "Saudações";
-            this.Lbl_Saudacoes.AutoSizeChanged += new System.EventHandler(this.Lbl_Saudacoes_AutoSizeChanged);
-            this.Lbl_Saudacoes.Click += new System.EventHandler(this.Lbl_Saudacoes_Click);
+            //this.Lbl_Saudacoes.AutoSizeChanged += new System.EventHandler(this.Lbl_Saudacoes_AutoSizeChanged);
+            //this.Lbl_Saudacoes.Click += new System.EventHandler(this.Lbl_Saudacoes_Click);
             // 
-            // label1
+            // Btn_Parar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(383, 243);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "USUARIO: admin";
+            this.Btn_Parar.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Parar.Font = new System.Drawing.Font("Swis721 Blk BT", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Parar.Location = new System.Drawing.Point(824, 2);
+            this.Btn_Parar.Name = "Btn_Parar";
+            this.Btn_Parar.Size = new System.Drawing.Size(34, 35);
+            this.Btn_Parar.TabIndex = 6;
+            this.Btn_Parar.Text = "X";
+            this.Btn_Parar.UseVisualStyleBackColor = false;
+            this.Btn_Parar.Click += new System.EventHandler(this.Btn_Parar_Click);
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(383, 290);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "SENHA: admin";
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Swis721 Blk BT", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(784, 2);
+            this.button1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(34, 35);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "_";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Frm_Login
             // 
@@ -162,10 +167,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(859, 539);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_Parar);
             this.Controls.Add(this.Pnl_Login);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -175,7 +180,6 @@
             this.Pnl_Login.ResumeLayout(false);
             this.Pnl_Login.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -188,8 +192,8 @@
         private System.Windows.Forms.TextBox Txb_NomeLogin;
         private System.Windows.Forms.Button Btn_OlharSenha;
         private System.Windows.Forms.LinkLabel Llbl_LinkSuporte;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Btn_Parar;
+        private System.Windows.Forms.Button button1;
     }
 }
 

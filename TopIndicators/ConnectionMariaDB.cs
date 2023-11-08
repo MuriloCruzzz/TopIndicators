@@ -21,7 +21,7 @@ namespace ConnectionMaria
             try
             {
                 connection.Open();
-                
+
                 string queryCreate = "INSERT INTO usuarios (nome, senha, setor) VALUES (@nome, @senha, @setor)";
                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                 commandCreate.Parameters.AddWithValue("@nome", usuario.Nome);
@@ -29,29 +29,15 @@ namespace ConnectionMaria
                 commandCreate.Parameters.AddWithValue("@setor", usuario.Setor);
                 commandCreate.ExecuteNonQuery();
                 Console.WriteLine("Usuário inserido com sucesso!");
-                
 
-
-                
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-               
+
             }
 
-
-
-            /*
-            string queryCreate = "INSERT INTO usuarios (nome, senha, setor) VALUES (@nome, @senha, @setor)";
-            MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
-            commandCreate.Parameters.AddWithValue("@nome", usuario.Nome);
-            commandCreate.Parameters.AddWithValue("@senha", usuario.Senha);
-            commandCreate.Parameters.AddWithValue("@setor", usuario.Setor);
-            commandCreate.ExecuteNonQuery();
-            Console.WriteLine("Usuário inserido com sucesso!");
-            */
         }
 
         public void LerUsuarios()

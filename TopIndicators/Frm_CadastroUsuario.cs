@@ -11,10 +11,11 @@ using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using static TopIndicators.Frm_CadastroUsuario.ChecaForcaSenha;
 using DadosUsuarios;
-//<<<<<<< HEAD
+using static TopIndicators.Segurança;
 using Connection;
-//=======
+
 using ConnectionMaria;
+using crypto;
 //>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
 
 namespace TopIndicators
@@ -203,57 +204,92 @@ namespace TopIndicators
                 Txt_NomeUsuario.Focus();
                 return;
             }
-            else if (Txt_NomeSetor.Text == "" || Txt_NomeSetor.Text == " ")
+            else if (Txt_NomeSetor2.Text == "" || Txt_NomeSetor2.Text == " ")
             {
                 MessageBox.Show("Campo Setor Em Branco");
-                Txt_NomeSetor.Text = Txt_NomeSetor.Text = "";
+                Txt_NomeSetor2.Text = Txt_NomeSetor2.Text = "";
                 Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
-//<<<<<<< HEAD
                 Txt_Senha.Text = Txt_Senha.Text = "";
-//=======
                 Txt_Senha.Text = Txt_Senha.Text = "";              
-//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
-                Txt_NomeSetor.Focus();
+                Txt_NomeSetor2.Focus();
                 return;
             }
             else
             {
-                Usuario usuario = new Usuario();
+                Usuario usuario = new Usuario(Segurança.Hash_login(Txt_Senha.Text));
 
                 usuario.Id++;
                 usuario.Nome = Txt_NomeUsuario.Text;
-                usuario.Setor = Txt_NomeSetor.Text;
+                usuario.Setor = Txt_NomeSetor2.Text;
                 usuario.Senha = Txt_Senha.Text;
 
-                Txt_NomeSetor.Text = Txt_NomeSetor.Text = "";
-                Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
-                Txt_Senha.Text = Txt_Senha.Text = "";
-                Txt_NomeUsuario.Text = Txt_NomeUsuario.Text = "";
+                Txt_NomeSetor2.Text = "";
+                Txt_ConfirmacaoSenha.Text = "";
+                Txt_Senha.Text = "";
+                Txt_NomeUsuario.Text = "";
+                textBox1.Text = "";
+                Lbl_Resultado.Text = "";
 
-//<<<<<<< HEAD
+
                 Connection.ProcessoDados criarUsuario = new Connection.ProcessoDados();
-                //=======
+
                 _ = new ConnectionMaria.ProcessoDadosUsuarios();
 
-                // b5d070ecba66bd63fff6f2926b82ec99ac503113
                 criarUsuario.CriarUsuario(usuario);
 
                 MessageBox.Show("Usuario Cadastrado Com Sucesso!!!");
 
             }
-
-//<<<<<<< HEAD
-//=======
-
-
-
-
-//>>>>>>> b5d070ecba66bd63fff6f2926b82ec99ac503113
         }
 
         private void Txt_NomeUsuario_TextChanged(object sender, EventArgs e)
         {
             //Txt_NomeUsuario.Text 
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_cidade_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_bairro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_endereco_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Frm_CadastroUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

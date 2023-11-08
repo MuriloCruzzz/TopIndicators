@@ -46,6 +46,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -98,6 +101,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -126,6 +130,104 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alterar_Excluir_Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alterar_Excluir_Usuario.Designer.cs">
+      <DependentUpon>Alterar_Excluir_Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastrar_Estoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastrar_Estoque.Designer.cs">
+      <DependentUpon>Cadastrar_Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs" />
+    <Compile Include="Frm_Cadastrar_Linha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Cadastrar_Linha.Designer.cs">
+      <DependentUpon>Frm_Cadastrar_Linha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Indicadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Indicadores.Designer.cs">
+      <DependentUpon>Frm_Indicadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Listar_Linhas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Listar_Linhas.Designer.cs">
+      <DependentUpon>Frm_Listar_Linhas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Listar_Turno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Listar_Turno.Designer.cs">
+      <DependentUpon>Frm_Listar_Turno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Demanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Demanda.Designer.cs">
+      <DependentUpon>Func_Demanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Estoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Estoque.Designer.cs">
+      <DependentUpon>Func_Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Graficos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Graficos.Designer.cs">
+      <DependentUpon>Func_Graficos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Lançar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Lançar.Designer.cs">
+      <DependentUpon>Func_Lançar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Linhas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Linhas.Designer.cs">
+      <DependentUpon>Func_Linhas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Produção.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Produção.Designer.cs">
+      <DependentUpon>Func_Produção.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Func_Turnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Func_Turnos.Designer.cs">
+      <DependentUpon>Func_Turnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lançar-Producao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lançar-Producao.Designer.cs">
+      <DependentUpon>Lançar-Producao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_1_usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_1_usuario.Designer.cs">
+      <DependentUpon>Frm_1_usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listar_Produção.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listar_Produção.Designer.cs">
+      <DependentUpon>Listar_Produção.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Segurança.cs" />
     <Compile Include="Frm_DeletarDemanda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,12 +263,6 @@
     <Compile Include="ProcessarDados.cs" />
     <Compile Include="ListagemUsuarios.cs" />
     <Compile Include="DadosUsuarios.cs" />
-    <Compile Include="Frm_ListagemUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ListagemUsuarios.Designer.cs">
-      <DependentUpon>Frm_ListagemUsuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm_FuncUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +292,18 @@
     <Compile Include="MySqlClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Alterar_Excluir_Usuario.resx">
+      <DependentUpon>Alterar_Excluir_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastrar_Estoque.resx">
+      <DependentUpon>Cadastrar_Estoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_1_usuario.resx">
+      <DependentUpon>Frm_1_usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Cadastrar_Linha.resx">
+      <DependentUpon>Frm_Cadastrar_Linha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_DeletarDemanda.resx">
       <DependentUpon>Frm_DeletarDemanda.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,17 +322,47 @@
     <EmbeddedResource Include="Frm_FuncUsuarios.resx">
       <DependentUpon>Frm_FuncUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ListagemUsuarios.resx">
-      <DependentUpon>Frm_ListagemUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Indicadores.resx">
+      <DependentUpon>Frm_Indicadores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_ListarDemanda.resx">
       <DependentUpon>Frm_ListarDemanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Listar_Linhas.resx">
+      <DependentUpon>Frm_Listar_Linhas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Listar_Turno.resx">
+      <DependentUpon>Frm_Listar_Turno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_MenuDemanda.resx">
       <DependentUpon>Frm_MenuDemanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Demanda.resx">
+      <DependentUpon>Func_Demanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Estoque.resx">
+      <DependentUpon>Func_Estoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Graficos.resx">
+      <DependentUpon>Func_Graficos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Lançar.resx">
+      <DependentUpon>Func_Lançar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Linhas.resx">
+      <DependentUpon>Func_Linhas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Produção.resx">
+      <DependentUpon>Func_Produção.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Func_Turnos.resx">
+      <DependentUpon>Func_Turnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lançar-Producao.resx">
+      <DependentUpon>Lançar-Producao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

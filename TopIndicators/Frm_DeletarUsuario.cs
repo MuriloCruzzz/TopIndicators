@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Windows.Media.Animation;
 using static TopIndicators.Frm_CadastroUsuario.ChecaForcaSenha;
-using DadosUsuarios;
+//using DadosUsuarios;
 using Connection;
 
 namespace TopIndicators
@@ -29,14 +29,14 @@ namespace TopIndicators
 
             valorInteiro = int.Parse(Txt_idUsuario.Text);
 
-            Usuario usuario = new Usuario();
+            //Usuario usuario = new Usuario();
 
-            usuario.Id = valorInteiro;
+            //usuario.Id = valorInteiro;
 
             Txt_idUsuario.Text = Txt_idUsuario.Text = "";
 
             Connection.ProcessoDados criarUsuario = new Connection.ProcessoDados();
-            criarUsuario.DeletarUsuario(usuario);
+            //criarUsuario.DeletarUsuario(usuario);
 
             MessageBox.Show("Usuario Cancelado Com Sucesso!!!");
 

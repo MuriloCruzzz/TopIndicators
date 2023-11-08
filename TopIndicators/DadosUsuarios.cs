@@ -13,7 +13,12 @@ namespace DadosUsuarios
         public string Nome;
         public string Setor;
         public string Senha;
+        private object value;
 
+        public Usuario(object value)
+        {
+            this.value = value;
+        }
     }
 
 }

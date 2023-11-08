@@ -51,10 +51,6 @@ namespace TopIndicators
 
 
             }
-
-           
-
-
             Connection.ProcessoDados criarDemanda = new Connection.ProcessoDados();
             criarDemanda.CriarDemanda(demanda);
             Txt_quantidade.Text = "";
@@ -63,10 +59,6 @@ namespace TopIndicators
             Txt_Id_Produto.Text = "";
             Txt_Id_Usuario.Text = "";
             MessageBox.Show("Demanda Cadastrada Com Sucesso!!!");
-
-
-
-
 
         }
     }
