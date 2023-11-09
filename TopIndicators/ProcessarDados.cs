@@ -14,6 +14,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Data.SqlClient;
 using ExcelDataReader;
 using System.IO;
+using System.Windows.Controls;
 //using ListagemUsuario;
 
 
@@ -22,6 +23,7 @@ namespace Connection
     public class ProcessoDados
     {
         public static MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;");
+        private object reader;
 
         public void CriarUsuario(Usuario usuario)
         {
@@ -333,6 +335,67 @@ namespace Connection
                 }
             }
             connection.Close();
+        }
+        public void InserirTabelaProdutoAcabado()
+        {
+            connection.Open();
+
+            // Diálogo para selecionar o arquivo Excel
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos do Excel|*.xlsx;*.xls";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    IExcelDataReader reader;
+                    if (openFileDialog.FileName.EndsWith(".xls"))
+                    {
+                        reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                    }
+                    else if (openFileDialog.FileName.EndsWith(".xlsx"))
+                    {
+                        reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                    }
+                    else
+                    {
+                        throw new Exception("Tipo de arquivo não suportado.");
+                    }
+
+                    // Ler os dados do arquivo Excel
+                    try
+                    {
+                        do
+                        {
+                            while (reader.Read())
+                            {
+                                int idProdutoA = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
+                                string NomeA = reader.GetString(1);
+
+                                // Inserir os dados na tabela do banco de dados
+                                string queryCreate = "INSERT INTO produto_acabado (id_produto, Nome) VALUES (@id_produto, @Nome)";
+                                MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
+                                {
+                                    commandCreate.Parameters.AddWithValue("@id_produto", idProdutoA);
+                                    commandCreate.Parameters.AddWithValue("@Nome", NomeA);
+
+                                    commandCreate.ExecuteNonQuery();
+                                }
+
+                            }
+                        } while (reader.NextResult());
+                    }
+                    catch (Exception ex)
+                    {
+                        // Exibir a mensagem de erro
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            connection.Close();
+        }
+        public void InserirDemanda()
+        {
+
         }
     }
 }

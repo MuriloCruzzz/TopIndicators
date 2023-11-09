@@ -36,12 +36,11 @@
             this.btn_imprimir = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.dtv_colaboradores = new System.Windows.Forms.DataGridView();
-            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuarioBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ID_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_setor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario_Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Setor_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cpf_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefone_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +50,8 @@
             this.Estado_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cidade_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cep_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usuarioBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtv_colaboradores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource1)).BeginInit();
@@ -84,6 +85,8 @@
             this.checkbox_status.Size = new System.Drawing.Size(18, 17);
             this.checkbox_status.TabIndex = 136;
             this.checkbox_status.UseVisualStyleBackColor = true;
+            this.checkbox_status.Visible = false;
+            this.checkbox_status.CheckedChanged += new System.EventHandler(this.checkbox_status_CheckedChanged);
             // 
             // label17
             // 
@@ -95,6 +98,7 @@
             this.label17.Size = new System.Drawing.Size(120, 32);
             this.label17.TabIndex = 135;
             this.label17.Text = "Inativos";
+            this.label17.Visible = false;
             // 
             // btn_imprimir
             // 
@@ -125,16 +129,16 @@
             this.dtv_colaboradores.AllowUserToDeleteRows = false;
             this.dtv_colaboradores.AllowUserToResizeColumns = false;
             this.dtv_colaboradores.AllowUserToResizeRows = false;
-            this.dtv_colaboradores.AutoGenerateColumns = false;
             this.dtv_colaboradores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dtv_colaboradores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtv_colaboradores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dtv_colaboradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtv_colaboradores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID_Usuario,
+            this.ID,
             this.Nome,
+            this.id_setor,
+            this.senha,
             this.Usuario_Nome,
-            this.Setor_Usuario,
             this.Cpf_Usuario,
             this.Telefone_Usuario,
             this.Email_Usuario,
@@ -144,7 +148,6 @@
             this.Estado_Usuario,
             this.Cidade_Usuario,
             this.Cep_Usuario});
-            this.dtv_colaboradores.DataSource = this.usuarioBindingSource;
             this.dtv_colaboradores.GridColor = System.Drawing.Color.Khaki;
             this.dtv_colaboradores.Location = new System.Drawing.Point(17, 69);
             this.dtv_colaboradores.Margin = new System.Windows.Forms.Padding(4);
@@ -153,22 +156,15 @@
             this.dtv_colaboradores.RowHeadersWidth = 51;
             this.dtv_colaboradores.Size = new System.Drawing.Size(1470, 772);
             this.dtv_colaboradores.TabIndex = 100;
+            this.dtv_colaboradores.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtv_colaboradores_CellContentDoubleClick);
             // 
-            // usuarioBindingSource
+            // ID
             // 
-            this.usuarioBindingSource.DataSource = typeof(DadosUsuarios.Usuario);
-            // 
-            // usuarioBindingSource1
-            // 
-            this.usuarioBindingSource1.DataSource = typeof(DadosUsuarios.Usuario);
-            // 
-            // ID_Usuario
-            // 
-            this.ID_Usuario.HeaderText = "Registro";
-            this.ID_Usuario.MinimumWidth = 6;
-            this.ID_Usuario.Name = "ID_Usuario";
-            this.ID_Usuario.ReadOnly = true;
-            this.ID_Usuario.Width = 125;
+            this.ID.HeaderText = "Registro";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 125;
             // 
             // Nome
             // 
@@ -178,6 +174,23 @@
             this.Nome.ReadOnly = true;
             this.Nome.Width = 125;
             // 
+            // id_setor
+            // 
+            this.id_setor.HeaderText = "Setor";
+            this.id_setor.MinimumWidth = 6;
+            this.id_setor.Name = "id_setor";
+            this.id_setor.ReadOnly = true;
+            this.id_setor.Width = 125;
+            // 
+            // senha
+            // 
+            this.senha.HeaderText = "senha";
+            this.senha.MinimumWidth = 6;
+            this.senha.Name = "senha";
+            this.senha.ReadOnly = true;
+            this.senha.Visible = false;
+            this.senha.Width = 125;
+            // 
             // Usuario_Nome
             // 
             this.Usuario_Nome.HeaderText = "Usuario";
@@ -185,14 +198,6 @@
             this.Usuario_Nome.Name = "Usuario_Nome";
             this.Usuario_Nome.ReadOnly = true;
             this.Usuario_Nome.Width = 125;
-            // 
-            // Setor_Usuario
-            // 
-            this.Setor_Usuario.HeaderText = "Setor";
-            this.Setor_Usuario.MinimumWidth = 6;
-            this.Setor_Usuario.Name = "Setor_Usuario";
-            this.Setor_Usuario.ReadOnly = true;
-            this.Setor_Usuario.Width = 125;
             // 
             // Cpf_Usuario
             // 
@@ -266,6 +271,14 @@
             this.Cep_Usuario.ReadOnly = true;
             this.Cep_Usuario.Width = 125;
             // 
+            // usuarioBindingSource
+            // 
+            this.usuarioBindingSource.DataSource = typeof(DadosUsuarios.Usuario);
+            // 
+            // usuarioBindingSource1
+            // 
+            this.usuarioBindingSource1.DataSource = typeof(DadosUsuarios.Usuario);
+            // 
             // Frm_1_usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -281,6 +294,7 @@
             this.Controls.Add(this.label13);
             this.Name = "Frm_1_usuario";
             this.Text = "Frm_1_usuario";
+            this.Load += new System.EventHandler(this.Frm_1_usuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtv_colaboradores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource1)).EndInit();
@@ -300,10 +314,11 @@
         private System.Windows.Forms.DataGridView dtv_colaboradores;
         private System.Windows.Forms.BindingSource usuarioBindingSource;
         private System.Windows.Forms.BindingSource usuarioBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_setor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn senha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario_Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Setor_Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cpf_Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone_Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email_Usuario;

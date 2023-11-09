@@ -28,73 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Quantidade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Prazo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Id_Cliente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Id_Produto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Id_Usuario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.checkbox_status = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btn_imprimir = new System.Windows.Forms.Button();
+            this.dtv_listarDemanda = new System.Windows.Forms.DataGridView();
+            this.id_Demanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade_Demandanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Atual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dtv_listarDemanda)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.Quantidade,
-            this.Prazo,
-            this.Status,
-            this.Id_Cliente,
-            this.Id_Produto,
-            this.Id_Usuario});
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(30, 166);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(1458, 674);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.Frm_ListarDemanda_Load);
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            this.ID.Width = 50;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.Text = "Quantidade";
-            this.Quantidade.Width = 120;
-            // 
-            // Prazo
-            // 
-            this.Prazo.Text = "Prazo";
-            this.Prazo.Width = 110;
-            // 
-            // Status
-            // 
-            this.Status.Text = "Status";
-            this.Status.Width = 80;
-            // 
-            // Id_Cliente
-            // 
-            this.Id_Cliente.Text = "Id_Cliente";
-            // 
-            // Id_Produto
-            // 
-            this.Id_Produto.Text = "Id_Produto";
-            // 
-            // Id_Usuario
-            // 
-            this.Id_Usuario.Text = "Id_Usuario";
             // 
             // txtPesquisa
             // 
@@ -160,43 +114,125 @@
             this.btn_imprimir.Text = "IMPRIMIR";
             this.btn_imprimir.UseVisualStyleBackColor = true;
             // 
+            // dtv_listarDemanda
+            // 
+            this.dtv_listarDemanda.AllowUserToAddRows = false;
+            this.dtv_listarDemanda.AllowUserToDeleteRows = false;
+            this.dtv_listarDemanda.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dtv_listarDemanda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtv_listarDemanda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_Demanda,
+            this.quantidade_Demandanda,
+            this.prazo,
+            this.Cliente,
+            this.Produto,
+            this.Atual});
+            this.dtv_listarDemanda.GridColor = System.Drawing.Color.Linen;
+            this.dtv_listarDemanda.Location = new System.Drawing.Point(12, 190);
+            this.dtv_listarDemanda.Name = "dtv_listarDemanda";
+            this.dtv_listarDemanda.ReadOnly = true;
+            this.dtv_listarDemanda.RowHeadersWidth = 51;
+            this.dtv_listarDemanda.RowTemplate.Height = 24;
+            this.dtv_listarDemanda.Size = new System.Drawing.Size(1476, 647);
+            this.dtv_listarDemanda.TabIndex = 146;
+            this.dtv_listarDemanda.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtv_listarDemanda_CellContentDoubleClick);
+            // 
+            // id_Demanda
+            // 
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.id_Demanda.DefaultCellStyle = dataGridViewCellStyle7;
+            this.id_Demanda.HeaderText = "id_Demanda";
+            this.id_Demanda.MinimumWidth = 6;
+            this.id_Demanda.Name = "id_Demanda";
+            this.id_Demanda.ReadOnly = true;
+            this.id_Demanda.Width = 165;
+            // 
+            // quantidade_Demandanda
+            // 
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.quantidade_Demandanda.DefaultCellStyle = dataGridViewCellStyle8;
+            this.quantidade_Demandanda.HeaderText = "quantidade_Demandanda";
+            this.quantidade_Demandanda.MinimumWidth = 6;
+            this.quantidade_Demandanda.Name = "quantidade_Demandanda";
+            this.quantidade_Demandanda.ReadOnly = true;
+            this.quantidade_Demandanda.Width = 170;
+            // 
+            // prazo
+            // 
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            this.prazo.DefaultCellStyle = dataGridViewCellStyle9;
+            this.prazo.HeaderText = "prazo";
+            this.prazo.MinimumWidth = 6;
+            this.prazo.Name = "prazo";
+            this.prazo.ReadOnly = true;
+            this.prazo.Width = 200;
+            // 
+            // Cliente
+            // 
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            this.Cliente.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.MinimumWidth = 6;
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Width = 170;
+            // 
+            // Produto
+            // 
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            this.Produto.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Produto.HeaderText = "Produto";
+            this.Produto.MinimumWidth = 6;
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            this.Produto.Width = 170;
+            // 
+            // Atual
+            // 
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            this.Atual.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Atual.HeaderText = "Atual";
+            this.Atual.MinimumWidth = 6;
+            this.Atual.Name = "Atual";
+            this.Atual.ReadOnly = true;
+            this.Atual.Width = 180;
+            // 
             // Frm_ListarDemanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1500, 968);
+            this.Controls.Add(this.dtv_listarDemanda);
             this.Controls.Add(this.btn_imprimir);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.checkbox_status);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.listView2);
             this.Name = "Frm_ListarDemanda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Frm_ListarDemanda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtv_listarDemanda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader Quantidade;
-        private System.Windows.Forms.ColumnHeader Prazo;
-        private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.ColumnHeader Id_Cliente;
-        private System.Windows.Forms.ColumnHeader Id_Produto;
-        private System.Windows.Forms.ColumnHeader Id_Usuario;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox checkbox_status;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btn_imprimir;
+        private System.Windows.Forms.DataGridView dtv_listarDemanda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_Demanda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidade_Demandanda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prazo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Atual;
     }
 }

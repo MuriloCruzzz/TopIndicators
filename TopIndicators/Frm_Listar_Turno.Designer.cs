@@ -34,6 +34,7 @@
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_iniciada
@@ -98,8 +99,20 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 309);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1503, 672);
+            this.panel1.Size = new System.Drawing.Size(1477, 560);
             this.panel1.TabIndex = 142;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DarkGreen;
+            this.button1.Location = new System.Drawing.Point(1171, 941);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(318, 42);
+            this.button1.TabIndex = 143;
+            this.button1.Text = "CADASTRAR";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Frm_Listar_Turno
             // 
@@ -107,6 +120,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1550, 1018);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.panel1);
@@ -128,5 +142,6 @@
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }

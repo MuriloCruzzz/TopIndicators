@@ -60,8 +60,8 @@
             this.txb_senha = new System.Windows.Forms.TextBox();
             this.txb_cidade = new System.Windows.Forms.TextBox();
             this.txb_email = new System.Windows.Forms.TextBox();
-            this.txb_usuario = new System.Windows.Forms.TextBox();
             this.cmb_cargo = new System.Windows.Forms.ComboBox();
+            this.cmb_setor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btn_ativar
@@ -86,7 +86,7 @@
             this.button_excluir.TabIndex = 170;
             this.button_excluir.Text = "EXCLUIR";
             this.button_excluir.UseVisualStyleBackColor = false;
-            this.button_excluir.Visible = false;
+            this.button_excluir.Click += new System.EventHandler(this.button_excluir_Click);
             // 
             // cod_colab
             // 
@@ -122,6 +122,7 @@
             // 
             // txb_estado
             // 
+            this.txb_estado.Enabled = false;
             this.txb_estado.FormattingEnabled = true;
             this.txb_estado.Items.AddRange(new object[] {
             "Acre",
@@ -166,7 +167,7 @@
             this.btn_salvar.TabIndex = 165;
             this.btn_salvar.Text = "ALTERAR";
             this.btn_salvar.UseVisualStyleBackColor = false;
-            this.btn_salvar.Visible = false;
+            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
             // btn_limpar
             // 
@@ -178,9 +179,11 @@
             this.btn_limpar.TabIndex = 164;
             this.btn_limpar.Text = "LIMPAR";
             this.btn_limpar.UseVisualStyleBackColor = false;
+            this.btn_limpar.Click += new System.EventHandler(this.btn_limpar_Click);
             // 
             // txb_cep
             // 
+            this.txb_cep.Enabled = false;
             this.txb_cep.Location = new System.Drawing.Point(526, 335);
             this.txb_cep.Name = "txb_cep";
             this.txb_cep.Size = new System.Drawing.Size(100, 22);
@@ -188,6 +191,7 @@
             // 
             // tcbtelefone
             // 
+            this.tcbtelefone.Enabled = false;
             this.tcbtelefone.Location = new System.Drawing.Point(376, 280);
             this.tcbtelefone.Name = "tcbtelefone";
             this.tcbtelefone.Size = new System.Drawing.Size(100, 22);
@@ -195,6 +199,7 @@
             // 
             // txb_cpf
             // 
+            this.txb_cpf.Enabled = false;
             this.txb_cpf.Location = new System.Drawing.Point(901, 219);
             this.txb_cpf.Name = "txb_cpf";
             this.txb_cpf.Size = new System.Drawing.Size(121, 22);
@@ -213,6 +218,7 @@
             // 
             // mnth_dataNasc
             // 
+            this.mnth_dataNasc.Enabled = false;
             this.mnth_dataNasc.Location = new System.Drawing.Point(812, 351);
             this.mnth_dataNasc.Name = "mnth_dataNasc";
             this.mnth_dataNasc.TabIndex = 162;
@@ -233,11 +239,11 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Lucida Sans", 10.8F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label11.Location = new System.Drawing.Point(365, 216);
+            this.label11.Location = new System.Drawing.Point(376, 216);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 21);
+            this.label11.Size = new System.Drawing.Size(60, 21);
             this.label11.TabIndex = 160;
-            this.label11.Text = "Usuário";
+            this.label11.Text = "Setor";
             // 
             // label10
             // 
@@ -351,6 +357,7 @@
             // 
             // txb_endereco
             // 
+            this.txb_endereco.Enabled = false;
             this.txb_endereco.Location = new System.Drawing.Point(166, 331);
             this.txb_endereco.Name = "txb_endereco";
             this.txb_endereco.Size = new System.Drawing.Size(100, 22);
@@ -358,6 +365,7 @@
             // 
             // txb_bairro
             // 
+            this.txb_bairro.Enabled = false;
             this.txb_bairro.Location = new System.Drawing.Point(351, 333);
             this.txb_bairro.Name = "txb_bairro";
             this.txb_bairro.Size = new System.Drawing.Size(100, 22);
@@ -382,6 +390,7 @@
             // 
             // txb_cidade
             // 
+            this.txb_cidade.Enabled = false;
             this.txb_cidade.Location = new System.Drawing.Point(977, 284);
             this.txb_cidade.Name = "txb_cidade";
             this.txb_cidade.Size = new System.Drawing.Size(100, 22);
@@ -389,20 +398,15 @@
             // 
             // txb_email
             // 
+            this.txb_email.Enabled = false;
             this.txb_email.Location = new System.Drawing.Point(562, 278);
             this.txb_email.Name = "txb_email";
             this.txb_email.Size = new System.Drawing.Size(100, 22);
             this.txb_email.TabIndex = 142;
             // 
-            // txb_usuario
-            // 
-            this.txb_usuario.Location = new System.Drawing.Point(452, 217);
-            this.txb_usuario.Name = "txb_usuario";
-            this.txb_usuario.Size = new System.Drawing.Size(142, 22);
-            this.txb_usuario.TabIndex = 148;
-            // 
             // cmb_cargo
             // 
+            this.cmb_cargo.Enabled = false;
             this.cmb_cargo.FormattingEnabled = true;
             this.cmb_cargo.Items.AddRange(new object[] {
             "Supervisor",
@@ -413,12 +417,25 @@
             this.cmb_cargo.Size = new System.Drawing.Size(121, 24);
             this.cmb_cargo.TabIndex = 140;
             // 
+            // cmb_setor
+            // 
+            this.cmb_setor.FormattingEnabled = true;
+            this.cmb_setor.Items.AddRange(new object[] {
+            "AVO",
+            "ALMOXARIFADO",
+            "LOGISTICA"});
+            this.cmb_setor.Location = new System.Drawing.Point(446, 215);
+            this.cmb_setor.Name = "cmb_setor";
+            this.cmb_setor.Size = new System.Drawing.Size(121, 24);
+            this.cmb_setor.TabIndex = 172;
+            // 
             // Alterar_Excluir_Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1105, 568);
+            this.ClientSize = new System.Drawing.Size(1219, 663);
+            this.Controls.Add(this.cmb_setor);
             this.Controls.Add(this.btn_ativar);
             this.Controls.Add(this.button_excluir);
             this.Controls.Add(this.cod_colab);
@@ -450,11 +467,12 @@
             this.Controls.Add(this.txb_senha);
             this.Controls.Add(this.txb_cidade);
             this.Controls.Add(this.txb_email);
-            this.Controls.Add(this.txb_usuario);
             this.Controls.Add(this.cmb_cargo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Alterar_Excluir_Usuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alterar_Excluir_Usuario";
+            this.Load += new System.EventHandler(this.Alterar_Excluir_Usuario_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,7 +511,7 @@
         private System.Windows.Forms.TextBox txb_senha;
         private System.Windows.Forms.TextBox txb_cidade;
         private System.Windows.Forms.TextBox txb_email;
-        private System.Windows.Forms.TextBox txb_usuario;
         private System.Windows.Forms.ComboBox cmb_cargo;
+        private System.Windows.Forms.ComboBox cmb_setor;
     }
 }

@@ -34,5 +34,15 @@ namespace TopIndicators
             MessageBox.Show("Clientes Inseridos Com Sucesso!!!");
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Frm_Cadastrar_Linha_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

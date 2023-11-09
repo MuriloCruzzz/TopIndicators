@@ -62,7 +62,7 @@
             this.label9.ForeColor = System.Drawing.Color.DarkGreen;
             this.label9.Location = new System.Drawing.Point(69, 615);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(170, 39);
+            this.label9.Size = new System.Drawing.Size(162, 38);
             this.label9.TabIndex = 34;
             this.label9.Text = "CLIENTE";
             // 
@@ -79,6 +79,7 @@
             this.button1.Text = "CADASTRAR";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Txt_quantidade
             // 
@@ -123,7 +124,7 @@
             this.label8.ForeColor = System.Drawing.Color.DarkGreen;
             this.label8.Location = new System.Drawing.Point(69, 496);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 39);
+            this.label8.Size = new System.Drawing.Size(136, 38);
             this.label8.TabIndex = 28;
             this.label8.Text = "SETOR";
             // 
@@ -138,7 +139,7 @@
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
             this.label6.Location = new System.Drawing.Point(868, 564);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 39);
+            this.label6.Size = new System.Drawing.Size(88, 38);
             this.label6.TabIndex = 27;
             this.label6.Text = "PPH";
             // 
@@ -153,7 +154,7 @@
             this.label5.ForeColor = System.Drawing.Color.DarkGreen;
             this.label5.Location = new System.Drawing.Point(913, 368);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(195, 39);
+            this.label5.Size = new System.Drawing.Size(190, 38);
             this.label5.TabIndex = 26;
             this.label5.Text = "PRODUTO";
             // 
@@ -168,7 +169,7 @@
             this.label2.ForeColor = System.Drawing.Color.DarkGreen;
             this.label2.Location = new System.Drawing.Point(69, 368);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 39);
+            this.label2.Size = new System.Drawing.Size(120, 38);
             this.label2.TabIndex = 25;
             this.label2.Text = "NOME";
             // 
@@ -221,6 +222,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Frm_Cadastrar_Linha";
             this.Text = "Frm_Cadastrar_Linha";
+            this.Load += new System.EventHandler(this.Frm_Cadastrar_Linha_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
