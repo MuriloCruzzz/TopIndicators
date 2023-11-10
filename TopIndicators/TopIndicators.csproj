@@ -149,6 +149,12 @@
     <Compile Include="Frm_Cadastrar_Linha.Designer.cs">
       <DependentUpon>Frm_Cadastrar_Linha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Confirmação_Linha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Confirmação_Linha.Designer.cs">
+      <DependentUpon>Frm_Confirmação_Linha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Indicadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,12 @@
     </Compile>
     <Compile Include="Frm_Listar_Turno.Designer.cs">
       <DependentUpon>Frm_Listar_Turno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Vizualizar_Linhas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Vizualizar_Linhas.Designer.cs">
+      <DependentUpon>Frm_Vizualizar_Linhas.cs</DependentUpon>
     </Compile>
     <Compile Include="Func_Demanda.cs">
       <SubType>Form</SubType>
@@ -304,6 +316,9 @@
     <EmbeddedResource Include="Frm_Cadastrar_Linha.resx">
       <DependentUpon>Frm_Cadastrar_Linha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Confirmação_Linha.resx">
+      <DependentUpon>Frm_Confirmação_Linha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_DeletarDemanda.resx">
       <DependentUpon>Frm_DeletarDemanda.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_MenuDemanda.resx">
       <DependentUpon>Frm_MenuDemanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Vizualizar_Linhas.resx">
+      <DependentUpon>Frm_Vizualizar_Linhas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Func_Demanda.resx">
       <DependentUpon>Func_Demanda.cs</DependentUpon>

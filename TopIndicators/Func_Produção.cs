@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,64 +19,65 @@ namespace TopIndicators
             InitializeComponent();
             LoadDataAndCreateButtons();
         }
+        int id_producao = 0;
         private void LoadDataAndCreateButtons()
         {
-            // Substitua "suaConnectionString" pela conexão com o seu banco de dados
-            string connectionString = @"Data Source=SUP-04;Initial Catalog=Estampariadb;Integrated Security=True;";
-            string query = "SELECT ID_Linha, Status FROM PRODUCOES";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            string query = "SELECT id_producao, status_producao FROM producao_linha";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                MySqlCommand command = new MySqlCommand(query, connection);
                 connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
+                string status_producao = "";
+                MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    int idLinha = (int)reader["ID_Linha"];
-                    string status = reader["Status"].ToString();
-
-                    // Crie um novo botão
-
-                    Button button = new Button();
-                    button.Text = $"ID_Linha: {idLinha} \nStatus: {status}";
-                    button.Size = new Size(182, 94);
-                    button.Font = new Font("Arial", 12, FontStyle.Bold);
-                    button.BackColor = Color.LightGreen;
-                    if (status == "1")
+                    int idLinha = (int)reader["id_producao"];
+                    id_producao = idLinha;
+                    int status = (int)reader["status_producao"];
+                    if (status == 0)
                     {
-                        button.Text = $"ID Linha: {idLinha}, Status: Em Andamento";
-                        button.BackColor = Color.LightGreen; // Define a cor de fundo como LightGreen
+                        status_producao = "Em produção";
                     }
-                    else if (status == "0")
+                    // Crie um novo botão
+                    Button button = new Button();
+                    button.Text = $"ID PRODUÇÃO: {idLinha} \nStatus: {status_producao}";
+                    button.Size = new Size(182, 94);
+                    button.Font = new Font("Arial", 14, FontStyle.Bold);
+                    button.BackColor = Color.LightGreen;
+                    button.ForeColor = Color.Black;
+                    if (status == 0)
                     {
-                        button.Text = $"ID Linha: {idLinha}, Status: Linha Finalizada";
+                        button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Em Andamento";
+                        button.BackColor = Color.LightGreen; // Define um fundo como LightGreen
+                    }
+                    else if (status == 2)
+                    {
+                        button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Linha Finalizada";
                         button.BackColor = Color.Tomato;
                     }
-                    else if (status == "2")
+                    else if (status == 1)
                     {
-                        button.Text = $"ID Linha: {idLinha}, Status: Aguandando 1º lançamento";
+                        button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Aguandando 1º lançamento";
                         button.BackColor = Color.Gold;
                     }
+
                     button.Click += (sender, e) =>
                     {
                         // Este código será executado quando o botão for clicado
                         // Você pode realizar qualquer ação desejada aqui com base no ID_Linha e Status
                         // Por exemplo, abrir o formulário Producao_Andamento com os dados da produção
                         int clickedIdLinha = idLinha;
-                        string clickedStatus = status;
+                        string clickedStatus = status_producao;
                         AbrirFormularioProducaoAndamento(clickedIdLinha, clickedStatus);
                     };
-                    //Panel panel1 = new Panel();
-                    //panel1.AutoScroll = true; // Habilita a rolagem automática vertical
+                    //Painel painel1 = new Painel();
+                    //panel1.AutoScroll = true; // Habilita rolagem automática vertical
                     //panel1.Dock = DockStyle.Fill;
-
-
                     // Adicione o botão ao FlowLayoutPanel
-                    flowLayoutPanel1.Controls.Add(button);
+                    flowLayoutPanel2.Controls.Add(button);
                 }
-
                 reader.Close();
             }
         }

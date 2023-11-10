@@ -31,7 +31,10 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.Lbl_Cadastro = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -61,12 +64,30 @@
             this.Lbl_Cadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Lbl_Cadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Cadastro.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Lbl_Cadastro.Location = new System.Drawing.Point(375, 46);
+            this.Lbl_Cadastro.Location = new System.Drawing.Point(246, 50);
             this.Lbl_Cadastro.Name = "Lbl_Cadastro";
-            this.Lbl_Cadastro.Size = new System.Drawing.Size(809, 99);
+            this.Lbl_Cadastro.Size = new System.Drawing.Size(975, 99);
             this.Lbl_Cadastro.TabIndex = 3;
             this.Lbl_Cadastro.Text = "LINHAS DE PRODUÇÃO";
             this.Lbl_Cadastro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(66, 217);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1398, 528);
+            this.flowLayoutPanel2.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(0, 0);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Func_Produção
             // 
@@ -74,11 +95,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1619, 1055);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.Lbl_Cadastro);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Func_Produção";
             this.Text = "Func_Produção";
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -88,5 +111,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label Lbl_Cadastro;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button button1;
     }
 }

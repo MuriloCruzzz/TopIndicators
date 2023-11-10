@@ -20,10 +20,12 @@ namespace TopIndicators
         {
             InitializeComponent();
         }
-
+        public int id_producao { get; set; }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            int id_producao = this.id_producao;
+
 
         }
     }

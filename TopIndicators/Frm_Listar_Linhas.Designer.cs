@@ -30,6 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.Pnl_Consultar_Linhas = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Pnl_Consultar_Linhas.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -49,10 +53,29 @@
             // 
             // Pnl_Consultar_Linhas
             // 
+            this.Pnl_Consultar_Linhas.Controls.Add(this.flowLayoutPanel2);
             this.Pnl_Consultar_Linhas.Location = new System.Drawing.Point(12, 160);
             this.Pnl_Consultar_Linhas.Name = "Pnl_Consultar_Linhas";
             this.Pnl_Consultar_Linhas.Size = new System.Drawing.Size(1442, 775);
             this.Pnl_Consultar_Linhas.TabIndex = 26;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.button2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(69, 30);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1344, 502);
+            this.flowLayoutPanel2.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(0, 0);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "button1";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Frm_Listar_Linhas
             // 
@@ -64,6 +87,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Frm_Listar_Linhas";
             this.Text = "Frm_Listar_Linhas";
+            this.Pnl_Consultar_Linhas.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,5 +98,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Pnl_Consultar_Linhas;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button button2;
     }
 }

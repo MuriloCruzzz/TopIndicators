@@ -163,5 +163,16 @@ namespace TopIndicators
 
             MessageBox.Show("produto Inseridos Com Sucesso!!!");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+            _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+            InserirCliente.InserirTabelaClientes();
+
+            MessageBox.Show("Clientes Inseridos Com Sucesso!!!");
+        }
     }
 }
