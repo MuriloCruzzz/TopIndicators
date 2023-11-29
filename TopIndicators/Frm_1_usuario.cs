@@ -7,15 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WebForms;
 using MySql.Data.MySqlClient;
+using DadosUsuarios;
+using System.Web.UI.HtmlControls;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace TopIndicators
 {
     public partial class Frm_1_usuario : Form
     {
+        public DataGridView dgvData;
         public Frm_1_usuario()
         {
             InitializeComponent();
+            // Adiciona um DatagridView ao formulário
+            dgvData = new DataGridView();
+            dgvData.Dock = DockStyle.Fill;
+            this.Controls.Add(dgvData);
+
+            // Adiciona um botão para gerar o relatório
+            Button btn_gerarRelatorio = new Button();
+            btn_gerarRelatorio.Text = "Gerar relatório";
+            btn_gerarRelatorio.Dock = DockStyle.Bottom;
+            this.Controls.Add(btn_gerarRelatorio);
+
+            // Adiciona um evento Click ao botão
+            btn_gerarRelatorio.Click += btn_imprimir_Click;
         }
 
         public void Frm_1_usuario_Load(object sender, EventArgs e)
@@ -201,11 +220,21 @@ namespace TopIndicators
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
-            var dt = GerarDadosRelatorio();
-            //using (var frm = new relatorio_fornecedores((dt)))
-            //{
-            //    frm.ShowDialog();
-            //}
+            DataTable dtData = dgvData.DataSource as DataTable;
+
+            // Define o layout do relatório
+            HtmlTable table = (HtmlTable)this.FindControl("tableRelatorio");
+            table.Rows.Add(new[] { "Nome", "Idade" });
+
+            // Adiciona conteúdo ao relatório
+            foreach (DataRow row in dtData.Rows)
+            {
+                table.Rows.Add(new[] { row["Nome"], row["Idade"] });
+            }
         }
+        // Adiciona um DatagridView ao formulário
     }
+
 }
+
+
