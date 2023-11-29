@@ -131,8 +131,6 @@
             this.Lbl_Saudacoes.Size = new System.Drawing.Size(114, 25);
             this.Lbl_Saudacoes.TabIndex = 0;
             this.Lbl_Saudacoes.Text = "Saudações";
-            //this.Lbl_Saudacoes.AutoSizeChanged += new System.EventHandler(this.Lbl_Saudacoes_AutoSizeChanged);
-            //this.Lbl_Saudacoes.Click += new System.EventHandler(this.Lbl_Saudacoes_Click);
             // 
             // Btn_Parar
             // 
@@ -177,6 +175,7 @@
             this.Name = "Frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Frm_Login_Load);
             this.Pnl_Login.ResumeLayout(false);
             this.Pnl_Login.PerformLayout();
             this.ResumeLayout(false);

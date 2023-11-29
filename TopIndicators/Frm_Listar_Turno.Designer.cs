@@ -28,38 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_iniciada = new System.Windows.Forms.Button();
-            this.btn_finalizada = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_turno1 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btn_iniciada
-            // 
-            this.btn_iniciada.BackColor = System.Drawing.Color.Gainsboro;
-            this.btn_iniciada.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_iniciada.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btn_iniciada.Location = new System.Drawing.Point(431, 125);
-            this.btn_iniciada.Name = "btn_iniciada";
-            this.btn_iniciada.Size = new System.Drawing.Size(318, 42);
-            this.btn_iniciada.TabIndex = 7;
-            this.btn_iniciada.Text = "ABERTO";
-            this.btn_iniciada.UseVisualStyleBackColor = false;
-            // 
-            // btn_finalizada
-            // 
-            this.btn_finalizada.BackColor = System.Drawing.Color.Gainsboro;
-            this.btn_finalizada.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_finalizada.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btn_finalizada.Location = new System.Drawing.Point(872, 125);
-            this.btn_finalizada.Name = "btn_finalizada";
-            this.btn_finalizada.Size = new System.Drawing.Size(318, 42);
-            this.btn_finalizada.TabIndex = 6;
-            this.btn_finalizada.Text = "FECHADO";
-            this.btn_finalizada.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -72,47 +50,74 @@
             this.label1.ForeColor = System.Drawing.Color.DarkGreen;
             this.label1.Location = new System.Drawing.Point(729, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 51);
+            this.label1.Size = new System.Drawing.Size(209, 51);
             this.label1.TabIndex = 5;
-            this.label1.Text = "TURNO";
-            // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisa.Location = new System.Drawing.Point(211, 224);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(215, 28);
-            this.txtPesquisa.TabIndex = 141;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label18.Location = new System.Drawing.Point(12, 224);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(177, 22);
-            this.label18.TabIndex = 140;
-            this.label18.Text = "NOME PRODUTO:";
+            this.label1.Text = "TURNOS";
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 309);
+            this.panel1.Controls.Add(this.flowLayoutPanel2);
+            this.panel1.Location = new System.Drawing.Point(12, 180);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1477, 560);
+            this.panel1.Size = new System.Drawing.Size(1505, 689);
             this.panel1.TabIndex = 142;
+            // 
+            // btn_turno1
+            // 
+            this.btn_turno1.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_turno1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_turno1.ForeColor = System.Drawing.Color.Black;
+            this.btn_turno1.Location = new System.Drawing.Point(185, 116);
+            this.btn_turno1.Name = "btn_turno1";
+            this.btn_turno1.Size = new System.Drawing.Size(241, 45);
+            this.btn_turno1.TabIndex = 143;
+            this.btn_turno1.Text = "1º TURNO ";
+            this.btn_turno1.UseVisualStyleBackColor = false;
+            this.btn_turno1.Click += new System.EventHandler(this.btn_turno1_Click);
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button1.Location = new System.Drawing.Point(1171, 941);
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(1197, 116);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(318, 42);
-            this.button1.TabIndex = 143;
-            this.button1.Text = "CADASTRAR";
+            this.button1.Size = new System.Drawing.Size(241, 45);
+            this.button1.TabIndex = 144;
+            this.button1.Text = "3º TURNO ";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(697, 116);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(241, 45);
+            this.button2.TabIndex = 145;
+            this.button2.Text = "2º TURNO ";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Controls.Add(this.button3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(16, 26);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1472, 582);
+            this.flowLayoutPanel2.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(0, 0);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Frm_Listar_Turno
             // 
@@ -120,28 +125,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1550, 1018);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtPesquisa);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.btn_turno1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btn_iniciada);
-            this.Controls.Add(this.btn_finalizada);
             this.Controls.Add(this.label1);
             this.Name = "Frm_Listar_Turno";
             this.Text = "Frm_Listar_Turno";
+            this.panel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_iniciada;
-        private System.Windows.Forms.Button btn_finalizada;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPesquisa;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_turno1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button button3;
     }
 }

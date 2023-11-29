@@ -66,6 +66,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmb_turno = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -303,7 +305,7 @@
             // 
             this.tcbtelefone.Enabled = false;
             this.tcbtelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcbtelefone.Location = new System.Drawing.Point(1081, 371);
+            this.tcbtelefone.Location = new System.Drawing.Point(683, 809);
             this.tcbtelefone.Name = "tcbtelefone";
             this.tcbtelefone.Size = new System.Drawing.Size(276, 38);
             this.tcbtelefone.TabIndex = 168;
@@ -312,7 +314,7 @@
             // 
             this.txb_cpf.Enabled = false;
             this.txb_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_cpf.Location = new System.Drawing.Point(543, 374);
+            this.txb_cpf.Location = new System.Drawing.Point(126, 811);
             this.txb_cpf.Name = "txb_cpf";
             this.txb_cpf.Size = new System.Drawing.Size(333, 38);
             this.txb_cpf.TabIndex = 167;
@@ -391,7 +393,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(931, 371);
+            this.label3.Location = new System.Drawing.Point(533, 809);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 36);
             this.label3.TabIndex = 175;
@@ -402,7 +404,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label14.Location = new System.Drawing.Point(460, 372);
+            this.label14.Location = new System.Drawing.Point(33, 811);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(77, 36);
             this.label14.TabIndex = 174;
@@ -469,14 +471,13 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Enabled = false;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Supervidor",
             "Operador",
             "Lider"});
-            this.comboBox1.Location = new System.Drawing.Point(148, 816);
+            this.comboBox1.Location = new System.Drawing.Point(602, 385);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(215, 30);
             this.comboBox1.TabIndex = 189;
@@ -486,7 +487,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label4.Location = new System.Drawing.Point(39, 808);
+            this.label4.Location = new System.Drawing.Point(493, 377);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 36);
             this.label4.TabIndex = 188;
@@ -496,6 +497,31 @@
             // 
             this.usuarioBindingSource.DataSource = typeof(DadosUsuarios.Usuario);
             // 
+            // cmb_turno
+            // 
+            this.cmb_turno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_turno.FormattingEnabled = true;
+            this.cmb_turno.Items.AddRange(new object[] {
+            "1º",
+            "2º",
+            "3º"});
+            this.cmb_turno.Location = new System.Drawing.Point(1041, 385);
+            this.cmb_turno.Name = "cmb_turno";
+            this.cmb_turno.Size = new System.Drawing.Size(215, 30);
+            this.cmb_turno.TabIndex = 191;
+            this.cmb_turno.Text = "1º";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label10.Location = new System.Drawing.Point(932, 377);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 36);
+            this.label10.TabIndex = 190;
+            this.label10.Text = "Turno";
+            // 
             // Frm_CadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -503,6 +529,8 @@
             this.BackColor = System.Drawing.Color.Honeydew;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1394, 1018);
+            this.Controls.Add(this.cmb_turno);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
@@ -594,5 +622,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmb_turno;
+        private System.Windows.Forms.Label label10;
     }
 }

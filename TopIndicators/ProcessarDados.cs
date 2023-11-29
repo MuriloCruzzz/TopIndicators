@@ -5,7 +5,6 @@ using TopIndicators;
 using DadosUsuarios;
 using System.Xml.Xsl;
 using Org.BouncyCastle.Crypto.Digests;
-using TopIndicators;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using DadosDemanda;
@@ -32,13 +31,17 @@ namespace Connection
             try
             {
                 connection.Open();
-                string queryCreate = "INSERT INTO usuario (nome, senha, id_setor) VALUES (@nome, @senha, @setor)";
+                string queryCreate = "INSERT INTO usuario (nome, senha, id_setor, Grupo_Acesso, Status_Usuario, turno) " +
+                    "VALUES (@nome, @senha, @setor, @Grupo_Acesso, @Status_Usuario, @turno)";
                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                 commandCreate.Parameters.AddWithValue("@nome", usuario.Nome);
                 commandCreate.Parameters.AddWithValue("@senha", usuario.Senha);
                 commandCreate.Parameters.AddWithValue("@setor", usuario.Setor);
+                commandCreate.Parameters.AddWithValue("@Grupo_Acesso", usuario.Grupo_Acesso);
+                commandCreate.Parameters.AddWithValue("@Status_Usuario", usuario.Status_Usuario);
+                commandCreate.Parameters.AddWithValue("@turno", usuario.Turno_Usuario);
                 commandCreate.ExecuteNonQuery();
-                Console.WriteLine("Usuário inserido com sucesso!");
+                Console.WriteLine("Usuário "+usuario.Nome+" inserido com sucesso!");
             }
             catch (Exception ex)
             {
@@ -247,18 +250,22 @@ namespace Connection
                             while (reader.Read())
                             {
                                 int idProduto = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
-                                int quantidade = int.Parse(reader.GetString(1));
-                                DateTime Data_Validade = DateTime.Parse(reader.GetString(2));
-                                string Nome = reader.GetString(3);
+                                DateTime Data_Validade = DateTime.Parse(reader.GetString(1));
+                                string Nome = reader.GetString(2);
+                                int estoque_minimo = int.Parse(reader.GetString(3));
+                                int estoque_maximo = int.Parse(reader.GetString(4));
+                                string status = "OK";
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto, Quantidade, Data_Validade, Nome) VALUES (@id_produto, @Quantidade, @Data_Validade, @Nome)";
+                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
-                                    commandCreate.Parameters.AddWithValue("@Quantidade", quantidade);
                                     commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
                                     commandCreate.Parameters.AddWithValue("@Nome", Nome);
+                                    commandCreate.Parameters.AddWithValue("@estoque_minimo", estoque_minimo);
+                                    commandCreate.Parameters.AddWithValue("@estoque_maximo", estoque_maximo);
+                                    commandCreate.Parameters.AddWithValue("@status", status);
 
                                     commandCreate.ExecuteNonQuery();
                                 }
@@ -308,18 +315,22 @@ namespace Connection
                             while (reader.Read())
                             {
                                 int idProduto = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
-                                int quantidade = int.Parse(reader.GetString(1));
-                                DateTime Data_Validade = DateTime.Parse(reader.GetString(2));
-                                string Nome = reader.GetString(3);
+                                DateTime Data_Validade = DateTime.Parse(reader.GetString(1));
+                                string Nome = reader.GetString(2);
+                                int estoque_minimo = int.Parse(reader.GetString(3));
+                                int estoque_maximo = int.Parse(reader.GetString(4));
+                                string status = "OK";
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Quantidade, Data_Validade, Nome) VALUES (@id_produto, @Quantidade, @Data_Validade, @Nome)";
+                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
-                                    commandCreate.Parameters.AddWithValue("@Quantidade", quantidade);
                                     commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
                                     commandCreate.Parameters.AddWithValue("@Nome", Nome);
+                                    commandCreate.Parameters.AddWithValue("@estoque_minimo", estoque_minimo);
+                                    commandCreate.Parameters.AddWithValue("@estoque_maximo", estoque_maximo);
+                                    commandCreate.Parameters.AddWithValue("@status", status);
 
                                     commandCreate.ExecuteNonQuery();
                                 }
@@ -369,14 +380,29 @@ namespace Connection
                             while (reader.Read())
                             {
                                 int idProdutoA = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
-                                string NomeA = reader.GetString(1);
+                                DateTime Data_Validade = DateTime.Parse(reader.GetString(1));
+                                string nome_produto = reader.GetString(2);
+                                string PPH = reader.GetString(3);
+                                int KU = int.Parse(reader.GetString(4));
+                                int YIELD = int.Parse(reader.GetString(5));
+                                string material_consumo = reader.GetString(6);
+                                string materia_prima_consumo = reader.GetString(7);
+                                string cliente = reader.GetString(8);
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_acabado (id_produto, Nome) VALUES (@id_produto, @Nome)";
+                                string queryCreate = "INSERT INTO produto_acabado (id_produto, Data_Validade, Nome, PPH, KU, YIELD, Material_Consumo, Materia_Prima_Consumo, Cliente) VALUES " +
+                                    "(@id_produto, @Data_Validade, @Nome, @PPH, @KU, @YIELD, @Material_Consumo, @Materia_Prima_Consumo, @Cliente)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProdutoA);
-                                    commandCreate.Parameters.AddWithValue("@Nome", NomeA);
+                                    commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
+                                    commandCreate.Parameters.AddWithValue("@Nome", nome_produto);
+                                    commandCreate.Parameters.AddWithValue("@PPH", int.Parse(PPH));
+                                    commandCreate.Parameters.AddWithValue("@KU", KU);
+                                    commandCreate.Parameters.AddWithValue("@YIELD", YIELD);
+                                    commandCreate.Parameters.AddWithValue("@Material_Consumo", material_consumo);
+                                    commandCreate.Parameters.AddWithValue("@Materia_Prima_Consumo", materia_prima_consumo);
+                                    commandCreate.Parameters.AddWithValue("@Cliente", cliente);
 
                                     commandCreate.ExecuteNonQuery();
                                 }

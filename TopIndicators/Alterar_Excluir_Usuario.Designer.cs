@@ -39,7 +39,6 @@
             this.btn_limpar = new System.Windows.Forms.Button();
             this.txb_cep = new System.Windows.Forms.TextBox();
             this.tcbtelefone = new System.Windows.Forms.TextBox();
-            this.txb_cpf = new System.Windows.Forms.TextBox();
             this.lbl_dataNasc = new System.Windows.Forms.Label();
             this.mnth_dataNasc = new System.Windows.Forms.MonthCalendar();
             this.label12 = new System.Windows.Forms.Label();
@@ -62,6 +61,9 @@
             this.txb_email = new System.Windows.Forms.TextBox();
             this.cmb_cargo = new System.Windows.Forms.ComboBox();
             this.cmb_setor = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmb_turno = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btn_ativar
@@ -74,7 +76,7 @@
             this.btn_ativar.TabIndex = 171;
             this.btn_ativar.Text = "ATIVAR";
             this.btn_ativar.UseVisualStyleBackColor = false;
-            this.btn_ativar.Visible = false;
+            this.btn_ativar.Click += new System.EventHandler(this.btn_ativar_Click);
             // 
             // button_excluir
             // 
@@ -91,7 +93,7 @@
             // cod_colab
             // 
             this.cod_colab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cod_colab.Location = new System.Drawing.Point(206, 162);
+            this.cod_colab.Location = new System.Drawing.Point(213, 162);
             this.cod_colab.Name = "cod_colab";
             this.cod_colab.ReadOnly = true;
             this.cod_colab.Size = new System.Drawing.Size(82, 28);
@@ -196,14 +198,6 @@
             this.tcbtelefone.Name = "tcbtelefone";
             this.tcbtelefone.Size = new System.Drawing.Size(100, 22);
             this.tcbtelefone.TabIndex = 141;
-            // 
-            // txb_cpf
-            // 
-            this.txb_cpf.Enabled = false;
-            this.txb_cpf.Location = new System.Drawing.Point(901, 219);
-            this.txb_cpf.Name = "txb_cpf";
-            this.txb_cpf.Size = new System.Drawing.Size(121, 22);
-            this.txb_cpf.TabIndex = 139;
             // 
             // lbl_dataNasc
             // 
@@ -351,9 +345,9 @@
             this.label14.ForeColor = System.Drawing.Color.DarkGreen;
             this.label14.Location = new System.Drawing.Point(851, 218);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 21);
+            this.label14.Size = new System.Drawing.Size(65, 21);
             this.label14.TabIndex = 150;
-            this.label14.Text = "CPF";
+            this.label14.Text = "Turno";
             // 
             // txb_endereco
             // 
@@ -406,11 +400,10 @@
             // 
             // cmb_cargo
             // 
-            this.cmb_cargo.Enabled = false;
             this.cmb_cargo.FormattingEnabled = true;
             this.cmb_cargo.Items.AddRange(new object[] {
             "Supervisor",
-            "Atendente ",
+            "Líder",
             "Operador"});
             this.cmb_cargo.Location = new System.Drawing.Point(135, 276);
             this.cmb_cargo.Name = "cmb_cargo";
@@ -429,13 +422,49 @@
             this.cmb_setor.Size = new System.Drawing.Size(121, 24);
             this.cmb_setor.TabIndex = 172;
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(119, 386);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(157, 22);
+            this.textBox1.TabIndex = 173;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label2.Location = new System.Drawing.Point(69, 385);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 21);
+            this.label2.TabIndex = 174;
+            this.label2.Text = "CPF";
+            // 
+            // cmb_turno
+            // 
+            this.cmb_turno.FormattingEnabled = true;
+            this.cmb_turno.Items.AddRange(new object[] {
+            "1º",
+            "2º",
+            "3º"});
+            this.cmb_turno.Location = new System.Drawing.Point(943, 219);
+            this.cmb_turno.Name = "cmb_turno";
+            this.cmb_turno.Size = new System.Drawing.Size(121, 24);
+            this.cmb_turno.TabIndex = 175;
+            // 
             // Alterar_Excluir_Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1219, 663);
+            this.Controls.Add(this.cmb_cargo);
+            this.Controls.Add(this.txb_senha);
             this.Controls.Add(this.cmb_setor);
+            this.Controls.Add(this.cmb_turno);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_ativar);
             this.Controls.Add(this.button_excluir);
             this.Controls.Add(this.cod_colab);
@@ -446,7 +475,6 @@
             this.Controls.Add(this.btn_limpar);
             this.Controls.Add(this.txb_cep);
             this.Controls.Add(this.tcbtelefone);
-            this.Controls.Add(this.txb_cpf);
             this.Controls.Add(this.lbl_dataNasc);
             this.Controls.Add(this.mnth_dataNasc);
             this.Controls.Add(this.label12);
@@ -464,10 +492,8 @@
             this.Controls.Add(this.txb_endereco);
             this.Controls.Add(this.txb_bairro);
             this.Controls.Add(this.txb_nome);
-            this.Controls.Add(this.txb_senha);
             this.Controls.Add(this.txb_cidade);
             this.Controls.Add(this.txb_email);
-            this.Controls.Add(this.cmb_cargo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Alterar_Excluir_Usuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -490,7 +516,6 @@
         private System.Windows.Forms.Button btn_limpar;
         private System.Windows.Forms.TextBox txb_cep;
         private System.Windows.Forms.TextBox tcbtelefone;
-        private System.Windows.Forms.TextBox txb_cpf;
         private System.Windows.Forms.Label lbl_dataNasc;
         private System.Windows.Forms.MonthCalendar mnth_dataNasc;
         private System.Windows.Forms.Label label12;
@@ -513,5 +538,8 @@
         private System.Windows.Forms.TextBox txb_email;
         private System.Windows.Forms.ComboBox cmb_cargo;
         private System.Windows.Forms.ComboBox cmb_setor;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmb_turno;
     }
 }

@@ -16,12 +16,17 @@ namespace TopIndicators
 {
     public partial class Frm_FuncUsuarios : Form
     {
+        public string id_usuario;
+        public string Id_Usuario
+        {
+            set { id_usuario = value; }
+        }
         public Frm_FuncUsuarios()
         {
             InitializeComponent();
         }
 
-        private void Btn_NovoUsuario_Click(object sender, EventArgs e)
+        public void Btn_NovoUsuario_Click(object sender, EventArgs e)
         {
             //Frm_CadastroUsuario form = new Frm_CadastroUsuario();
             //form.Show();
@@ -31,7 +36,7 @@ namespace TopIndicators
             panel_c_1.BackColor = Color.Honeydew;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void button4_Click(object sender, EventArgs e)
         {
 
             //Frm_ListagemUsuarios form = new Frm_ListagemUsuarios();
@@ -42,7 +47,7 @@ namespace TopIndicators
             MostrarFormulario(form3);
         }
 
-        private void MostrarFormulario(Form formulario)
+        public void MostrarFormulario(Form formulario)
         {
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
@@ -53,7 +58,7 @@ namespace TopIndicators
         }
 
 
-        private void Frm_FuncUsuarios_Load(object sender, EventArgs e)
+        public void Frm_FuncUsuarios_Load(object sender, EventArgs e)
         {
             Frm_CadastroUsuario form3 = new Frm_CadastroUsuario();
             MostrarFormulario(form3);
@@ -62,13 +67,13 @@ namespace TopIndicators
 
         }
 
-        private void Btn_NovoUsuario_MouseEnter(object sender, EventArgs e)
+        public void Btn_NovoUsuario_MouseEnter(object sender, EventArgs e)
         {
             //Btn_NovoUsuario.BackColor = Color.FromArgb(255, 0, 0); // Mude a cor de fundo quando o mouse entrar
             //Btn_NovoUsuario.ForeColor = Color.White;
         }
 
-        private void Btn_NovoUsuario_MouseLeave(object sender, EventArgs e)
+        public void Btn_NovoUsuario_MouseLeave(object sender, EventArgs e)
         {
             //Btn_NovoUsuario.BackColor = Color.DarkSeaGreen; // Restaure a cor de fundo quando o mouse sair
             //Btn_NovoUsuario.ForeColor = Color.Black;

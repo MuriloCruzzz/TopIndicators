@@ -222,6 +222,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_MenuDemanda_Load);
             this.Btn_producao.ResumeLayout(false);
             this.Btn_producao.PerformLayout();
             this.ResumeLayout(false);

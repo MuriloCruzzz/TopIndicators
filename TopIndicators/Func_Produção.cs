@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +15,19 @@ namespace TopIndicators
 {
     public partial class Func_Produção : Form
     {
+        private string id_usuario;
+        public string Id_Usuario
+        {
+            set { id_usuario = value; }
+        }
         public Func_Produção()
         {
             InitializeComponent();
             LoadDataAndCreateButtons();
         }
         int id_producao = 0;
+        int teste = 0;
+        private bool processoExecutado = false;
         private void LoadDataAndCreateButtons()
         {
             string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
@@ -40,95 +48,81 @@ namespace TopIndicators
                     {
                         status_producao = "Em produção";
                     }
-                    // Crie um novo botão
-                    Button button = new Button();
-                    button.Text = $"ID PRODUÇÃO: {idLinha} \nStatus: {status_producao}";
-                    button.Size = new Size(182, 94);
-                    button.Font = new Font("Arial", 14, FontStyle.Bold);
-                    button.BackColor = Color.LightGreen;
-                    button.ForeColor = Color.Black;
-                    if (status == 0)
+                    if(status != 2)
                     {
-                        button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Em Andamento";
-                        button.BackColor = Color.LightGreen; // Define um fundo como LightGreen
-                    }
-                    else if (status == 2)
-                    {
-                        button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Linha Finalizada";
-                        button.BackColor = Color.Tomato;
-                    }
-                    else if (status == 1)
-                    {
-                        button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Aguandando 1º lançamento";
-                        button.BackColor = Color.Gold;
-                    }
+                        // Crie um novo botão
+                        Button button = new Button();
+                        button.Text = $"ID PRODUÇÃO: {idLinha} \nStatus: {status_producao}";
+                        button.Size = new Size(182, 94);
+                        button.Font = new Font("Arial", 14, FontStyle.Bold);
+                        button.BackColor = Color.LightGreen;
+                        button.ForeColor = Color.Black;
+                        if (status == 1)
+                        {
+                            button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Em Andamento";
+                            button.BackColor = Color.LightGreen; // Define um fundo como LightGreen
+                        }
+                        else if (status == 0)
+                        {
+                            button.Text = $"ID PRODUÇÃO: {idLinha}, Status: Aguandando 1º lançamento";
+                            button.BackColor = Color.Gold;
+                        }
 
-                    button.Click += (sender, e) =>
-                    {
-                        // Este código será executado quando o botão for clicado
-                        // Você pode realizar qualquer ação desejada aqui com base no ID_Linha e Status
-                        // Por exemplo, abrir o formulário Producao_Andamento com os dados da produção
-                        int clickedIdLinha = idLinha;
-                        string clickedStatus = status_producao;
-                        AbrirFormularioProducaoAndamento(clickedIdLinha, clickedStatus);
-                    };
-                    //Painel painel1 = new Painel();
-                    //panel1.AutoScroll = true; // Habilita rolagem automática vertical
-                    //panel1.Dock = DockStyle.Fill;
-                    // Adicione o botão ao FlowLayoutPanel
-                    flowLayoutPanel2.Controls.Add(button);
+                        AdicionarEventosAosBotoes(button);
+
+                        flowLayoutPanel2.Controls.Add(button);
+
+                    }
                 }
                 reader.Close();
             }
-        }
-
-        private void AbrirFormularioProducaoAndamento(int idLinha, string status)
-        {
-            // Código para abrir o formulário Producao_Andamento e passar os parâmetros
-            // Você precisa implementar a lógica para abrir o formulário e passar os parâmetros
-            // Pode ser semelhante ao que mencionamos em respostas anteriores.
-            Form1 fmr = new Form1();
-            fmr.ShowDialog();
 
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        private void AdicionarEventosAosBotoes(Button button)
         {
-            Button clickedButton = (Button)sender;
 
-            // Extrair o ID_Linha do texto do botão
-            int idLinha = ExtractIdLinhaFromButtonText(clickedButton.Text);
+            button.Click += (sender, e) =>
+            {
+                int idSelecionado = ExtractIdProducaoFromButtonText((Button)sender);
 
-            // Criar uma instância do formulário Producao_Andamento, passando o ID_Linha como parâmetro
-            Form1 formularioProducaoAndamento = new Form1();
-
-            // Exibir o formulário Producao_Andamento
-            formularioProducaoAndamento.Show();
+                AbrirFormularioProducaoAndamento(id_producao);
+            };
         }
-        private int ExtractIdLinhaFromButtonText(string buttonText)
+
+        private int ExtractIdProducaoFromButtonText(Button button)
         {
-            int idLinha = -1; // Valor padrão caso não seja encontrado
+            int idProducao = 0; // Valor padrão caso não seja encontrado
 
             // Dividir o texto em partes usando a vírgula como delimitador
-            string[] parts = buttonText.Split(',');
+            string[] parts = button.Text.Split(',');
 
             foreach (string part in parts)
             {
-                // Procurar a parte que contém "ID_Linha:"
-                if (part.Contains("ID_Linha:"))
+                // Procurar a parte que contém "ID_Produção:"
+                if (part.Contains("ID PRODUÇÃO:"))
                 {
-                    // Extrair o ID_Linha como uma string
-                    string idPart = part.Trim().Replace("ID_Linha:", "");
+                    // Extrair o ID_Produção como uma string
+                    string idPart = part.Trim().Replace("ID PRODUÇÃO:", "");
 
                     // Converter a string para um valor inteiro
-                    if (int.TryParse(idPart, out idLinha))
+                    if (int.TryParse(idPart, out idProducao))
                     {
-                        break; // Sai do loop quando encontrar o ID_Linha
+                        id_producao = idProducao;
+                        break; // Sai do loop quando encontrar o ID_Produção
                     }
                 }
             }
 
-            return idLinha;
+            return idProducao;
+        }
+        private void AbrirFormularioProducaoAndamento(int idLinha)
+        {
+
+            Form1 fmr = new Form1();
+            fmr.id_producao = id_producao;
+            fmr.ShowDialog();
+
         }
 
     }

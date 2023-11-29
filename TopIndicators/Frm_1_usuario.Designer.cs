@@ -40,7 +40,8 @@
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_setor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario_Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cpf_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefone_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email_Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +86,6 @@
             this.checkbox_status.Size = new System.Drawing.Size(18, 17);
             this.checkbox_status.TabIndex = 136;
             this.checkbox_status.UseVisualStyleBackColor = true;
-            this.checkbox_status.Visible = false;
             this.checkbox_status.CheckedChanged += new System.EventHandler(this.checkbox_status_CheckedChanged);
             // 
             // label17
@@ -98,7 +98,6 @@
             this.label17.Size = new System.Drawing.Size(120, 32);
             this.label17.TabIndex = 135;
             this.label17.Text = "Inativos";
-            this.label17.Visible = false;
             // 
             // btn_imprimir
             // 
@@ -110,6 +109,7 @@
             this.btn_imprimir.TabIndex = 101;
             this.btn_imprimir.Text = "IMPRIMIR";
             this.btn_imprimir.UseVisualStyleBackColor = true;
+            this.btn_imprimir.Click += new System.EventHandler(this.btn_imprimir_Click);
             // 
             // label13
             // 
@@ -138,7 +138,8 @@
             this.Nome,
             this.id_setor,
             this.senha,
-            this.Usuario_Nome,
+            this.Cargo,
+            this.Turno,
             this.Cpf_Usuario,
             this.Telefone_Usuario,
             this.Email_Usuario,
@@ -191,13 +192,21 @@
             this.senha.Visible = false;
             this.senha.Width = 125;
             // 
-            // Usuario_Nome
+            // Cargo
             // 
-            this.Usuario_Nome.HeaderText = "Usuario";
-            this.Usuario_Nome.MinimumWidth = 6;
-            this.Usuario_Nome.Name = "Usuario_Nome";
-            this.Usuario_Nome.ReadOnly = true;
-            this.Usuario_Nome.Width = 125;
+            this.Cargo.HeaderText = "Cargo";
+            this.Cargo.MinimumWidth = 6;
+            this.Cargo.Name = "Cargo";
+            this.Cargo.ReadOnly = true;
+            this.Cargo.Width = 125;
+            // 
+            // Turno
+            // 
+            this.Turno.HeaderText = "Turno";
+            this.Turno.MinimumWidth = 6;
+            this.Turno.Name = "Turno";
+            this.Turno.ReadOnly = true;
+            this.Turno.Width = 125;
             // 
             // Cpf_Usuario
             // 
@@ -318,7 +327,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_setor;
         private System.Windows.Forms.DataGridViewTextBoxColumn senha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario_Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Turno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cpf_Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone_Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email_Usuario;

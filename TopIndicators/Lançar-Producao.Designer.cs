@@ -33,42 +33,48 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tvb_cod_linha = new System.Windows.Forms.TextBox();
+            this.cod_material = new System.Windows.Forms.TextBox();
+            this.cod_materia_prima = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txb_produzidas = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.text_demanda = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.cmb_tipoProducao = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.Lbl_logout = new System.Windows.Forms.Label();
+            this.blb_nome_Linha = new System.Windows.Forms.Label();
+            this.ID_pac = new System.Windows.Forms.TextBox();
+            this.btn_adc = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cmb_homens = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbl_turno = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,7 +87,7 @@
             this.label15.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label15.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label15.Location = new System.Drawing.Point(642, 46);
+            this.label15.Location = new System.Drawing.Point(352, 35);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(696, 73);
             this.label15.TabIndex = 132;
@@ -135,37 +141,35 @@
             this.label4.TabIndex = 136;
             this.label4.Text = "COD.MATERIAL:";
             // 
-            // textBox1
+            // tvb_cod_linha
             // 
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(322, 128);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 32);
-            this.textBox1.TabIndex = 137;
+            this.tvb_cod_linha.Enabled = false;
+            this.tvb_cod_linha.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvb_cod_linha.Location = new System.Drawing.Point(322, 128);
+            this.tvb_cod_linha.Name = "tvb_cod_linha";
+            this.tvb_cod_linha.ReadOnly = true;
+            this.tvb_cod_linha.Size = new System.Drawing.Size(114, 32);
+            this.tvb_cod_linha.TabIndex = 137;
             // 
-            // textBox2
+            // cod_material
             // 
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(365, 226);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 32);
-            this.textBox2.TabIndex = 138;
+            this.cod_material.Enabled = false;
+            this.cod_material.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cod_material.Location = new System.Drawing.Point(384, 274);
+            this.cod_material.Name = "cod_material";
+            this.cod_material.ReadOnly = true;
+            this.cod_material.Size = new System.Drawing.Size(114, 32);
+            this.cod_material.TabIndex = 139;
             // 
-            // textBox3
+            // cod_materia_prima
             // 
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(384, 274);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(114, 32);
-            this.textBox3.TabIndex = 139;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(354, 177);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(114, 32);
-            this.textBox4.TabIndex = 140;
+            this.cod_materia_prima.Enabled = false;
+            this.cod_materia_prima.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cod_materia_prima.Location = new System.Drawing.Point(354, 177);
+            this.cod_materia_prima.Name = "cod_materia_prima";
+            this.cod_materia_prima.ReadOnly = true;
+            this.cod_materia_prima.Size = new System.Drawing.Size(114, 32);
+            this.cod_materia_prima.TabIndex = 140;
             // 
             // button1
             // 
@@ -176,18 +180,19 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(309, 84);
             this.button1.TabIndex = 141;
-            this.button1.Text = "FECHAR TURNO";
+            this.button1.Text = "FECHAR LINHA";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox5
+            // txb_produzidas
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(290, 41);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(123, 58);
-            this.textBox5.TabIndex = 143;
-            this.textBox5.Text = "0000";
+            this.txb_produzidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txb_produzidas.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_produzidas.Location = new System.Drawing.Point(290, 41);
+            this.txb_produzidas.Name = "txb_produzidas";
+            this.txb_produzidas.Size = new System.Drawing.Size(123, 58);
+            this.txb_produzidas.TabIndex = 143;
+            this.txb_produzidas.Text = "0000";
             // 
             // label5
             // 
@@ -207,7 +212,7 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.txb_produzidas);
             this.panel1.Location = new System.Drawing.Point(144, 342);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(433, 141);
@@ -218,7 +223,7 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Controls.Add(this.text_demanda);
             this.panel2.Location = new System.Drawing.Point(852, 342);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(433, 141);
@@ -237,15 +242,16 @@
             this.label6.TabIndex = 142;
             this.label6.Text = "DEMANDA ATUAL";
             // 
-            // textBox6
+            // text_demanda
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(261, 40);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(157, 58);
-            this.textBox6.TabIndex = 143;
-            this.textBox6.Text = "0000";
+            this.text_demanda.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text_demanda.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_demanda.Location = new System.Drawing.Point(261, 40);
+            this.text_demanda.Name = "text_demanda";
+            this.text_demanda.ReadOnly = true;
+            this.text_demanda.Size = new System.Drawing.Size(157, 58);
+            this.text_demanda.TabIndex = 143;
+            this.text_demanda.Text = "0000";
             // 
             // panel3
             // 
@@ -257,6 +263,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(433, 141);
             this.panel3.TabIndex = 146;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(275, 40);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(157, 58);
+            this.textBox7.TabIndex = 144;
+            this.textBox7.Text = "00:00";
             // 
             // label7
             // 
@@ -270,38 +286,6 @@
             this.label7.Size = new System.Drawing.Size(244, 35);
             this.label7.TabIndex = 142;
             this.label7.Text = "TEMPO PRODUÇÃO";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(333, 625);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(114, 32);
-            this.textBox8.TabIndex = 154;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(383, 763);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(114, 32);
-            this.textBox9.TabIndex = 153;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(407, 689);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(114, 32);
-            this.textBox10.TabIndex = 152;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(349, 560);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(114, 32);
-            this.textBox11.TabIndex = 151;
             // 
             // label8
             // 
@@ -327,18 +311,6 @@
             this.label9.TabIndex = 149;
             this.label9.Text = "QTD REFUGO MP:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label10.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label10.Location = new System.Drawing.Point(81, 612);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(237, 49);
-            this.label10.TabIndex = 148;
-            this.label10.Text = "HORA FINAL:";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -350,14 +322,6 @@
             this.label11.Size = new System.Drawing.Size(262, 49);
             this.label11.TabIndex = 147;
             this.label11.Text = "HORA INICIAL:";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox15.Location = new System.Drawing.Point(416, 825);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(114, 32);
-            this.textBox15.TabIndex = 159;
             // 
             // label16
             // 
@@ -381,21 +345,21 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 45);
             this.maskedTextBox1.TabIndex = 167;
             // 
-            // textBox13
+            // textBox3
             // 
-            this.textBox13.Font = new System.Drawing.Font("Malgun Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(744, 736);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(347, 170);
-            this.textBox13.TabIndex = 166;
+            this.textBox3.Font = new System.Drawing.Font("Malgun Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(744, 729);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(378, 170);
+            this.textBox3.TabIndex = 166;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Malgun Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label25.Location = new System.Drawing.Point(736, 682);
+            this.label25.Location = new System.Drawing.Point(736, 675);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(212, 45);
             this.label25.TabIndex = 165;
@@ -445,14 +409,23 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.PaleGreen;
+            this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.maskedTextBox4);
             this.panel4.Controls.Add(this.label23);
-            this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label22);
             this.panel4.Location = new System.Drawing.Point(1382, 544);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(539, 379);
             this.panel4.TabIndex = 168;
+            // 
+            // panel5
+            // 
+            this.panel5.AutoScroll = true;
+            this.panel5.BackColor = System.Drawing.Color.Ivory;
+            this.panel5.Location = new System.Drawing.Point(33, 52);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(482, 274);
+            this.panel5.TabIndex = 98;
             // 
             // maskedTextBox4
             // 
@@ -462,6 +435,7 @@
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.Size = new System.Drawing.Size(85, 38);
             this.maskedTextBox4.TabIndex = 97;
+            this.maskedTextBox4.Text = "0000";
             // 
             // label23
             // 
@@ -473,15 +447,6 @@
             this.label23.Size = new System.Drawing.Size(352, 45);
             this.label23.TabIndex = 89;
             this.label23.Text = "PARADAS DE LINHA:";
-            // 
-            // panel5
-            // 
-            this.panel5.AutoScroll = true;
-            this.panel5.BackColor = System.Drawing.Color.Ivory;
-            this.panel5.Location = new System.Drawing.Point(11, 54);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(514, 274);
-            this.panel5.TabIndex = 90;
             // 
             // label22
             // 
@@ -495,16 +460,6 @@
             this.label22.TabIndex = 89;
             this.label22.Text = "Total Paradas:";
             // 
-            // textBox7
-            // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(279, 40);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(157, 58);
-            this.textBox7.TabIndex = 144;
-            this.textBox7.Text = "00:00";
-            // 
             // Lbl_logout
             // 
             this.Lbl_logout.AutoSize = true;
@@ -515,6 +470,163 @@
             this.Lbl_logout.Size = new System.Drawing.Size(161, 40);
             this.Lbl_logout.TabIndex = 98;
             this.Lbl_logout.Text = "LOGOUT";
+            this.Lbl_logout.Click += new System.EventHandler(this.Lbl_logout_Click_1);
+            // 
+            // blb_nome_Linha
+            // 
+            this.blb_nome_Linha.AutoSize = true;
+            this.blb_nome_Linha.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.blb_nome_Linha.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blb_nome_Linha.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.blb_nome_Linha.Location = new System.Drawing.Point(1065, 35);
+            this.blb_nome_Linha.Name = "blb_nome_Linha";
+            this.blb_nome_Linha.Size = new System.Drawing.Size(130, 73);
+            this.blb_nome_Linha.TabIndex = 169;
+            this.blb_nome_Linha.Text = "text";
+            // 
+            // ID_pac
+            // 
+            this.ID_pac.Enabled = false;
+            this.ID_pac.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_pac.Location = new System.Drawing.Point(365, 228);
+            this.ID_pac.Name = "ID_pac";
+            this.ID_pac.ReadOnly = true;
+            this.ID_pac.Size = new System.Drawing.Size(114, 32);
+            this.ID_pac.TabIndex = 170;
+            // 
+            // btn_adc
+            // 
+            this.btn_adc.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_adc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_adc.ForeColor = System.Drawing.Color.Black;
+            this.btn_adc.Location = new System.Drawing.Point(1003, 683);
+            this.btn_adc.Name = "btn_adc";
+            this.btn_adc.Size = new System.Drawing.Size(120, 29);
+            this.btn_adc.TabIndex = 171;
+            this.btn_adc.Text = "Adicionar";
+            this.btn_adc.UseVisualStyleBackColor = false;
+            this.btn_adc.Click += new System.EventHandler(this.btn_adc_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Malgun Gothic", 36F, System.Drawing.FontStyle.Bold);
+            this.textBox1.Location = new System.Drawing.Point(828, 918);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(240, 87);
+            this.textBox1.TabIndex = 172;
+            this.textBox1.Text = "0";
+            this.textBox1.Visible = false;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox2.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.maskedTextBox2.Location = new System.Drawing.Point(336, 551);
+            this.maskedTextBox2.Mask = "00:00";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(143, 45);
+            this.maskedTextBox2.TabIndex = 173;
+            this.maskedTextBox2.Text = "0000";
+            this.maskedTextBox2.TextChanged += new System.EventHandler(this.maskedTextBox2_TextChanged);
+            this.maskedTextBox2.Enter += new System.EventHandler(this.maskedTextBox2_Enter);
+            this.maskedTextBox2.Leave += new System.EventHandler(this.maskedTextBox2_Leave);
+            // 
+            // maskedTextBox5
+            // 
+            this.maskedTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox5.Location = new System.Drawing.Point(398, 686);
+            this.maskedTextBox5.Mask = "00000";
+            this.maskedTextBox5.Name = "maskedTextBox5";
+            this.maskedTextBox5.Size = new System.Drawing.Size(100, 38);
+            this.maskedTextBox5.TabIndex = 175;
+            this.maskedTextBox5.Text = "0";
+            this.maskedTextBox5.ValidatingType = typeof(int);
+            // 
+            // maskedTextBox6
+            // 
+            this.maskedTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox6.Location = new System.Drawing.Point(421, 823);
+            this.maskedTextBox6.Mask = "00000";
+            this.maskedTextBox6.Name = "maskedTextBox6";
+            this.maskedTextBox6.Size = new System.Drawing.Size(100, 38);
+            this.maskedTextBox6.TabIndex = 176;
+            this.maskedTextBox6.Text = "0";
+            this.maskedTextBox6.ValidatingType = typeof(int);
+            // 
+            // maskedTextBox7
+            // 
+            this.maskedTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox7.Location = new System.Drawing.Point(384, 759);
+            this.maskedTextBox7.Mask = "00000";
+            this.maskedTextBox7.Name = "maskedTextBox7";
+            this.maskedTextBox7.Size = new System.Drawing.Size(100, 38);
+            this.maskedTextBox7.TabIndex = 177;
+            this.maskedTextBox7.Text = "0";
+            this.maskedTextBox7.ValidatingType = typeof(int);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Calibri", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(517, 547);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(157, 58);
+            this.textBox2.TabIndex = 145;
+            this.textBox2.Text = "00:00";
+            this.textBox2.Visible = false;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // cmb_homens
+            // 
+            this.cmb_homens.DisplayMember = "inteiro";
+            this.cmb_homens.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_homens.FormattingEnabled = true;
+            this.cmb_homens.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cmb_homens.Location = new System.Drawing.Point(1382, 173);
+            this.cmb_homens.Name = "cmb_homens";
+            this.cmb_homens.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmb_homens.Size = new System.Drawing.Size(133, 46);
+            this.cmb_homens.TabIndex = 178;
+            this.cmb_homens.Text = "1";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Malgun Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label10.Location = new System.Drawing.Point(937, 165);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(408, 45);
+            this.label10.TabIndex = 179;
+            this.label10.Text = "Quantidade Operadores:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label12.Location = new System.Drawing.Point(1640, 63);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(121, 45);
+            this.label12.TabIndex = 180;
+            this.label12.Text = "Turno:";
+            // 
+            // lbl_turno
+            // 
+            this.lbl_turno.AutoSize = true;
+            this.lbl_turno.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lbl_turno.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_turno.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbl_turno.Location = new System.Drawing.Point(1770, 65);
+            this.lbl_turno.Name = "lbl_turno";
+            this.lbl_turno.Size = new System.Drawing.Size(87, 49);
+            this.lbl_turno.TabIndex = 181;
+            this.lbl_turno.Text = "text";
             // 
             // Form1
             // 
@@ -522,32 +634,38 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.lbl_turno);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cmb_homens);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.maskedTextBox7);
+            this.Controls.Add(this.maskedTextBox6);
+            this.Controls.Add(this.maskedTextBox5);
+            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_adc);
+            this.Controls.Add(this.ID_pac);
+            this.Controls.Add(this.blb_nome_Linha);
             this.Controls.Add(this.Lbl_logout);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.cmb_tipoProducao);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox15);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox11);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cod_materia_prima);
+            this.Controls.Add(this.cod_material);
+            this.Controls.Add(this.tvb_cod_linha);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -557,7 +675,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "text";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -580,31 +698,24 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tvb_cod_linha;
+        private System.Windows.Forms.TextBox cod_material;
+        private System.Windows.Forms.TextBox cod_materia_prima;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txb_produzidas;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox text_demanda;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cmb_tipoProducao;
         private System.Windows.Forms.Label label24;
@@ -612,9 +723,22 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label Lbl_logout;
+        private System.Windows.Forms.Label blb_nome_Linha;
+        private System.Windows.Forms.TextBox ID_pac;
+        private System.Windows.Forms.Button btn_adc;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox7;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox cmb_homens;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_turno;
     }
 }

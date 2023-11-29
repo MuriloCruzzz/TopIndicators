@@ -34,7 +34,7 @@ namespace TopIndicators
             connection.Open();
 
             // Execute a consulta
-            string query = "SELECT id_produto_acabado, id_producao, id_produto_materia_prima, id_produto_material, quantidade_produzidas,quantidade_demanda_atual FROM producao_linha WHERE id_producao = @id_producao";
+            string query = "SELECT id_produto_acabado, id_producao, id_produto_materia_prima, id_produto_material, quantidade_produzidas,quantidade_demanda_atual, turno FROM producao_linha WHERE id_producao = @id_producao";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@id_producao", id_producao);
 
@@ -52,6 +52,7 @@ namespace TopIndicators
                         int idProdutoMaterial = (int)reader["id_produto_material"];
                         int quantidadeProduzidas = (int)reader["quantidade_produzidas"];
                         int quantidadeDemandaAtual = (int)reader["quantidade_demanda_atual"];
+                        string turno = reader["turno"].ToString();
 
                         // Armazene os valores nas label.text
                         lbl_nome_produto.Text = idProdutoAcabado;
@@ -61,11 +62,9 @@ namespace TopIndicators
                         lbl_produto_acabado.Text = idProdutoAcabado.ToString();
                         lbl_quantidade_produzida.Text = quantidadeProduzidas.ToString();
                         lbl_quantidade_demandada.Text = quantidadeDemandaAtual.ToString();
+                        label7.Text = turno;
+                        lbl_quantidade_demandada.Text = quantidadeDemandaAtual.ToString();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Nenhum registro encontrado.");
                 }
                 connection.Close();
             }
@@ -85,10 +84,6 @@ namespace TopIndicators
                         lbl_materia_prima.Text = reader2["Nome"].ToString();
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Nenhum registro encontrado.");
-                }
             }
             connection.Close();
             string query3 = "SELECT Nome FROM produto_materia_prima_componente WHERE id_produto = @id_produto";
@@ -106,10 +101,6 @@ namespace TopIndicators
                         // Pegue os valores dos campos da consulta
                         lbl_material.Text = reader3["Nome"].ToString();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Nenhum registro encontrado.");
                 }
             }
             connection.Close();

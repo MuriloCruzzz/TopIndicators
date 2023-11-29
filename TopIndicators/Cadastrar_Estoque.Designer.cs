@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Lbl_Cadastro = new System.Windows.Forms.Label();
             this.btn_importarMP = new System.Windows.Forms.Button();
             this.btn_Importar_MT = new System.Windows.Forms.Button();
@@ -55,6 +55,7 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btn_produtoAcabado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             this.Lbl_Cadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Lbl_Cadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Cadastro.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Lbl_Cadastro.Location = new System.Drawing.Point(473, 34);
+            this.Lbl_Cadastro.Location = new System.Drawing.Point(515, 36);
             this.Lbl_Cadastro.Name = "Lbl_Cadastro";
             this.Lbl_Cadastro.Size = new System.Drawing.Size(547, 99);
             this.Lbl_Cadastro.TabIndex = 1;
@@ -89,13 +90,13 @@
             // btn_Importar_MT
             // 
             this.btn_Importar_MT.BackColor = System.Drawing.Color.Purple;
-            this.btn_Importar_MT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Importar_MT.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Importar_MT.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_Importar_MT.Location = new System.Drawing.Point(298, 948);
             this.btn_Importar_MT.Name = "btn_Importar_MT";
             this.btn_Importar_MT.Size = new System.Drawing.Size(257, 36);
             this.btn_Importar_MT.TabIndex = 3;
-            this.btn_Importar_MT.Text = "IMPORTAR MATERIAIS";
+            this.btn_Importar_MT.Text = "IMPORTAR COMPONENTES";
             this.btn_Importar_MT.UseVisualStyleBackColor = false;
             this.btn_Importar_MT.Click += new System.EventHandler(this.btn_Importar_MT_Click);
             // 
@@ -117,7 +118,7 @@
             this.btn_Listar_Materiais.BackColor = System.Drawing.Color.DarkGreen;
             this.btn_Listar_Materiais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Listar_Materiais.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_Listar_Materiais.Location = new System.Drawing.Point(1046, 138);
+            this.btn_Listar_Materiais.Location = new System.Drawing.Point(643, 138);
             this.btn_Listar_Materiais.Name = "btn_Listar_Materiais";
             this.btn_Listar_Materiais.Size = new System.Drawing.Size(266, 47);
             this.btn_Listar_Materiais.TabIndex = 5;
@@ -176,6 +177,7 @@
             this.btn_imprimir.TabIndex = 144;
             this.btn_imprimir.Text = "IMPRIMIR";
             this.btn_imprimir.UseVisualStyleBackColor = true;
+            this.btn_imprimir.Visible = false;
             // 
             // dataGridView1
             // 
@@ -202,9 +204,9 @@
             // 
             // id_produto
             // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.id_produto.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.id_produto.DefaultCellStyle = dataGridViewCellStyle1;
             this.id_produto.HeaderText = "id_produto";
             this.id_produto.MinimumWidth = 6;
             this.id_produto.Name = "id_produto";
@@ -213,8 +215,8 @@
             // 
             // nome
             // 
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            this.nome.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.nome.DefaultCellStyle = dataGridViewCellStyle2;
             this.nome.HeaderText = "nome";
             this.nome.MinimumWidth = 6;
             this.nome.Name = "nome";
@@ -223,8 +225,8 @@
             // 
             // Validade
             // 
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            this.Validade.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.Validade.DefaultCellStyle = dataGridViewCellStyle3;
             this.Validade.HeaderText = "Validade";
             this.Validade.MinimumWidth = 6;
             this.Validade.Name = "Validade";
@@ -233,8 +235,8 @@
             // 
             // Estoque_Atual
             // 
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            this.Estoque_Atual.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.Estoque_Atual.DefaultCellStyle = dataGridViewCellStyle4;
             this.Estoque_Atual.HeaderText = "Estoque_Atual";
             this.Estoque_Atual.MinimumWidth = 6;
             this.Estoque_Atual.Name = "Estoque_Atual";
@@ -243,8 +245,8 @@
             // 
             // Minimo
             // 
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            this.Minimo.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.Minimo.DefaultCellStyle = dataGridViewCellStyle5;
             this.Minimo.HeaderText = "Minimo";
             this.Minimo.MinimumWidth = 6;
             this.Minimo.Name = "Minimo";
@@ -253,8 +255,8 @@
             // 
             // Maximo
             // 
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            this.Maximo.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.Maximo.DefaultCellStyle = dataGridViewCellStyle6;
             this.Maximo.HeaderText = "Maximo";
             this.Maximo.MinimumWidth = 6;
             this.Maximo.Name = "Maximo";
@@ -263,8 +265,8 @@
             // 
             // Status
             // 
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            this.Status.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.Status.DefaultCellStyle = dataGridViewCellStyle7;
             this.Status.HeaderText = "Status";
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
@@ -297,12 +299,26 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btn_produtoAcabado
+            // 
+            this.btn_produtoAcabado.BackColor = System.Drawing.Color.DarkGreen;
+            this.btn_produtoAcabado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_produtoAcabado.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_produtoAcabado.Location = new System.Drawing.Point(1109, 138);
+            this.btn_produtoAcabado.Name = "btn_produtoAcabado";
+            this.btn_produtoAcabado.Size = new System.Drawing.Size(266, 47);
+            this.btn_produtoAcabado.TabIndex = 148;
+            this.btn_produtoAcabado.Text = "PRODUTO AC";
+            this.btn_produtoAcabado.UseVisualStyleBackColor = false;
+            this.btn_produtoAcabado.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Cadastrar_Estoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1503, 1014);
+            this.Controls.Add(this.btn_produtoAcabado);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -347,5 +363,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_produtoAcabado;
     }
 }

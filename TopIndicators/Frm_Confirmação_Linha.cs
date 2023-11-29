@@ -45,12 +45,20 @@ namespace TopIndicators
 
         public void button1_Click(object sender, EventArgs e)
         {
+            if(cmb_turno.Text != "1º" && cmb_turno.Text != "2º" && cmb_turno.Text != "3º")
+            {
+                MessageBox.Show("Campo Turno Incorreto!");
+                cmb_turno.Text = "1º";
+                return;
+            }
+
             int id_demanda = this.id_demanda;
             int quantidade_demandada = this.quantidade_demandada;
             string prazo = this.prazo;
             string nome_cliente = this.nome_cliente;
             string nome_produto = this.nome_produto;
             int quantidade_produzida = this.quantidade_produzida;
+
 
             string connectionString1 = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
             using (MySqlConnection connection1 = new MySqlConnection(connectionString1))
@@ -61,7 +69,7 @@ namespace TopIndicators
                 //MySqlCommand command1 = new MySqlCommand("INSERT INTO producao_linha(id_produto_materia_prima,id_produto_material,id_produto_acabado,quantidade_produzidas,quantidade_demanda_atual,tempo_total_producao,hora_inicial,hora_final,quantidade_refugo_materia_prima,quantidade_refugo_produto_acabado,quantidade_refugo_material,tempo_parada_linha,observacao_parada_linha, status_producao VALUES" +
                 //"(@id_produto_materia_prima,@id_produto_material,@id_produto_acabado,@quantidade_produzidas,@quantidade_demanda_atual,@tempo_total_producao,@hora_inicial,@hora_final,@quantidade_refugo_materia_prima,@quantidade_refugo_produto_acabado,@quantidade_refugo_material,@tempo_parada_linha,@observacao_parada_linha,@status_producao);", connection1);
 
-                string queryCreate = "INSERT INTO producao_linha(id_produto_materia_prima,id_produto_material,id_produto_acabado,quantidade_produzidas,quantidade_demanda_atual,quantidade_refugo_materia_prima,quantidade_refugo_produto_acabado,quantidade_refugo_material,observacao_parada_linha,status_producao) VALUES (@id_produto_materia_prima,@id_produto_material,@id_produto_acabado,@quantidade_produzidas,@quantidade_demanda_atual,@quantidade_refugo_materia_prima,@quantidade_refugo_produto_acabado,@quantidade_refugo_material,@observacao_parada_linha,@status_producao);";
+                string queryCreate = "INSERT INTO producao_linha(id_produto_materia_prima,id_produto_material,id_produto_acabado,quantidade_produzidas,quantidade_demanda_atual,quantidade_refugo_materia_prima,quantidade_refugo_produto_acabado,quantidade_refugo_material,observacao_parada_linha,status_producao, quantidade_operadores, turno) VALUES (@id_produto_materia_prima,@id_produto_material,@id_produto_acabado,@quantidade_produzidas,@quantidade_demanda_atual,@quantidade_refugo_materia_prima,@quantidade_refugo_produto_acabado,@quantidade_refugo_material,@observacao_parada_linha,@status_producao, @quantidade_operadores, @turno);";
 
                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection1);
                 {
@@ -75,6 +83,9 @@ namespace TopIndicators
                     commandCreate.Parameters.AddWithValue("@quantidade_refugo_material", quantidade_zerada);
                     commandCreate.Parameters.AddWithValue("@observacao_parada_linha", status);
                     commandCreate.Parameters.AddWithValue("@status_producao", status_producao);
+                    commandCreate.Parameters.AddWithValue("@quantidade_operadores", 1);
+                    commandCreate.Parameters.AddWithValue("@turno", cmb_turno.Text);
+
 
 
 
@@ -115,6 +126,16 @@ namespace TopIndicators
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Lbl_Cadastro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Frm_Confirmação_Linha_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

@@ -114,8 +114,8 @@
 
         private System.Windows.Forms.Button Btn_NovoUsuario;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Panel panel_2;
         private System.Windows.Forms.Panel panel_c_1;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel panel_2;
     }
 }

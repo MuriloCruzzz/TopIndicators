@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,7 +54,11 @@ namespace TopIndicators
         }
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-
+            string nome = Txb_NomeLogin.Text;
+            string id_usuario = "0";
+            string senha = Txb_SenhaLogin.Text;
+            string nome_valido = "login";
+            string senha_valido = "login";
             if (Txb_NomeLogin.Text == "" || Txb_SenhaLogin.Text == "")
             {
                 MessageBox.Show("Preenchimento incorreto! \n Preencha Novamente!");
@@ -62,20 +67,90 @@ namespace TopIndicators
                 Txb_NomeLogin.Focus();
                 return;
             }
-            else if (Txb_NomeLogin.Text != "admin" && Txb_NomeLogin.Text != "admin")
+            if (Txb_NomeLogin.Text == " " || Txb_SenhaLogin.Text == " ")
             {
-                MessageBox.Show("Usuario ou Senha Incorreto!");
+                MessageBox.Show("Preenchimento incorreto! \n Preencha Novamente!");
                 Txb_NomeLogin.Text = Txb_NomeLogin.Text = "";
                 Txb_NomeLogin.Text = Txb_SenhaLogin.Text = "";
                 Txb_NomeLogin.Focus();
                 return;
             }
-
-            else
+            else if (Txb_NomeLogin.Text != "" || Txb_SenhaLogin.Text != "")
             {
-                Frm_MenuDemanda form = new Frm_MenuDemanda();
-                this.Hide();
-                form.Show();
+                string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+
+                MySqlConnection connectionb = new MySqlConnection(connectionString);
+                connectionb.Open();
+
+                // Execute a consulta
+                string queryb = "SELECT ID, nome FROM usuario where nome = @nome";
+                MySqlCommand commandb = new MySqlCommand(queryb, connectionb);
+                commandb.Parameters.AddWithValue("@nome", nome);
+
+                using (MySqlDataReader readerb = commandb.ExecuteReader())
+                {
+                    if (readerb.HasRows)
+                    {
+                        // Itere sobre os resultados da consulta
+                        while (readerb.Read())
+                        {
+                            // Pegue os valores dos campos da consulta
+                            id_usuario = readerb["ID"].ToString();//
+                            nome_valido = readerb["nome"].ToString();//
+                        }
+                    }
+                    else
+                    {
+
+                        Txb_NomeLogin.Text = Txb_NomeLogin.Text = "";
+                        Txb_SenhaLogin.Text = Txb_SenhaLogin.Text = "";
+                        Txb_NomeLogin.Focus();
+
+                        MessageBox.Show("Nenhum usuario com esse nome entre novamente \n caso esqueceu seu Login ... contate seu Supervidor!.");
+                        return;
+                    }
+                    connectionb.Close();
+                }
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                // Execute a consulta
+                string query = "SELECT senha FROM usuario where senha = @senha";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@senha", senha);
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        // Itere sobre os resultados da consulta
+                        while (reader.Read())
+                        {
+                            // Pegue os valores dos campos da consulta
+                            senha_valido = reader["senha"].ToString();//
+                        }
+                    }
+                    else
+                    {
+
+                        Txb_SenhaLogin.Text = Txb_SenhaLogin.Text = "";
+                        Txb_SenhaLogin.Focus();
+
+                        MessageBox.Show("Senha Incorreta entre novamente! \n  caso esqueceu a senha... contate seu Supervidor!.");
+                        return;
+                    }
+                    connectionb.Close();
+                }
+
+            }
+
+            if(senha == senha_valido && nome == nome_valido)
+            {
+                Frm_MenuDemanda frm = new Frm_MenuDemanda();
+                frm.Id_Usuario = id_usuario;
+                //frm.id_turno = id_turno.ToString; 
+                frm.Show();
+
             }
         }
         private void Btn_OlharSenha_Click(object sender, EventArgs e)
@@ -99,6 +174,11 @@ namespace TopIndicators
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void Frm_Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

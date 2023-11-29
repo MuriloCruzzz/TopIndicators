@@ -210,7 +210,7 @@ namespace TopIndicators
                 Txt_NomeSetor2.Text = Txt_NomeSetor2.Text = "";
                 Txt_ConfirmacaoSenha.Text = Txt_ConfirmacaoSenha.Text = "";
                 Txt_Senha.Text = Txt_Senha.Text = "";
-                Txt_Senha.Text = Txt_Senha.Text = "";              
+                Txt_Senha.Text = Txt_Senha.Text = "";
                 Txt_NomeSetor2.Focus();
                 return;
             }
@@ -222,6 +222,9 @@ namespace TopIndicators
                 usuario.Nome = Txt_NomeUsuario.Text;
                 usuario.Setor = Txt_NomeSetor2.Text;
                 usuario.Senha = Txt_Senha.Text;
+                usuario.Status_Usuario = 0;
+                usuario.Turno_Usuario = cmb_turno.Text;
+                usuario.Grupo_Acesso = comboBox1.Text;
 
                 Txt_NomeSetor2.Text = "";
                 Txt_ConfirmacaoSenha.Text = "";
@@ -229,6 +232,8 @@ namespace TopIndicators
                 Txt_NomeUsuario.Text = "";
                 textBox1.Text = "";
                 Lbl_Resultado.Text = "";
+                comboBox1.Text = "";
+                cmb_turno.Text = "";
 
 
                 Connection.ProcessoDados criarUsuario = new Connection.ProcessoDados();

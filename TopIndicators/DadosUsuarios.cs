@@ -13,6 +13,9 @@ namespace DadosUsuarios
         public string Nome;
         public string Setor;
         public string Senha;
+        public string Grupo_Acesso;
+        public int Status_Usuario;
+        public string Turno_Usuario;
         private object value;
 
         public Usuario(object value)

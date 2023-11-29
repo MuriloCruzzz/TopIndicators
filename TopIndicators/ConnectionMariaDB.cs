@@ -5,7 +5,7 @@ using TopIndicators;
 using DadosUsuarios;
 using System.Xml.Xsl;
 using Org.BouncyCastle.Crypto.Digests;
-using TopIndicators;
+
 
 namespace ConnectionMaria
 {

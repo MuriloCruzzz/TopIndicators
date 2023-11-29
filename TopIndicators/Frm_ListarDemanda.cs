@@ -13,6 +13,12 @@ namespace TopIndicators
 {
     public partial class Frm_ListarDemanda : Form
     {
+        private string id_usuario;
+
+        public string Id_Usuario
+        {
+            set { id_usuario = value; }
+        }
         public Frm_ListarDemanda()
         {
             InitializeComponent();
@@ -20,14 +26,35 @@ namespace TopIndicators
 
         public void Frm_ListarDemanda_Load(object sender, EventArgs e)
         {
-            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Consulta SQL para selecionar os nomes dos clientes
+                string query = "SELECT nome FROM cliente";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string nomeCliente = reader["Nome"].ToString();
+                            Listar_Clientes.Items.Add(nomeCliente);
+                        }
+                    }
+                }
+            }
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 int id_cliente = 0;
                 int id_produto = 0;
                 connection.Open();
 
-                string query = "SELECT id_Demanda, quantidade_Demandada, prazo, ID_Cliente, ID_Produto, qunatidade_produzida FROM demanda";
+                string query = "SELECT id_Demanda, quantidade_Demandada, prazo, ID_Cliente, ID_Produto, qunatidade_produzida FROM demanda where status_demanda = 0";
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -139,7 +166,7 @@ namespace TopIndicators
                     }
                     else
                     {
-                        MessageBox.Show("Nenhum registro encontrado.");
+                        return;
                     }
                 }
             }
@@ -148,6 +175,67 @@ namespace TopIndicators
         private void dtv_listarDemanda_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            string nomePesquisa = Listar_Clientes.Text.Trim();
+
+            if (!string.IsNullOrEmpty(nomePesquisa))
+            {
+                listarDemandaBindingSource.Filter = $"nome_colaborador LIKE '%{nomePesquisa}%'";
+            }
+            else
+            {
+                listarDemandaBindingSource.RemoveFilter();
+            }
+
+            dtv_listarDemanda.Refresh();
+
+        }
+
+        private void listarDemandaBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Listar_Clientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nomeCliente = Listar_Clientes.Text;
+
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            using (MySqlConnection connection1 = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection1.Open();
+
+                    string query2 = "SELECT Nome FROM produto_acabado WHERE Cliente = @cliente_id";
+                    MySqlCommand commandCreate2 = new MySqlCommand(query2, connection1);
+
+                    commandCreate2.Parameters.AddWithValue("@cliente_id", nomeCliente);
+
+                    using (MySqlDataReader reader = commandCreate2.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            // Limpa as opções do ComboBox
+                            comboBox1.Items.Clear();
+
+                            // Adiciona as opções ao ComboBox
+                            while (reader.Read())
+                            {
+                                comboBox1.Items.Add(reader["nome"]);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                connection1.Close();
+            }
         }
     }
 }

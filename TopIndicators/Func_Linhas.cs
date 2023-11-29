@@ -14,10 +14,14 @@ namespace TopIndicators
 {
     public partial class Func_Linhas : Form
     {
+        private string id_usuario;
+        public string Id_Usuario
+        {
+            set { id_usuario = value; }
+        }
         public Func_Linhas()
         {
             InitializeComponent();
-            
         }
 
         private void MostrarFormulario(Form formulario)

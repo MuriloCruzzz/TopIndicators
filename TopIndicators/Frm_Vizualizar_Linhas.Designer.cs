@@ -43,6 +43,8 @@
             this.btn_sair = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_linha = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Lbl_Cadastro
@@ -254,12 +256,42 @@
             this.lbl_linha.TabIndex = 17;
             this.lbl_linha.Text = "ID";
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label2.Location = new System.Drawing.Point(12, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 61);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Turno:";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Blue;
+            this.label7.Location = new System.Drawing.Point(163, 78);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(170, 61);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "ID";
+            // 
             // Frm_Vizualizar_Linhas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1169, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_linha);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btn_sair);
@@ -300,5 +332,7 @@
         private System.Windows.Forms.Button btn_sair;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbl_linha;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
     }
 }
