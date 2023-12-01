@@ -133,9 +133,7 @@ namespace TopIndicators
                     }
                     connection4.Close();
                 }
-                
-               
-                
+
             }
             if(status_producao == 1)
             {
@@ -288,8 +286,7 @@ namespace TopIndicators
                     connection4.Close();
 
                 }
-                
-                
+
                 string connectionStringX = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
 
                 using (MySqlConnection connectionX = new MySqlConnection(connectionStringX))
@@ -485,7 +482,6 @@ namespace TopIndicators
                     {
                         tempo_paradas_form = "00:00";
                     }
-                       
 
                     // Divida a string em horas e minutos
                     string[] partesF = tempo_paradas_form.Split(':');
@@ -576,12 +572,12 @@ namespace TopIndicators
                                     quantidadeCP = int.Parse(reader["QuantidadeMP"].ToString());
                                     if(quantidadeMP < quantidade_produzida)
                                     {
-                                        MessageBox.Show("Quantidade de Materia Prima Inferior ao Produzido \n Contate o Líder!!!");
+                                        MessageBox.Show("Quantidade de Materia Prima " + cod_materia_prima.Text + " Inferior ao Produzido \n Contate o Líder!!!");
                                         return;
                                     }
                                     if (quantidadeCP < quantidade_produzida)
                                     {
-                                        MessageBox.Show("Quantidade de Componente Inferior ao Produzido \n Contate o Líder!!!");
+                                        MessageBox.Show("Quantidade de Componente " + cod_material.Text  + " Inferior ao Produzido \n Contate o Líder!!!");
                                         return;
                                     }
                                 }
@@ -722,6 +718,7 @@ namespace TopIndicators
                         connectionStatus.Close();
 
                     }
+                    MessageBox.Show("Produção Finalizada com Sucesso !!!");
                     this.Close();
 
                 }
@@ -908,6 +905,7 @@ namespace TopIndicators
                         connectionStatus.Close();
 
                     }
+                    MessageBox.Show("Produção Finalizada com Sucesso !!!");
                     this.Close();
 
                 }

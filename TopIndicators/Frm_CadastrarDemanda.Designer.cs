@@ -221,7 +221,6 @@
             this.Listar_Clientes.Size = new System.Drawing.Size(322, 33);
             this.Listar_Clientes.TabIndex = 24;
             this.Listar_Clientes.SelectedIndexChanged += new System.EventHandler(this.Listar_Clientes_SelectedIndexChanged);
-            //this.Listar_Clientes.TextChanged += new System.EventHandler(this.Listar_Clientes_TextChanged);
             // 
             // comboBox1
             // 

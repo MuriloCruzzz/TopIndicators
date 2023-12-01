@@ -74,7 +74,7 @@ namespace TopIndicators
                 {
                     connection1.Open();
 
-                    string query2 = "SELECT Material_Consumo, Materia_Prima_Consumo FROM produto_acabado WHERE id_produto = @id_produto";
+                    string query2 = "SELECT Material_Consumo, Materia_Prima_Consumo FROM produto_acabado WHERE Nome = @id_produto";
                     MySqlCommand commandCreate2 = new MySqlCommand(query2, connection1);
 
                     commandCreate2.Parameters.AddWithValue("@id_produto", nome_produto);
@@ -86,33 +86,35 @@ namespace TopIndicators
                             // Adiciona as opções ao ComboBox
                             while (reader.Read())
                             {
-                                nome_materia_prima = reader["Material_Consumo"].ToString();
-                                nome_componente = reader["Materia_Prima_Consumo"].ToString();
+                                nome_materia_prima = reader["Materia_Prima_Consumo"].ToString();
+                                nome_componente = reader["Material_Consumo"].ToString();
 
                                 using (MySqlConnection connection3 = new MySqlConnection(connectionString))
                                 {
+                                    
                                     try
                                     {
                                         connection3.Open();
 
-                                        string query3 = "SELECT t1.id_Produto AS id_ProdutoMP , t2.id_Produto AS id_ProdutoCP FROM  produto_materia_prima AS t1 JOIN produto_materia_prima_componente AS t2 ON t1.Nome = '@NomeMP' AND t2.Nome = '@NomeCP';";
-                                        MySqlCommand commandCreate3 = new MySqlCommand(query3, connection3);
+                                        string query3 = "SELECT t1.id_produto AS id_ProdutoMP , t2.id_produto AS id_ProdutoCP FROM  produto_materia_prima AS t1 JOIN produto_materia_prima_componente AS t2 ON t1.Nome = @NomeMP AND t2.Nome = @NomeCP;";
+                                         MySqlCommand commandCreate3 = new MySqlCommand(query3, connection3);
 
-                                        commandCreate2.Parameters.AddWithValue("@NomeMP", nome_materia_prima);
-                                        commandCreate2.Parameters.AddWithValue("@NomeCP", nome_materia_prima);
+                                        commandCreate3.Parameters.AddWithValue("@NomeMP", nome_materia_prima);
+                                        commandCreate3.Parameters.AddWithValue("@NomeCP", nome_componente);
 
-                                        using (MySqlDataReader reader3 = commandCreate2.ExecuteReader())
+                                        using (MySqlDataReader reader3 = commandCreate3.ExecuteReader())
                                         {
-                                            if (reader.HasRows)
+                                            if (reader3.HasRows)
                                             {
                                                 // Adiciona as opções ao ComboBox
-                                                while (reader.Read())
+                                                while (reader3.Read())
                                                 {
-                                                    id_materia_prima = int.Parse(reader["id_ProdutoMP"].ToString());
-                                                    id_materia_prima_componente = int.Parse(reader["id_ProdutoCP"].ToString());
+                                                    id_materia_prima = int.Parse(reader3["id_ProdutoMP"].ToString());
+                                                    id_materia_prima_componente = int.Parse(reader3["id_ProdutoCP"].ToString());
                                                 }
                                             }
                                         }
+                                        connection3.Close();
                                     }
                                     catch (Exception ex)
                                     {
@@ -127,7 +129,10 @@ namespace TopIndicators
                 {
 
                 }
+                connection1.Close();
             }
+            
+
 
 
             string connectionString1 = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 
 namespace TopIndicators
 {
@@ -211,6 +212,7 @@ namespace TopIndicators
                         Console.WriteLine(ex.Message);
                     }
                     connection1.Close();
+                    
                     MessageBox.Show("Demanda inserida com sucesso!");
 
                     mtx_Prazo.Text = "";
@@ -221,6 +223,7 @@ namespace TopIndicators
                     Listar_Clientes.Text = "";
                     textBox2.Text = "";
                     textBox1.Text = "";
+                    AtualizarIdDemanda();
                 }
 
             }
@@ -326,6 +329,38 @@ namespace TopIndicators
                     Console.WriteLine(ex.Message);
                 }
                 connection1.Close();
+            }
+        }
+
+        private void AtualizarIdDemanda()
+        {
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            using (MySqlConnection connection1 = new MySqlConnection(connectionString))
+            {
+                connection1.Open();
+                string query3 = "SELECT MAX(id_Demanda) AS id_Demanda FROM demanda";
+                MySqlCommand command3 = new MySqlCommand(query3, connection1);
+
+                using (MySqlDataReader reader3 = command3.ExecuteReader())
+                {
+                    if (reader3.HasRows)
+                    {
+                        try
+                        {
+                            reader3.Read();
+                            int idDemanda = int.Parse(reader3["id_Demanda"].ToString());
+
+                            int id_demanda_atual = idDemanda + 1;
+
+                            textBox1.Text = id_demanda_atual.ToString();
+                        }
+                        catch
+                        {
+                            textBox1.Text = "1";
+
+                        }
+                    }
+                }
             }
         }
 
