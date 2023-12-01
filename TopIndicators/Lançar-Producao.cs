@@ -1,4 +1,5 @@
 ﻿using K4os.Compression.LZ4.Internal;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Math;
 using System;
@@ -88,55 +89,53 @@ namespace TopIndicators
 
                             // Armazene os valores nas label.text
                             tvb_cod_linha.Text = id_producao.ToString();
-                            cod_materia_prima.Text = idProdutoMateriaPrima.ToString();
+                            //cod_materia_prima.Text = idProdutoMateriaPrima.ToString();
                             blb_nome_Linha.Text = idProdutoAcabado;
                             text_demanda.Text = quantidadeDemandaAtual.ToString();
-                            cod_material.Text = idProdutoMaterial.ToString();
+                            //cod_material.Text = idProdutoMaterial.ToString();
                             txb_produzidas.Text = quantidadeProduzidas.ToString();
                             ID_pac.Text = idProdutoAcabado.ToString();
                             maskedTextBox4.Text = tempo_parada_linha;
 
 
                         }
+                        string connectionStringX = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
+
+                        using (MySqlConnection connectionX = new MySqlConnection(connectionStringX))
+                        {
+                            try
+                            {
+                                connectionX.Open();
+
+                                string queryX = "SELECT Material_Consumo, Materia_Prima_Consumo FROM produto_acabado WHERE Nome = @Nome";
+                                MySqlCommand commandCreate2X = new MySqlCommand(queryX, connectionX);
+
+                                commandCreate2X.Parameters.AddWithValue("@Nome", ID_pac.Text);
+
+                                using (MySqlDataReader reader = commandCreate2X.ExecuteReader())
+                                {
+                                    if (reader.HasRows)
+                                    {
+                                        // Adiciona as opções ao ComboBox
+                                        while (reader.Read())
+                                        {
+                                            cod_material.Text = reader["Material_Consumo"].ToString();
+                                            cod_materia_prima.Text = reader["Materia_Prima_Consumo"].ToString();
+
+                                            connectionX.Close();
+                                        }
+                                    }
+                                }
+                            }
+                            catch { }
+
+                        }
                     }
                     connection4.Close();
                 }
-                string query2 = "SELECT Nome FROM produto_materia_prima WHERE id_produto = @id_produto";
-                MySqlCommand command2 = new MySqlCommand(query2, connection);
-                command2.Parameters.AddWithValue("@id_produto", int.Parse(cod_materia_prima.Text));
-                connection.Open();
-
-                using (MySqlDataReader reader2 = command2.ExecuteReader())
-                {
-                    if (reader2.HasRows)
-                    {
-                        // Itere sobre os resultados da consulta
-                        while (reader2.Read())
-                        {
-                            // Pegue os valores dos campos da consulta
-                            cod_materia_prima.Text = reader2["Nome"].ToString();
-                        }
-                    }
-                }
-                connection.Close();
-                string query3 = "SELECT Nome FROM produto_materia_prima_componente WHERE id_produto = @id_produto";
-                MySqlCommand command3 = new MySqlCommand(query3, connection);
-                command3.Parameters.AddWithValue("@id_produto", int.Parse(cod_material.Text));
-                connection.Open();
-
-                using (MySqlDataReader reader3 = command2.ExecuteReader())
-                {
-                    if (reader3.HasRows)
-                    {
-                        // Itere sobre os resultados da consulta
-                        while (reader3.Read())
-                        {
-                            // Pegue os valores dos campos da consulta
-                            cod_material.Text = reader3["Nome"].ToString();
-                        }
-                    }
-                }
-                connection.Close();
+                
+               
+                
             }
             if(status_producao == 1)
             {
@@ -219,7 +218,7 @@ namespace TopIndicators
 
                             // Armazene os valores nas label.text
                             tvb_cod_linha.Text = id_producao.ToString();
-                            cod_materia_prima.Text = idProdutoMateriaPrima.ToString();
+                            //cod_materia_prima.Text = idProdutoMateriaPrima.ToString();
                             blb_nome_Linha.Text = idProdutoAcabado;
                             text_demanda.Text = quantidadeDemandaAtual.ToString();
                             cod_material.Text = idProdutoMaterial.ToString();
@@ -289,42 +288,39 @@ namespace TopIndicators
                     connection4.Close();
 
                 }
-                string query2 = "SELECT Nome FROM produto_materia_prima WHERE id_produto = @id_produto";
-                MySqlCommand command2 = new MySqlCommand(query2, connection);
-                command2.Parameters.AddWithValue("@id_produto", int.Parse(cod_materia_prima.Text));
-                connection.Open();
+                
+                
+                string connectionStringX = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
 
-                using (MySqlDataReader reader2 = command2.ExecuteReader())
+                using (MySqlConnection connectionX = new MySqlConnection(connectionStringX))
                 {
-                    if (reader2.HasRows)
+                    try
                     {
-                        // Itere sobre os resultados da consulta
-                        while (reader2.Read())
+                        connectionX.Open();
+
+                        string queryX = "SELECT Material_Consumo, Materia_Prima_Consumo FROM produto_acabado WHERE Nome = @NomeProduto";
+                        MySqlCommand commandCreate2X = new MySqlCommand(queryX, connectionX);
+
+                        commandCreate2X.Parameters.AddWithValue("@NomeProduto", ID_pac.Text);
+
+                        using (MySqlDataReader reader = commandCreate2X.ExecuteReader())
                         {
-                            // Pegue os valores dos campos da consulta
-                            cod_materia_prima.Text = reader2["Nome"].ToString();
+                            if (reader.HasRows)
+                            {
+                                // Adiciona as opções ao ComboBox
+                                while (reader.Read())
+                                {
+                                    cod_materia_prima.Text = reader["Materia_Prima_Consumo"].ToString();
+                                    cod_material.Text = reader["Material_Consumo"].ToString();
+
+                                    connectionX.Close();
+                                }
+                            }
                         }
                     }
-                }
-                connection.Close();
-                string query3 = "SELECT Nome FROM produto_materia_prima_componente WHERE id_produto = @id_produto";
-                MySqlCommand command3 = new MySqlCommand(query3, connection);
-                command3.Parameters.AddWithValue("@id_produto", int.Parse(cod_material.Text));
-                connection.Open();
+                    catch { }
 
-                using (MySqlDataReader reader3 = command2.ExecuteReader())
-                {
-                    if (reader3.HasRows)
-                    {
-                        // Itere sobre os resultados da consulta
-                        while (reader3.Read())
-                        {
-                            // Pegue os valores dos campos da consulta
-                            cod_material.Text = reader3["Nome"].ToString();
-                        }
-                    }
                 }
-                connection.Close();
             }
         }
 
@@ -549,17 +545,68 @@ namespace TopIndicators
             int quantidade_demanda = int.Parse(text_demanda.Text);
             int quantidade_produzida = int.Parse(txb_produzidas.Text);
             int homens_linha = int.Parse(cmb_homens.Text);
-
+            int quantidadeMP = 0;
+            int quantidadeCP = 0;
             if (quantidade_produzida < quantidade_demanda)
             {
-                MessageBox.Show("A quantidade produzida está abaixo da demanda \n" +
-                    "CONTINUE A PRODUÇÂO !!!");
+                MessageBox.Show("A quantidade produzida está abaixo da demanda \n CONTINUE A PRODUÇÂO !!!");
                 return;
             }
             else if (quantidade_produzida > quantidade_demanda)
             {
+
                 if (homens_linha != 0)
                 {
+                    string connectionString1 = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+
+                    using (MySqlConnection connection = new MySqlConnection(connectionString1))
+                    {
+                        connection.Open();
+
+                        string queryQuan = "SELECT t1.Quantidade AS QuantidadeMP, t2.Quantidade AS QuantidadeCM\r\nFROM produto_materia_prima AS t1\r\nJOIN produto_materia_prima_componente AS t2\r\nON t1.Nome = '" + cod_materia_prima.Text + "'\r\nAND t2.Nome = '" + cod_material.Text + "'";
+                        MySqlCommand command = new MySqlCommand(queryQuan, connection);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    quantidadeMP = int.Parse(reader["QuantidadeMP"].ToString());
+                                    quantidadeCP = int.Parse(reader["QuantidadeMP"].ToString());
+                                    if(quantidadeMP < quantidade_produzida)
+                                    {
+                                        MessageBox.Show("Quantidade de Materia Prima Inferior ao Produzido \n Contate o Líder!!!");
+                                        return;
+                                    }
+                                    if (quantidadeCP < quantidade_produzida)
+                                    {
+                                        MessageBox.Show("Quantidade de Componente Inferior ao Produzido \n Contate o Líder!!!");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        quantidadeMP -= quantidade_produzida;
+                        quantidadeCP -= quantidade_produzida;
+                        string queryCreate = "UPDATE produto_materia_prima SET Quantidade = " + quantidadeMP + " WHERE Nome = '" + cod_materia_prima.Text + "';";
+                        MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
+                        {
+                            //commandCreate.Parameters.AddWithValue("@id_demanda", id_demanda);
+                            commandCreate.ExecuteNonQuery();
+
+                        }
+                        string queryCreate2 = "UPDATE produto_materia_prima_componente SET Quantidade = " + quantidadeCP + " WHERE Nome = '" + cod_material.Text + "';";
+                        MySqlCommand commandCreate2 = new MySqlCommand(queryCreate2, connection);
+                        {
+                            //commandCreate.Parameters.AddWithValue("@id_demanda", id_demanda);
+                            commandCreate.ExecuteNonQuery();
+
+                        }
+                        connection.Close();
+                    }
+
+
                     double quantidade_operadores = double.Parse(cmb_homens.Text);
                     double quantidade_Produzida = double.Parse(txb_produzidas.Text);
 
@@ -690,6 +737,54 @@ namespace TopIndicators
             {
                 if (homens_linha != 0)
                 {
+                    string connectionString1 = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+
+                    using (MySqlConnection connection = new MySqlConnection(connectionString1))
+                    {
+                        connection.Open();
+
+                        string queryQuan = "SELECT t1.Quantidade AS QuantidadeMP, t2.Quantidade AS QuantidadeCM\r\nFROM produto_materia_prima AS t1\r\nJOIN produto_materia_prima_componente AS t2\r\nON t1.Nome = '" + cod_materia_prima.Text + "'\r\nAND t2.Nome = '" + cod_material.Text + "'";
+                        MySqlCommand command = new MySqlCommand(queryQuan, connection);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    quantidadeMP = int.Parse(reader["QuantidadeMP"].ToString());
+                                    quantidadeCP = int.Parse(reader["QuantidadeMP"].ToString());
+                                    if (quantidadeMP < quantidade_produzida)
+                                    {
+                                        MessageBox.Show("Quantidade de Materia Prima "+ cod_materia_prima.Text +" Inferior ao Produzido \n Contate o Líder!!!");
+                                        return;
+                                    }
+                                    if (quantidadeCP < quantidade_produzida)
+                                    {
+                                        MessageBox.Show("Quantidade de Componente "+ cod_material.Text + " Inferior ao Produzido \n Contate o Líder!!!");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        quantidadeMP -= quantidade_produzida;
+                        quantidadeCP -= quantidade_produzida;
+                        string queryCreate = "UPDATE produto_materia_prima SET Quantidade = " + quantidadeMP + " WHERE Nome = '" + cod_materia_prima.Text + "';";
+                        MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
+                        {
+                            //commandCreate.Parameters.AddWithValue("@id_demanda", id_demanda);
+                            commandCreate.ExecuteNonQuery();
+
+                        }
+                        string queryCreate2 = "UPDATE produto_materia_prima_componente SET Quantidade = " + quantidadeCP + " WHERE Nome = '" + cod_material.Text + "';";
+                        MySqlCommand commandCreate2 = new MySqlCommand(queryCreate2, connection);
+                        {
+                            //commandCreate.Parameters.AddWithValue("@id_demanda", id_demanda);
+                            commandCreate2.ExecuteNonQuery();
+
+                        }
+                        connection.Close();
+                    }
                     double quantidade_operadores =double.Parse(cmb_homens.Text);
                     double quantidade_Produzida = double.Parse(txb_produzidas.Text);
 
@@ -702,9 +797,17 @@ namespace TopIndicators
                     int minutos = int.Parse(tempo_total_producao.Substring(indiceSeparador + 1));
                     int tempo_total_producaoMinutos = horaEmMinutos + minutos;
 
-
+                    int hora2 = 0;
                     string paradasLinha = maskedTextBox4.Text;
-                    int hora2 = int.Parse(paradasLinha.Substring(0, 2));
+                    try
+                    {
+                        hora2 = int.Parse(paradasLinha.Substring(0, 2));
+                    }
+                    catch
+                    {
+                        hora2 = 0;
+                    }
+                    
                     int horaEmMinutos2 = hora2 * 60;
                     int minutos2 = int.Parse(paradasLinha.Substring(indiceSeparador + 1));
                     int paradasLinhaMinutos = horaEmMinutos2 + minutos2;

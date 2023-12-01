@@ -99,11 +99,11 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label1.Location = new System.Drawing.Point(82, 115);
+            this.label1.Location = new System.Drawing.Point(13, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 49);
+            this.label1.Size = new System.Drawing.Size(281, 49);
             this.label1.TabIndex = 133;
-            this.label1.Text = "COD.LINHA:";
+            this.label1.Text = "CODIGO LINHA:";
             // 
             // label2
             // 
@@ -111,11 +111,11 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label2.Location = new System.Drawing.Point(82, 165);
+            this.label2.Location = new System.Drawing.Point(13, 216);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(253, 49);
+            this.label2.Size = new System.Drawing.Size(310, 49);
             this.label2.TabIndex = 134;
-            this.label2.Text = "COD.PRO.MP:";
+            this.label2.Text = "MATERIA PRIMA:";
             // 
             // label3
             // 
@@ -123,11 +123,11 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(82, 214);
+            this.label3.Location = new System.Drawing.Point(12, 170);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(267, 49);
+            this.label3.Size = new System.Drawing.Size(377, 49);
             this.label3.TabIndex = 135;
-            this.label3.Text = "COD.PROD.AC:";
+            this.label3.Text = "PRODUTO ACABADO:";
             // 
             // label4
             // 
@@ -135,11 +135,11 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label4.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label4.Location = new System.Drawing.Point(81, 263);
+            this.label4.Location = new System.Drawing.Point(13, 265);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(287, 49);
+            this.label4.Size = new System.Drawing.Size(276, 49);
             this.label4.TabIndex = 136;
-            this.label4.Text = "COD.MATERIAL:";
+            this.label4.Text = "COMPONENTE:";
             // 
             // tvb_cod_linha
             // 
@@ -155,20 +155,20 @@
             // 
             this.cod_material.Enabled = false;
             this.cod_material.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cod_material.Location = new System.Drawing.Point(384, 274);
+            this.cod_material.Location = new System.Drawing.Point(311, 277);
             this.cod_material.Name = "cod_material";
             this.cod_material.ReadOnly = true;
-            this.cod_material.Size = new System.Drawing.Size(114, 32);
+            this.cod_material.Size = new System.Drawing.Size(320, 32);
             this.cod_material.TabIndex = 139;
             // 
             // cod_materia_prima
             // 
             this.cod_materia_prima.Enabled = false;
             this.cod_materia_prima.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cod_materia_prima.Location = new System.Drawing.Point(354, 177);
+            this.cod_materia_prima.Location = new System.Drawing.Point(340, 232);
             this.cod_materia_prima.Name = "cod_materia_prima";
             this.cod_materia_prima.ReadOnly = true;
-            this.cod_materia_prima.Size = new System.Drawing.Size(114, 32);
+            this.cod_materia_prima.Size = new System.Drawing.Size(291, 32);
             this.cod_materia_prima.TabIndex = 140;
             // 
             // button1
@@ -488,10 +488,10 @@
             // 
             this.ID_pac.Enabled = false;
             this.ID_pac.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_pac.Location = new System.Drawing.Point(365, 228);
+            this.ID_pac.Location = new System.Drawing.Point(395, 180);
             this.ID_pac.Name = "ID_pac";
             this.ID_pac.ReadOnly = true;
-            this.ID_pac.Size = new System.Drawing.Size(114, 32);
+            this.ID_pac.Size = new System.Drawing.Size(236, 32);
             this.ID_pac.TabIndex = 170;
             // 
             // btn_adc

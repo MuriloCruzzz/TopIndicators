@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.ReportingServices.Diagnostics.Internal;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,7 +58,76 @@ namespace TopIndicators
             string prazo = this.prazo;
             string nome_cliente = this.nome_cliente;
             string nome_produto = this.nome_produto;
+            string nome_materia_prima = "";
+            string nome_componente = "";
             int quantidade_produzida = this.quantidade_produzida;
+
+            int id_materia_prima = 0;
+            int id_materia_prima_componente = 0;
+
+            // trazendo os ids para adicionar no cadastro da linha
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
+
+            using (MySqlConnection connection1 = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection1.Open();
+
+                    string query2 = "SELECT Material_Consumo, Materia_Prima_Consumo FROM produto_acabado WHERE id_produto = @id_produto";
+                    MySqlCommand commandCreate2 = new MySqlCommand(query2, connection1);
+
+                    commandCreate2.Parameters.AddWithValue("@id_produto", nome_produto);
+
+                    using (MySqlDataReader reader = commandCreate2.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            // Adiciona as opções ao ComboBox
+                            while (reader.Read())
+                            {
+                                nome_materia_prima = reader["Material_Consumo"].ToString();
+                                nome_componente = reader["Materia_Prima_Consumo"].ToString();
+
+                                using (MySqlConnection connection3 = new MySqlConnection(connectionString))
+                                {
+                                    try
+                                    {
+                                        connection3.Open();
+
+                                        string query3 = "SELECT t1.id_Produto AS id_ProdutoMP , t2.id_Produto AS id_ProdutoCP FROM  produto_materia_prima AS t1 JOIN produto_materia_prima_componente AS t2 ON t1.Nome = '@NomeMP' AND t2.Nome = '@NomeCP';";
+                                        MySqlCommand commandCreate3 = new MySqlCommand(query3, connection3);
+
+                                        commandCreate2.Parameters.AddWithValue("@NomeMP", nome_materia_prima);
+                                        commandCreate2.Parameters.AddWithValue("@NomeCP", nome_materia_prima);
+
+                                        using (MySqlDataReader reader3 = commandCreate2.ExecuteReader())
+                                        {
+                                            if (reader.HasRows)
+                                            {
+                                                // Adiciona as opções ao ComboBox
+                                                while (reader.Read())
+                                                {
+                                                    id_materia_prima = int.Parse(reader["id_ProdutoMP"].ToString());
+                                                    id_materia_prima_componente = int.Parse(reader["id_ProdutoCP"].ToString());
+                                                }
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
 
 
             string connectionString1 = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
@@ -73,8 +143,8 @@ namespace TopIndicators
 
                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection1);
                 {
-                    commandCreate.Parameters.AddWithValue("@id_produto_materia_prima", id_demanda);
-                    commandCreate.Parameters.AddWithValue("@id_produto_material", id_demanda);
+                    commandCreate.Parameters.AddWithValue("@id_produto_materia_prima", id_materia_prima);
+                    commandCreate.Parameters.AddWithValue("@id_produto_material", id_materia_prima_componente);
                     commandCreate.Parameters.AddWithValue("@id_produto_acabado", nome_produto);
                     commandCreate.Parameters.AddWithValue("@quantidade_produzidas", quantidade_produzida);
                     commandCreate.Parameters.AddWithValue("@quantidade_demanda_atual", quantidade_demandada);
