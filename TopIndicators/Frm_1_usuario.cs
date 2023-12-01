@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Reporting.WebForms;
+using System.IO;
 using MySql.Data.MySqlClient;
 using DadosUsuarios;
-using System.Web.UI.HtmlControls;
-using iTextSharp.text;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System.Web;
+using AngleSharp.Io;
 using iTextSharp.text.pdf;
+using System.Runtime.Remoting.Lifetime;
+using System.Data.SqlClient;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 
 namespace TopIndicators
 {
@@ -22,19 +26,6 @@ namespace TopIndicators
         public Frm_1_usuario()
         {
             InitializeComponent();
-            // Adiciona um DatagridView ao formulário
-            dgvData = new DataGridView();
-            dgvData.Dock = DockStyle.Fill;
-            this.Controls.Add(dgvData);
-
-            // Adiciona um botão para gerar o relatório
-            Button btn_gerarRelatorio = new Button();
-            btn_gerarRelatorio.Text = "Gerar relatório";
-            btn_gerarRelatorio.Dock = DockStyle.Bottom;
-            this.Controls.Add(btn_gerarRelatorio);
-
-            // Adiciona um evento Click ao botão
-            btn_gerarRelatorio.Click += btn_imprimir_Click;
         }
 
         public void Frm_1_usuario_Load(object sender, EventArgs e)
@@ -83,7 +74,7 @@ namespace TopIndicators
                 string setorUsuario = row.Cells["id_setor"].Value.ToString();
                 string grupo_acesso = row.Cells["Cargo"].Value.ToString();
                 string turno_usuario = row.Cells["Turno"].Value.ToString();
-;
+                ;
 
                 Alterar_Excluir_Usuario frm1 = new Alterar_Excluir_Usuario();
 
@@ -178,22 +169,12 @@ namespace TopIndicators
         private DataTable GerarDadosRelatorio()
         {
             var dt = new DataTable();
-            dt.Columns.Add("codigo_Fornecedor", typeof(int));
-            dt.Columns.Add("nomefantasia_Fornecedor");
-            dt.Columns.Add("razaosocial_Fornecedor");
-            dt.Columns.Add("cnpj_Fornecedor");
-            dt.Columns.Add("inscricaoEstadual_Fornecedor");
-            dt.Columns.Add("inscricaoMunicipal_Fornecedor");
-            dt.Columns.Add("cep_Fornecedor");
-            dt.Columns.Add("endereco_Fornecedor");
-            dt.Columns.Add("numero_Fornecedor");
-            dt.Columns.Add("cidade_Fornecedor");
-            dt.Columns.Add("estado_Fornecedor");
-            dt.Columns.Add("representante_Fornecedor");
-            dt.Columns.Add("email_Fornecedor");
-            dt.Columns.Add("telefone_Fornecedor");
-            dt.Columns.Add("iniciocontrato_Fornecedor", typeof(DateTime));
-            dt.Columns.Add("status_Fornecedor", typeof(int));
+            dt.Columns.Add("Registro", typeof(int));
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("Setor");
+            dt.Columns.Add("Cargo");
+            dt.Columns.Add("Turno");
+
 
 
             foreach (DataGridViewRow item in dtv_colaboradores.Rows)
@@ -202,39 +183,92 @@ namespace TopIndicators
                                             item.Cells[1].Value,
                                             item.Cells[2].Value,
                                             item.Cells[3].Value,
-                                            item.Cells[4].Value,
-                                            item.Cells[5].Value,
-                                            item.Cells[6].Value,
-                                            item.Cells[7].Value,
-                                            item.Cells[8].Value,
-                                            item.Cells[9].Value,
-                                            item.Cells[10].Value,
-                                            item.Cells[11].Value,
-                                            item.Cells[12].Value,
-                                            item.Cells[13].Value,
-                         Convert.ToDateTime(item.Cells[14].Value),
-                            Convert.ToInt32(item.Cells[15].Value));
+                                            item.Cells[4].Value);
+
             }
             return dt;
         }
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
-            DataTable dtData = dgvData.DataSource as DataTable;
-
-            // Define o layout do relatório
-            HtmlTable table = (HtmlTable)this.FindControl("tableRelatorio");
-            table.Rows.Add(new[] { "Nome", "Idade" });
-
-            // Adiciona conteúdo ao relatório
-            foreach (DataRow row in dtData.Rows)
-            {
-                table.Rows.Add(new[] { row["Nome"], row["Idade"] });
-            }
+           
         }
-        // Adiciona um DatagridView ao formulário
-    }
 
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            string Nome = txtPesquisa.Text;
+            int n = txtPesquisa.Text.Length;
+
+
+
+
+            if (checkbox_status.Checked)
+            {
+                string connectionString1 = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+                using (MySqlConnection connection = new MySqlConnection(connectionString1))
+                {
+
+                    connection.Open();
+
+                    string query = "SELECT ID, nome, id_setor, senha, Grupo_Acesso, turno FROM usuario WHERE LEFT(nome, " + n + ") = '" + Nome + "'AND Status_Usuario = 1;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            dtv_colaboradores.Rows.Clear(); // Limpa as linhas existentes no DataGridView
+
+                            while (reader.Read())
+                            {
+                                dtv_colaboradores.Rows.Add(reader["ID"], reader["nome"], reader["id_setor"], reader["senha"], reader["Grupo_Acesso"], reader["turno"]);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nenhum registro encontrado.");
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            else
+            {
+                string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+
+                    connection.Open();
+
+                    string query = "SELECT ID, nome, id_setor, senha, Grupo_Acesso, turno FROM usuario WHERE LEFT(nome, " + n + ") = '" + Nome + "' AND Status_Usuario = 0;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            dtv_colaboradores.Rows.Clear(); // Limpa as linhas existentes no DataGridView
+
+                            while (reader.Read())
+                            {
+                                dtv_colaboradores.Rows.Add(reader["ID"], reader["nome"], reader["id_setor"], reader["senha"], reader["Grupo_Acesso"], reader["turno"]);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nenhum registro encontrado.");
+                        }
+                    }
+
+                    connection.Close();
+                }
+
+            }
+            
+            
+        }
+    }
 }
 
 

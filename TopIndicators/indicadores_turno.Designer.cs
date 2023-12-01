@@ -54,12 +54,15 @@
             this.lbl_ku = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lb_Yeld = new System.Windows.Forms.Label();
+            this.lb_ku = new System.Windows.Forms.Label();
+            this.lb_pph = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lb_cliente = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -67,8 +70,6 @@
             this.lbl_quantidade = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -198,11 +199,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_nome_produto.BackColor = System.Drawing.Color.Transparent;
             this.lbl_nome_produto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_nome_produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nome_produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nome_produto.ForeColor = System.Drawing.Color.Blue;
             this.lbl_nome_produto.Location = new System.Drawing.Point(257, 64);
             this.lbl_nome_produto.Name = "lbl_nome_produto";
-            this.lbl_nome_produto.Size = new System.Drawing.Size(252, 61);
+            this.lbl_nome_produto.Size = new System.Drawing.Size(305, 61);
             this.lbl_nome_produto.TabIndex = 19;
             this.lbl_nome_produto.Text = "Nome Produto";
             // 
@@ -408,11 +409,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel1.Controls.Add(this.lb_Yeld);
+            this.panel1.Controls.Add(this.lb_ku);
+            this.panel1.Controls.Add(this.lb_pph);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.lb_cliente);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.Lbl_Cadastro);
             this.panel1.Controls.Add(this.lbl_nome_produto);
@@ -423,57 +427,60 @@
             this.panel1.Size = new System.Drawing.Size(1438, 258);
             this.panel1.TabIndex = 52;
             // 
-            // button1
+            // lb_Yeld
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(540, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(358, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Ficha Técnica";
-            this.button1.UseVisualStyleBackColor = false;
+            this.lb_Yeld.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Yeld.BackColor = System.Drawing.Color.Transparent;
+            this.lb_Yeld.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lb_Yeld.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Yeld.ForeColor = System.Drawing.Color.Blue;
+            this.lb_Yeld.Location = new System.Drawing.Point(1186, 166);
+            this.lb_Yeld.Name = "lb_Yeld";
+            this.lb_Yeld.Size = new System.Drawing.Size(252, 61);
+            this.lb_Yeld.TabIndex = 56;
+            this.lb_Yeld.Text = "yeld";
             // 
-            // label8
+            // lb_ku
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label8.Location = new System.Drawing.Point(989, 64);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(184, 61);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Cliente:";
+            this.lb_ku.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_ku.BackColor = System.Drawing.Color.Transparent;
+            this.lb_ku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lb_ku.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_ku.ForeColor = System.Drawing.Color.Blue;
+            this.lb_ku.Location = new System.Drawing.Point(686, 166);
+            this.lb_ku.Name = "lb_ku";
+            this.lb_ku.Size = new System.Drawing.Size(252, 61);
+            this.lb_ku.TabIndex = 55;
+            this.lb_ku.Text = "ku";
             // 
-            // label9
+            // lb_pph
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Blue;
-            this.label9.Location = new System.Drawing.Point(1186, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(237, 61);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "Cliente";
+            this.lb_pph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_pph.BackColor = System.Drawing.Color.Transparent;
+            this.lb_pph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lb_pph.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_pph.ForeColor = System.Drawing.Color.Blue;
+            this.lb_pph.Location = new System.Drawing.Point(195, 168);
+            this.lb_pph.Name = "lb_pph";
+            this.lb_pph.Size = new System.Drawing.Size(252, 61);
+            this.lb_pph.TabIndex = 54;
+            this.lb_pph.Text = "pph";
             // 
-            // label11
+            // label16
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Indigo;
-            this.label11.Location = new System.Drawing.Point(68, 172);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 55);
-            this.label11.TabIndex = 53;
-            this.label11.Text = "PPH:";
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Indigo;
+            this.label16.Location = new System.Drawing.Point(1040, 172);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(209, 55);
+            this.label16.TabIndex = 53;
+            this.label16.Text = "YIELD:";
             // 
             // label14
             // 
@@ -488,18 +495,57 @@
             this.label14.TabIndex = 53;
             this.label14.Text = "KU:";
             // 
-            // label16
+            // label11
             // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Indigo;
-            this.label16.Location = new System.Drawing.Point(1040, 172);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(209, 55);
-            this.label16.TabIndex = 53;
-            this.label16.Text = "YIELD:";
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Indigo;
+            this.label11.Location = new System.Drawing.Point(68, 172);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(136, 55);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "PPH:";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label8.Location = new System.Drawing.Point(989, 64);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(184, 61);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "Cliente:";
+            // 
+            // lb_cliente
+            // 
+            this.lb_cliente.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lb_cliente.BackColor = System.Drawing.Color.Transparent;
+            this.lb_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lb_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_cliente.ForeColor = System.Drawing.Color.Blue;
+            this.lb_cliente.Location = new System.Drawing.Point(1186, 64);
+            this.lb_cliente.Name = "lb_cliente";
+            this.lb_cliente.Size = new System.Drawing.Size(252, 61);
+            this.lb_cliente.TabIndex = 34;
+            this.lb_cliente.Text = "Cliente";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.SteelBlue;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(540, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(358, 47);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Ficha Técnica";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -568,8 +614,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.PaleGreen;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lbl_pph);
             this.panel2.Controls.Add(this.lbl_ku);
             this.panel2.Controls.Add(this.lbl_tempo_total_producao);
@@ -608,32 +652,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1435, 251);
             this.panel3.TabIndex = 59;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Indigo;
-            this.label1.Location = new System.Drawing.Point(1291, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 55);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "%";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Indigo;
-            this.label2.Location = new System.Drawing.Point(823, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 55);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "%";
             // 
             // indicadores_turno
             // 
@@ -687,7 +705,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lb_cliente;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -696,7 +714,8 @@
         private System.Windows.Forms.Label lbl_quantidade;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lb_Yeld;
+        private System.Windows.Forms.Label lb_ku;
+        private System.Windows.Forms.Label lb_pph;
     }
 }

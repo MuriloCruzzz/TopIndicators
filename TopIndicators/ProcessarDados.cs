@@ -193,14 +193,16 @@ namespace Connection
                             {
                                 string idCliente = (reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
                                 string nome = reader.GetString(1);
+                                string CNPJ = reader.GetString(2);
                                 int idClienteINT = int.Parse(idCliente);// Assumindo que a segunda coluna contém Nome
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO cliente (id_Cliente, nome) VALUES (@id_Cliente, @nome)";
+                                string queryCreate = "INSERT INTO cliente (id_Cliente, nome, CNPJ) VALUES (@id_Cliente, @nome, @CNPJ)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_Cliente", idClienteINT);
                                     commandCreate.Parameters.AddWithValue("@nome", nome);
+                                    commandCreate.Parameters.AddWithValue("@CNPJ", CNPJ);
 
                                     commandCreate.ExecuteNonQuery();
                                 }
@@ -257,7 +259,7 @@ namespace Connection
                                 string status = "OK";
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
+                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto,Quantidade, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, 0, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
@@ -322,7 +324,7 @@ namespace Connection
                                 string status = "OK";
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
+                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Quantidade, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, 0, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
@@ -390,8 +392,8 @@ namespace Connection
                                 string cliente = reader.GetString(8);
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_acabado (id_produto, Data_Validade, Nome, PPH, KU, YIELD, Material_Consumo, Materia_Prima_Consumo, Cliente) VALUES " +
-                                    "(@id_produto, @Data_Validade, @Nome, @PPH, @KU, @YIELD, @Material_Consumo, @Materia_Prima_Consumo, @Cliente)";
+                                string queryCreate = "INSERT INTO produto_acabado (id_produto, Quantidade, Data_Validade, Nome, PPH, KU, YIELD, Material_Consumo, Materia_Prima_Consumo, Cliente) VALUES " +
+                                    "(@id_produto,0, @Data_Validade, @Nome, @PPH, @KU, @YIELD, @Material_Consumo, @Materia_Prima_Consumo, @Cliente)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProdutoA);

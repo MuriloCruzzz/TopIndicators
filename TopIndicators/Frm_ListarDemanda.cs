@@ -59,21 +59,33 @@ namespace TopIndicators
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows)
+                    try
                     {
-                        dtv_listarDemanda.Rows.Clear(); // Limpa as linhas existentes no DataGridView
-
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            id_cliente = (int)reader["ID_Cliente"];
-                            id_produto = (int)reader["ID_Produto"];
-                            dtv_listarDemanda.Rows.Add(reader["id_Demanda"], reader["quantidade_Demandada"], reader["prazo"], reader["ID_Cliente"], reader["ID_Produto"], reader["qunatidade_produzida"]);
+                            dtv_listarDemanda.Rows.Clear(); // Limpa as linhas existentes no DataGridView
+
+                            while (reader.Read())
+                            {
+                                id_cliente = (int)reader["ID_Cliente"];
+                                id_produto = (int)reader["ID_Produto"];
+                                dtv_listarDemanda.Rows.Add(reader["id_Demanda"], reader["quantidade_Demandada"], reader["prazo"], reader["ID_Cliente"], reader["ID_Produto"], reader["qunatidade_produzida"]);
+                            }
                         }
+                        else
+                        {
+                            MessageBox.Show("Nenhum registro encontrado.");
+                        }
+
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Nenhum registro encontrado.");
+                        MessageBox.Show("Crie uma nova Demanda em 'NOVA DEMANDA'");
+                        return;
                     }
+                
+                        
+                    
 
                 }
                 //connection.Open();

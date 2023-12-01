@@ -84,12 +84,33 @@ namespace TopIndicators
                         lbl_id_Produto.Text = id_produto.ToString();
 
                         lbl_pph.Text = PPH.ToString();
-                        lbl_ku.Text = KU.ToString();
-                        lbl_YIELD.Text = YIELD_materia_prima.ToString();
+                        lbl_ku.Text = KU.ToString() + "%";
+                        lbl_YIELD.Text = YIELD_materia_prima.ToString() + "%";
 
                     }
                     connectiona.Close();
                     reader.Close();
+                }
+                using (MySqlConnection connectionNomes = new MySqlConnection(connectionString))
+                {
+
+                    connectionNomes.Open();
+
+
+                    string queryNomes = "SELECT PPH, KU, YIELD, Cliente FROM produto_acabado WHERE id_produto = @id_produto";
+                    MySqlCommand commandNomes = new MySqlCommand(queryNomes, connectionNomes);
+                    commandNomes.Parameters.AddWithValue("@id_produto", id_produto);
+
+                    using (MySqlDataReader reader = commandNomes.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lb_pph.Text = reader["PPH"].ToString();
+                            lb_ku.Text = reader["KU"].ToString() + "%";
+                            lb_Yeld.Text = reader["YIELD"].ToString() + "%";
+                            lb_cliente.Text = reader["Cliente"].ToString();
+                        }
+                    }
                 }
 
                 MySqlConnection connectionb = new MySqlConnection(connectionString);

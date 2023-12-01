@@ -67,12 +67,20 @@ namespace TopIndicators
                 {
                     if (reader3.HasRows)
                     {
-                        reader3.Read();
-                        int idDemanda = int.Parse(reader3["id_Demanda"].ToString());
+                        try
+                        {
+                            reader3.Read();
+                            int idDemanda = int.Parse(reader3["id_Demanda"].ToString());
 
-                        int id_demanda_atual = idDemanda + 1;
+                            int id_demanda_atual = idDemanda + 1;
 
-                        textBox1.Text = id_demanda_atual.ToString();
+                            textBox1.Text = id_demanda_atual.ToString();
+                        }
+                        catch 
+                        {
+                            textBox1.Text = "1";
+
+                        }
                     }
                 }
 

@@ -15,6 +15,7 @@ using ExcelDataReader;
 using DadosUsuarios;
 using DadosDemanda;
 using MySqlX.XDevAPI;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 
 namespace TopIndicators
 {
@@ -337,9 +338,21 @@ namespace TopIndicators
 
         private void Listar_Clientes_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Listar_Clientes_TextChanged(object sender, EventArgs e)
+        {
+            comboBox1.Text = ""; 
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
+
+            string nome_cliente_s = Listar_Clientes.Text;
             string nomeCliente = Listar_Clientes.Text;
 
-            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
             using (MySqlConnection connection1 = new MySqlConnection(connectionString))
             {
                 try
@@ -370,40 +383,190 @@ namespace TopIndicators
                 {
 
                 }
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+            }
+
+            //int id_cliente_int_s = int.Parse(nome_cliente_s);
+            int nome_cliente_id = 0;
+            using (MySqlConnection connection4 = new MySqlConnection(connectionString))
+            {
+                connection4.Open();
+
+                // Cria um comando SQL para selecionar o nome do cliente
+                MySqlCommand command4 = new MySqlCommand("SELECT id_Cliente FROM cliente where nome = @nome", connection4);
+
+                // Adiciona o parâmetro @id_cliente à consulta SQL
+                command4.Parameters.AddWithValue("@nome", nome_cliente_s);
+
+                // Executa a consulta SQL e obtém o DataReader
+                using (MySqlDataReader reader4 = command4.ExecuteReader())
                 {
-                    int id_cliente = 0;
-                    int id_produto = 0;
-                    connection.Open();
-
-                    string query = "SELECT id_Demanda, quantidade_Demandada, prazo, ID_Cliente, ID_Produto, qunatidade_produzida FROM demanda where status_demanda = 0";
-                    MySqlCommand command = new MySqlCommand(query, connection);
-
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    if (reader4.HasRows)
                     {
-                        if (reader.HasRows)
-                        {
-                            dtv_listarDemanda.Rows.Clear(); // Limpa as linhas existentes no DataGridView
+                        // Lê a próxima linha
+                        reader4.Read();
 
-                            while (reader.Read())
-                            {
-                                id_cliente = (int)reader["ID_Cliente"];
-                                id_produto = (int)reader["ID_Produto"];
-                                dtv_listarDemanda.Rows.Add(reader["id_Demanda"], reader["quantidade_Demandada"], reader["prazo"], reader["ID_Cliente"], reader["ID_Produto"], reader["qunatidade_produzida"]);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nenhum registro encontrado.");
-                        }
-
+                        // Obtém o valor da coluna nome
+                        nome_cliente_id = int.Parse(reader4["id_Cliente"].ToString());
                     }
-                    //connection.Open();
+                }
 
-                    string query5 = "SELECT id_Demanda, quantidade_Demandada, prazo, ID_Cliente, ID_Produto, qunatidade_produzida from demanda where status_demanda = 0"; // demanda.id_Demanda,demanda.quantidade_Demandada,demanda.prazo, produto_acabado.Nome AS Nome,cliente.nome AS nome FROM demanda INNER JOIN produto_acabado ON demanda.ID_Produto = produto_acabado.id_produto INNER JOIN cliente ON demanda.id_cliente = cliente.ID_Cliente";
-                    MySqlCommand command5 = new MySqlCommand(query5, connection);
 
-                    using (MySqlDataReader reader5 = command.ExecuteReader())
+                string query5 = "SELECT id_Demanda, quantidade_Demandada, prazo, ID_Cliente, ID_Produto, qunatidade_produzida from demanda where status_demanda = 0 AND ID_Cliente = " + nome_cliente_id + ";"; // demanda.id_Demanda,demanda.quantidade_Demandada,demanda.prazo, produto_acabado.Nome AS Nome,cliente.nome AS nome FROM demanda INNER JOIN produto_acabado ON demanda.ID_Produto = produto_acabado.id_produto INNER JOIN cliente ON demanda.id_cliente = cliente.ID_Cliente";
+                                                                                                                                                                                                                // demanda.id_Demanda,demanda.quantidade_Demandada,demanda.prazo, produto_acabado.Nome AS Nome,cliente.nome AS nome FROM demanda INNER JOIN produto_acabado ON demanda.ID_Produto = produto_acabado.id_produto INNER JOIN cliente ON demanda.id_cliente = cliente.ID_Cliente";
+                MySqlCommand command5 = new MySqlCommand(query5, connection4);
+
+                using (MySqlDataReader reader5 = command5.ExecuteReader())
+                {
+                    if (reader5.HasRows)
+                    {
+                        dtv_listarDemanda.Rows.Clear(); // Limpa as linhas existentes no DataGridView
+
+                        while (reader5.Read())
+                        {
+                            // Armazena o valor de id_demanda na variável id_demanda
+                            int id_demanda = (int)reader5["id_demanda"];
+
+                            // Armazena o valor de quantidade_demandada na variável quantidade_demandada
+                            int quantidade_demandada = (int)reader5["quantidade_demandada"];
+
+                            int quantidade_produzida = (int)reader5["qunatidade_produzida"];
+
+                            // Armazena o valor de prazo na variável prazo
+                            DateTime prazo = (DateTime)reader5["prazo"];
+
+                            // Armazena o valor de nome_produto na variável nome_produto
+
+                            string nome_cliente_s1 = reader5["ID_Cliente"].ToString();
+                            int id_cliente_int_s1 = int.Parse(nome_cliente_s1);
+                            string nome_cliente = "";
+                            using (MySqlConnection connection7 = new MySqlConnection(connectionString))
+                            {
+                                connection7.Open();
+
+                                // Cria um comando SQL para selecionar o nome do cliente
+                                MySqlCommand command7 = new MySqlCommand("SELECT nome FROM cliente where id_Cliente = @id_cliente", connection7);
+
+                                // Adiciona o parâmetro @id_cliente à consulta SQL
+                                command7.Parameters.AddWithValue("@id_cliente", id_cliente_int_s1);
+
+                                // Executa a consulta SQL e obtém o DataReader
+                                using (MySqlDataReader reader7 = command7.ExecuteReader())
+                                {
+                                    if (reader7.HasRows)
+                                    {
+                                        // Lê a próxima linha
+                                        reader7.Read();
+
+                                        // Obtém o valor da coluna nome
+                                        nome_cliente = reader7["nome"].ToString();
+                                    }
+                                }
+                                connection7.Close();
+
+                            }
+
+                            string nome_produto_int = reader5["ID_Produto"].ToString();
+                            int id_produto_int_s = int.Parse(nome_produto_int);
+                            string nome_produto = "";
+                            using (MySqlConnection connection5 = new MySqlConnection(connectionString))
+                            {
+                                connection5.Open();
+
+                                // Cria um comando SQL para selecionar o nome do produto
+                                MySqlCommand command7 = new MySqlCommand("SELECT Nome FROM produto_acabado where id_produto = @id_produto", connection5);
+
+                                // Adiciona o parâmetro @id_produto à consulta SQL
+                                command7.Parameters.AddWithValue("@id_produto", id_produto_int_s);
+
+                                // Executa a consulta SQL e obtém o DataReader
+                                using (MySqlDataReader reader7 = command7.ExecuteReader())
+                                {
+                                    if (reader7.HasRows)
+                                    {
+                                        // Lê a próxima linha
+                                        reader7.Read();
+
+                                        // Obtém o valor da coluna nome
+                                        nome_produto = reader7["Nome"].ToString();
+                                    }
+                                }
+                                connection5.Close();
+                                dtv_listarDemanda.Rows.Add(id_demanda, quantidade_demandada, prazo, nome_cliente, nome_produto, quantidade_produzida);
+                            }
+
+                            // Adiciona a linha ao DataGridVie
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum registro encontrado.");
+                    }
+                }
+            }
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;"; // Substitua pela sua própria string de conexão
+
+            string nome_cliente_s = Listar_Clientes.Text;
+            string nomeCliente = Listar_Clientes.Text;
+
+
+            //int id_cliente_int_s = int.Parse(nome_cliente_s);
+            int nome_cliente_id = 0;
+            using (MySqlConnection connection4 = new MySqlConnection(connectionString))
+            {
+                connection4.Open();
+
+                // Cria um comando SQL para selecionar o nome do cliente
+                MySqlCommand command4 = new MySqlCommand("SELECT id_Cliente FROM cliente where nome = @nome", connection4);
+
+                // Adiciona o parâmetro @id_cliente à consulta SQL
+                command4.Parameters.AddWithValue("@nome", nome_cliente_s);
+
+                // Executa a consulta SQL e obtém o DataReader
+                using (MySqlDataReader reader4 = command4.ExecuteReader())
+                {
+                    if (reader4.HasRows)
+                    {
+                        // Lê a próxima linha
+                        reader4.Read();
+
+                        // Obtém o valor da coluna nome
+                        nome_cliente_id = int.Parse(reader4["id_Cliente"].ToString());
+                    }
+                }
+                int nome_Produto_id = 0;
+                using (MySqlConnection connectionA = new MySqlConnection(connectionString))
+                {
+                    connectionA.Open();
+
+                    // Cria um comando SQL para selecionar o nome do cliente
+                    MySqlCommand commandA = new MySqlCommand("SELECT id_produto FROM produto_acabado where Nome = @nome", connectionA);
+
+                    // Adiciona o parâmetro @id_cliente à consulta SQL
+                    commandA.Parameters.AddWithValue("@nome", comboBox1.Text);
+
+                    // Executa a consulta SQL e obtém o DataReader
+                    using (MySqlDataReader readerA = commandA.ExecuteReader())
+                    {
+                        if (readerA.HasRows)
+                        {
+                            // Lê a próxima linha
+                            readerA.Read();
+
+                            // Obtém o valor da coluna nome
+                            nome_Produto_id = int.Parse(readerA["id_produto"].ToString());
+                        }
+                    }
+
+
+                    string query5 = "SELECT id_Demanda, quantidade_Demandada, prazo, ID_Cliente, ID_Produto, qunatidade_produzida from demanda where status_demanda = 0 AND ID_Cliente = " + nome_cliente_id + " AND ID_Produto = " + nome_Produto_id + " ;"; // demanda.id_Demanda,demanda.quantidade_Demandada,demanda.prazo, produto_acabado.Nome AS Nome,cliente.nome AS nome FROM demanda INNER JOIN produto_acabado ON demanda.ID_Produto = produto_acabado.id_produto INNER JOIN cliente ON demanda.id_cliente = cliente.ID_Cliente";
+                                                                                                                                                                                                                                                              // demanda.id_Demanda,demanda.quantidade_Demandada,demanda.prazo, produto_acabado.Nome AS Nome,cliente.nome AS nome FROM demanda INNER JOIN produto_acabado ON demanda.ID_Produto = produto_acabado.id_produto INNER JOIN cliente ON demanda.id_cliente = cliente.ID_Cliente";
+                    MySqlCommand command5 = new MySqlCommand(query5, connection4);
+
+                    using (MySqlDataReader reader5 = command5.ExecuteReader())
                     {
                         if (reader5.HasRows)
                         {
@@ -424,32 +587,32 @@ namespace TopIndicators
 
                                 // Armazena o valor de nome_produto na variável nome_produto
 
-                                string nome_cliente_s = reader5["ID_Cliente"].ToString();
-                                int id_cliente_int_s = int.Parse(nome_cliente_s);
+                                string nome_cliente_s1 = reader5["ID_Cliente"].ToString();
+                                int id_cliente_int_s1 = int.Parse(nome_cliente_s1);
                                 string nome_cliente = "";
-                                using (MySqlConnection connection4 = new MySqlConnection(connectionString))
+                                using (MySqlConnection connection7 = new MySqlConnection(connectionString))
                                 {
-                                    connection4.Open();
+                                    connection7.Open();
 
                                     // Cria um comando SQL para selecionar o nome do cliente
-                                    MySqlCommand command4 = new MySqlCommand("SELECT nome FROM cliente where id_Cliente = @id_cliente", connection4);
+                                    MySqlCommand command7 = new MySqlCommand("SELECT nome FROM cliente where id_Cliente = @id_cliente", connection7);
 
                                     // Adiciona o parâmetro @id_cliente à consulta SQL
-                                    command4.Parameters.AddWithValue("@id_cliente", id_cliente_int_s);
+                                    command7.Parameters.AddWithValue("@id_cliente", id_cliente_int_s1);
 
                                     // Executa a consulta SQL e obtém o DataReader
-                                    using (MySqlDataReader reader4 = command4.ExecuteReader())
+                                    using (MySqlDataReader reader7 = command7.ExecuteReader())
                                     {
-                                        if (reader4.HasRows)
+                                        if (reader7.HasRows)
                                         {
                                             // Lê a próxima linha
-                                            reader4.Read();
+                                            reader7.Read();
 
                                             // Obtém o valor da coluna nome
-                                            nome_cliente = reader4["nome"].ToString();
+                                            nome_cliente = reader7["nome"].ToString();
                                         }
                                     }
-                                    connection4.Close();
+                                    connection7.Close();
 
                                 }
 
@@ -462,9 +625,9 @@ namespace TopIndicators
 
                                     // Cria um comando SQL para selecionar o nome do produto
                                     MySqlCommand command7 = new MySqlCommand("SELECT Nome FROM produto_acabado where id_produto = @id_produto", connection5);
-
+                                    string nome_selecionado = comboBox1.Text;
                                     // Adiciona o parâmetro @id_produto à consulta SQL
-                                    command7.Parameters.AddWithValue("@id_produto", id_produto_int_s);
+                                    command7.Parameters.AddWithValue("@id_produto", nome_selecionado);
 
                                     // Executa a consulta SQL e obtém o DataReader
                                     using (MySqlDataReader reader7 = command7.ExecuteReader())
@@ -479,7 +642,7 @@ namespace TopIndicators
                                         }
                                     }
                                     connection5.Close();
-                                    dtv_listarDemanda.Rows.Add(id_demanda, quantidade_demandada, prazo, nome_cliente, nome_produto, quantidade_produzida);
+                                    dtv_listarDemanda.Rows.Add(id_demanda, quantidade_demandada, prazo, nome_cliente, comboBox1.Text, quantidade_produzida);
                                 }
 
                                 // Adiciona a linha ao DataGridVie
@@ -490,13 +653,8 @@ namespace TopIndicators
                             MessageBox.Show("Nenhum registro encontrado.");
                         }
                     }
-
                 }
             }
-        }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

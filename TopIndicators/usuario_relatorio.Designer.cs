@@ -1,4 +1,8 @@
-﻿namespace TopIndicators
+﻿using Microsoft.Reporting.Map.WebForms.BingMaps;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using System.Runtime.ConstrainedExecution;
+
+namespace TopIndicators
 {
     partial class usuario_relatorio
     {
@@ -28,13 +32,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(usuario_relatorio));
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.SuspendLayout();
+            // reportViewer1
+            // 
+            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "TopIndicators.relatorioUsuarios.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1164, 666);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            // 
+            // usuario_relatorio
+            // 
+
+
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1216, 779);
+            this.Controls.Add(this.reportViewer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("Icon1")));
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "usuario_relatorio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "usuario_relatorio";
+            this.Load += new System.EventHandler(this.usuario_relatorio_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

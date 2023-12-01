@@ -36,7 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label13 = new System.Windows.Forms.Label();
-            this.btn_imprimir = new System.Windows.Forms.Button();
             this.dtv_listarDemanda = new System.Windows.Forms.DataGridView();
             this.id_Demanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidade_Demandanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,18 +64,6 @@
             this.label13.TabIndex = 140;
             this.label13.Text = "CONSULTAR DEMANDAS";
             // 
-            // btn_imprimir
-            // 
-            this.btn_imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_imprimir.ForeColor = System.Drawing.Color.Black;
-            this.btn_imprimir.Location = new System.Drawing.Point(1221, 864);
-            this.btn_imprimir.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_imprimir.Name = "btn_imprimir";
-            this.btn_imprimir.Size = new System.Drawing.Size(247, 55);
-            this.btn_imprimir.TabIndex = 145;
-            this.btn_imprimir.Text = "IMPRIMIR";
-            this.btn_imprimir.UseVisualStyleBackColor = true;
-            // 
             // dtv_listarDemanda
             // 
             this.dtv_listarDemanda.AllowUserToAddRows = false;
@@ -96,7 +83,7 @@
             this.dtv_listarDemanda.ReadOnly = true;
             this.dtv_listarDemanda.RowHeadersWidth = 51;
             this.dtv_listarDemanda.RowTemplate.Height = 24;
-            this.dtv_listarDemanda.Size = new System.Drawing.Size(1476, 647);
+            this.dtv_listarDemanda.Size = new System.Drawing.Size(1476, 729);
             this.dtv_listarDemanda.TabIndex = 146;
             this.dtv_listarDemanda.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtv_listarDemanda_CellContentDoubleClick);
             // 
@@ -225,7 +212,6 @@
             this.Controls.Add(this.Listar_Clientes);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtv_listarDemanda);
-            this.Controls.Add(this.btn_imprimir);
             this.Controls.Add(this.label13);
             this.Name = "Frm_ListarDemanda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -240,7 +226,6 @@
 
         #endregion
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btn_imprimir;
         private System.Windows.Forms.DataGridView dtv_listarDemanda;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_Demanda;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantidade_Demandanda;

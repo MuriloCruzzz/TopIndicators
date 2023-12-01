@@ -67,9 +67,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_nome_produto.BackColor = System.Drawing.Color.Transparent;
             this.lbl_nome_produto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_nome_produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nome_produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nome_produto.ForeColor = System.Drawing.Color.Blue;
-            this.lbl_nome_produto.Location = new System.Drawing.Point(529, 9);
+            this.lbl_nome_produto.Location = new System.Drawing.Point(505, 21);
             this.lbl_nome_produto.Name = "lbl_nome_produto";
             this.lbl_nome_produto.Size = new System.Drawing.Size(354, 61);
             this.lbl_nome_produto.TabIndex = 2;
@@ -197,7 +197,7 @@
             this.lbl_produto_acabado.ForeColor = System.Drawing.Color.DarkCyan;
             this.lbl_produto_acabado.Location = new System.Drawing.Point(398, 338);
             this.lbl_produto_acabado.Name = "lbl_produto_acabado";
-            this.lbl_produto_acabado.Size = new System.Drawing.Size(233, 44);
+            this.lbl_produto_acabado.Size = new System.Drawing.Size(461, 44);
             this.lbl_produto_acabado.TabIndex = 13;
             this.lbl_produto_acabado.Text = "texto";
             // 
@@ -307,9 +307,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_nome_produto);
             this.Controls.Add(this.Lbl_Cadastro);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Frm_Vizualizar_Linhas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Frm_Vizualizar_Linhas";
+            this.Text = "Vizualizar linhas";
             this.Load += new System.EventHandler(this.Frm_Vizualizar_Linhas_Load);
             this.ResumeLayout(false);
 

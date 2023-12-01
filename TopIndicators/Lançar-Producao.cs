@@ -740,7 +740,7 @@ namespace TopIndicators
 
                     double PPH_passo1 = tempo_producao_minutos / 60;
                     double PPH_passo1_1 = double.Parse(PPH_passo1.ToString("F2"));
-                    double PPH_passo2 = quantidade_Produzida / PPH_passo1_1;
+                    double PPH_passo2 = pecas_carregadas / PPH_passo1_1;
                     double PPH_passo2_2 = double.Parse(PPH_passo2.ToString("F2"));
                     double PPH_passo3 = PPH_passo2_2 / quantidade_operadores;
                     double PPH = double.Parse(PPH_passo3.ToString("F2"));

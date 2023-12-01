@@ -65,6 +65,7 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(215, 28);
             this.txtPesquisa.TabIndex = 139;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // label18
             // 
@@ -109,6 +110,7 @@
             this.btn_imprimir.TabIndex = 101;
             this.btn_imprimir.Text = "IMPRIMIR";
             this.btn_imprimir.UseVisualStyleBackColor = true;
+            this.btn_imprimir.Visible = false;
             this.btn_imprimir.Click += new System.EventHandler(this.btn_imprimir_Click);
             // 
             // label13

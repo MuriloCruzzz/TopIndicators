@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtv_listarDemanda = new System.Windows.Forms.DataGridView();
@@ -44,11 +44,11 @@
             this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Atual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listarDemandaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Listar_Clientes = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.listarDemandaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtv_listarDemanda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listarDemandaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -108,8 +108,8 @@
             // 
             // id_Demanda
             // 
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            this.id_Demanda.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.id_Demanda.DefaultCellStyle = dataGridViewCellStyle1;
             this.id_Demanda.HeaderText = "id_Demanda";
             this.id_Demanda.MinimumWidth = 6;
             this.id_Demanda.Name = "id_Demanda";
@@ -118,8 +118,8 @@
             // 
             // quantidade_Demandanda
             // 
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            this.quantidade_Demandanda.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.quantidade_Demandanda.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantidade_Demandanda.HeaderText = "quantidade_Demandanda";
             this.quantidade_Demandanda.MinimumWidth = 6;
             this.quantidade_Demandanda.Name = "quantidade_Demandanda";
@@ -128,8 +128,8 @@
             // 
             // prazo
             // 
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            this.prazo.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.prazo.DefaultCellStyle = dataGridViewCellStyle3;
             this.prazo.HeaderText = "prazo";
             this.prazo.MinimumWidth = 6;
             this.prazo.Name = "prazo";
@@ -138,8 +138,8 @@
             // 
             // nome_cliente
             // 
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            this.nome_cliente.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.nome_cliente.DefaultCellStyle = dataGridViewCellStyle4;
             this.nome_cliente.HeaderText = "nome_cliente";
             this.nome_cliente.MinimumWidth = 6;
             this.nome_cliente.Name = "nome_cliente";
@@ -148,8 +148,8 @@
             // 
             // nome_produto
             // 
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            this.nome_produto.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.nome_produto.DefaultCellStyle = dataGridViewCellStyle5;
             this.nome_produto.HeaderText = "nome_produto";
             this.nome_produto.MinimumWidth = 6;
             this.nome_produto.Name = "nome_produto";
@@ -158,17 +158,13 @@
             // 
             // Atual
             // 
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            this.Atual.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.Atual.DefaultCellStyle = dataGridViewCellStyle6;
             this.Atual.HeaderText = "Atual";
             this.Atual.MinimumWidth = 6;
             this.Atual.Name = "Atual";
             this.Atual.ReadOnly = true;
             this.Atual.Width = 180;
-            // 
-            // listarDemandaBindingSource
-            // 
-            this.listarDemandaBindingSource.DataSource = typeof(ListagemDemanda.ListarDemanda);
             // 
             // comboBox1
             // 
@@ -179,6 +175,7 @@
             this.comboBox1.Size = new System.Drawing.Size(259, 28);
             this.comboBox1.TabIndex = 154;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // label5
             // 
@@ -204,6 +201,7 @@
             this.Listar_Clientes.Size = new System.Drawing.Size(244, 26);
             this.Listar_Clientes.TabIndex = 152;
             this.Listar_Clientes.SelectedIndexChanged += new System.EventHandler(this.Listar_Clientes_SelectedIndexChanged);
+            this.Listar_Clientes.TextChanged += new System.EventHandler(this.Listar_Clientes_TextChanged);
             // 
             // label6
             // 
@@ -219,6 +217,10 @@
             this.label6.Size = new System.Drawing.Size(103, 25);
             this.label6.TabIndex = 151;
             this.label6.Text = "CLIENTE";
+            // 
+            // listarDemandaBindingSource
+            // 
+            this.listarDemandaBindingSource.DataSource = typeof(ListagemDemanda.ListarDemanda);
             // 
             // Frm_Cadastrar_Linha
             // 
