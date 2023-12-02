@@ -9,10 +9,11 @@ namespace TopIndicators
 {
     public class Cliente
     {
-        public int ID_Cliente { get; set; }
+        public string ID_Cliente { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Nome { get; set; }
+        public string CNPJ { get; set; }
     }
 }

@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml;
+//using OfficeOpenXml.Core.ExcelPackage;
+using System.IO;
 
 namespace TopIndicators
 {
@@ -155,6 +158,87 @@ namespace TopIndicators
 
         private void lbl_refugo_materia_prima_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string dadosCotacao = $"Produção = {lbl_nome_produto.Text} - Relatório";
+
+            listBox1.Items.Clear();
+            listBox1.Items.Add(dadosCotacao);
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Arquivos Excel | *.xlsx";
+            saveFileDialog.Title = "Salvar Produção como...";
+            saveFileDialog.FileName = "produção"+ lbl_nome_produto.Text + ".xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (ExcelPackage excelPackage = new ExcelPackage())
+                    {
+                        // Cria uma planilha
+                        ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Produção");
+
+                        // Adiciona os dados adicionais
+                        worksheet.Cells["A1"].Value = "Produção";
+                        worksheet.Cells["B1"].Value = lbl_nome_produto.Text.Trim();
+                        worksheet.Cells["A2"].Value = "Cliente";
+                        worksheet.Cells["B2"].Value = lb_cliente.Text.Trim();
+                        worksheet.Cells["A3"].Value = "PPH";
+                        worksheet.Cells["B3"].Value = lbl_pph.Text.Trim();
+                        worksheet.Cells["A4"].Value = "KU";
+                        worksheet.Cells["B4"].Value = lbl_ku.Text.Trim();
+                        worksheet.Cells["A5"].Value = "YIELD";
+                        worksheet.Cells["B5"].Value = lbl_YIELD.Text.Trim();
+                        worksheet.Cells["A6"].Value = "Tempo Total Produção";
+                        worksheet.Cells["B6"].Value = lbl_tempo_total_producao.Text.Trim();
+                        worksheet.Cells["A7"].Value = "Tempo Paradas de Linha";
+                        worksheet.Cells["B7"].Value = lbl_paradasLinha.Text.Trim();
+                        worksheet.Cells["A8"].Value = "Hora Inicio";
+                        worksheet.Cells["B8"].Value = lbl_h_inicio.Text.Trim();
+                        worksheet.Cells["A9"].Value = "Hora Final";
+                        worksheet.Cells["B9"].Value = lbl_h_final.Text.Trim();
+                        worksheet.Cells["A10"].Value = "Quantidade Produzida";
+                        worksheet.Cells["B10"].Value = lbl_quantidade.Text.Trim();
+                        worksheet.Cells["A11"].Value = "Refugo Componentes";
+                        worksheet.Cells["B11"].Value = lbl_refugo_material.Text.Trim();
+                        worksheet.Cells["A12"].Value = "Refugo Materia Prima";
+                        worksheet.Cells["B12"].Value = lbl_refugo_materia_prima.Text.Trim();
+                        worksheet.Cells["A13"].Value = "Refugo Produto Acabado";
+                        worksheet.Cells["B13"].Value = lbl_refugo_produto_acabado.Text.Trim();
+
+                        // Adiciona os cabeçalhos
+
+
+                        int row = 1;
+                        foreach (var item in listBox1.Items)
+                        {
+                            string[] partes = item.ToString().Split(new string[] { " - " }, StringSplitOptions.None);
+                            worksheet.Cells[row, 1].Value = partes[0].Trim();
+                            worksheet.Cells[row, 2].Value = partes[1].Trim();
+
+
+                            row++;
+                            //}
+
+                            // Ajuste automático do tamanho das colunas
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                            // Salva o arquivo
+                            FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
+                            excelPackage.SaveAs(fileInfo);
+
+                            MessageBox.Show("Produção "+ lbl_nome_produto.Text + "o exportada com sucesso!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao exportar a produção: {ex.Message}");
+                }
+            }
 
         }
     }

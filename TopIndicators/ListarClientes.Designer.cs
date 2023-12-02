@@ -32,10 +32,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dtv_clientes = new System.Windows.Forms.DataGridView();
-            this.btn_sair = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_sair = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dtv_clientes_ls = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtv_clientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,19 +96,6 @@
             this.dtv_clientes.Size = new System.Drawing.Size(537, 626);
             this.dtv_clientes.TabIndex = 143;
             // 
-            // btn_sair
-            // 
-            this.btn_sair.BackColor = System.Drawing.Color.Crimson;
-            this.btn_sair.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sair.ForeColor = System.Drawing.Color.Black;
-            this.btn_sair.Location = new System.Drawing.Point(323, 771);
-            this.btn_sair.Name = "btn_sair";
-            this.btn_sair.Size = new System.Drawing.Size(237, 55);
-            this.btn_sair.TabIndex = 144;
-            this.btn_sair.Text = "SAIR";
-            this.btn_sair.UseVisualStyleBackColor = false;
-            this.btn_sair.Click += new System.EventHandler(this.btn_sair_Click);
-            // 
             // ID
             // 
             this.ID.HeaderText = "Registro";
@@ -131,12 +120,49 @@
             this.CNPJ.ReadOnly = true;
             this.CNPJ.Width = 140;
             // 
+            // btn_sair
+            // 
+            this.btn_sair.BackColor = System.Drawing.Color.Crimson;
+            this.btn_sair.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sair.ForeColor = System.Drawing.Color.Black;
+            this.btn_sair.Location = new System.Drawing.Point(323, 771);
+            this.btn_sair.Name = "btn_sair";
+            this.btn_sair.Size = new System.Drawing.Size(237, 55);
+            this.btn_sair.TabIndex = 144;
+            this.btn_sair.Text = "SAIR";
+            this.btn_sair.UseVisualStyleBackColor = false;
+            this.btn_sair.Click += new System.EventHandler(this.btn_sair_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.MediumPurple;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(132, 771);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(168, 52);
+            this.button1.TabIndex = 145;
+            this.button1.Text = "EXPORTAR CSV";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dtv_clientes_ls
+            // 
+            this.dtv_clientes_ls.FormattingEnabled = true;
+            this.dtv_clientes_ls.ItemHeight = 16;
+            this.dtv_clientes_ls.Location = new System.Drawing.Point(44, 790);
+            this.dtv_clientes_ls.Name = "dtv_clientes_ls";
+            this.dtv_clientes_ls.Size = new System.Drawing.Size(58, 20);
+            this.dtv_clientes_ls.TabIndex = 146;
+            this.dtv_clientes_ls.Visible = false;
+            // 
             // ListarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(572, 838);
+            this.Controls.Add(this.dtv_clientes_ls);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_sair);
             this.Controls.Add(this.dtv_clientes);
             this.Controls.Add(this.txtPesquisa);
@@ -162,5 +188,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNPJ;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox dtv_clientes_ls;
     }
 }

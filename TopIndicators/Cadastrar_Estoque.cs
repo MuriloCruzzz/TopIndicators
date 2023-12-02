@@ -13,6 +13,8 @@ using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using AngleSharp.Dom;
 using System.Drawing.Text;
+using OfficeOpenXml;
+using System.IO;
 
 namespace TopIndicators
 {
@@ -51,8 +53,8 @@ namespace TopIndicators
         private void btn_Listar_materiaPrima_Click(object sender, EventArgs e)
         {
             id_click = 1;
-                        
-            
+
+
             btn_Listar_materiaPrima.BackColor = Color.MediumTurquoise;
             btn_Listar_Materiais.BackColor = Color.DarkGreen;
             btn_produtoAcabado.BackColor = Color.DarkGreen;
@@ -738,7 +740,7 @@ namespace TopIndicators
             dataGridView1.Columns[6].HeaderText = "Cliente";
 
             int id_null = 0;
-            
+
             string connectionStringA = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
             using (MySqlConnection connection = new MySqlConnection(connectionStringA))
             {
@@ -774,7 +776,7 @@ namespace TopIndicators
                 }
 
             }
-            if(id_null == 0)
+            if (id_null == 0)
             {
                 string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -865,7 +867,7 @@ namespace TopIndicators
                     connection.Close();
                 }
             }
-            if(id_click == 2)
+            if (id_click == 2)
             {
                 string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -873,7 +875,7 @@ namespace TopIndicators
 
                     connection.Open();
 
-                    string query = "SELECT id_produto, Nome, Data_Validade, Quantidade AS Estoque_Atual, estoque_minimo, estoque_maximo, status FROM produto_materia_prima_componente WHERE Nome LIKE '%" + pesquisa+"%';";
+                    string query = "SELECT id_produto, Nome, Data_Validade, Quantidade AS Estoque_Atual, estoque_minimo, estoque_maximo, status FROM produto_materia_prima_componente WHERE Nome LIKE '%" + pesquisa + "%';";
                     MySqlCommand command = new MySqlCommand(query, connection);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -924,7 +926,7 @@ namespace TopIndicators
                     connection.Close();
                 }
             }
-            if(id_click == 3)
+            if (id_click == 3)
             {
                 string connectionString = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -932,7 +934,7 @@ namespace TopIndicators
 
                     connection.Open();
 
-                    string query = "SELECT id_produto, Nome, Data_Validade, Quantidade AS Estoque_Atual, Material_Consumo, Materia_Prima_Consumo, Cliente FROM produto_acabado WHERE Nome LIKE '%" + pesquisa+"%';";
+                    string query = "SELECT id_produto, Nome, Data_Validade, Quantidade AS Estoque_Atual, Material_Consumo, Materia_Prima_Consumo, Cliente FROM produto_acabado WHERE Nome LIKE '%" + pesquisa + "%';";
                     MySqlCommand command = new MySqlCommand(query, connection);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -974,6 +976,250 @@ namespace TopIndicators
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (id_click == 1)
+            {
+                string dadosCotacao = $"Registro - Nome - Validade - Estoque Atual - Minimo - Maximo - Status";
+
+                dtv_clientes_ls.Items.Add(dadosCotacao);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos Excel | *.xlsx";
+                saveFileDialog.Title = "Salvar Materias Primas como...";
+                saveFileDialog.FileName = "Materia Prima.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (ExcelPackage excelPackage = new ExcelPackage())
+                        {
+                            // Cria uma planilha
+                            ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Materia Prima");
+                            worksheet.Cells["A1"].Value = "Registro";
+                            worksheet.Cells["B1"].Value = "Materia Prima";
+                            worksheet.Cells["C1"].Value = "Válidade";
+                            worksheet.Cells["D1"].Value = "Estoque Atual";
+                            worksheet.Cells["E1"].Value = "Minimo";
+                            worksheet.Cells["F1"].Value = "Maximo";
+                            worksheet.Cells["G1"].Value = "Status";
+                            // Adiciona os cabeçalhos
+                            worksheet.Cells["A2"].Value = "Registro";
+                            worksheet.Cells["B2"].Value = "Materia Prima";
+                            worksheet.Cells["C2"].Value = "Válidade";
+                            worksheet.Cells["D2"].Value = "Estoque Atual";
+                            worksheet.Cells["E2"].Value = "Minimo";
+                            worksheet.Cells["F2"].Value = "Máximo";
+                            worksheet.Cells["G2"].Value = "Status";
+
+                            int row = 2; // Começa a partir da próxima linha após os cabeçalhos
+
+                            // Itera sobre as linhas do DataGridView
+                            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+                            {
+                                // Certifique-se de não pegar a linha de cabeçalho
+                                if (!dataGridViewRow.IsNewRow)
+                                {
+                                    // Supondo que a primeira célula contém o ID, a segunda o nome e a terceira o CNPJ
+                                    string registro = dataGridViewRow.Cells["id_produto"].Value.ToString();
+                                    string materiaprima = dataGridViewRow.Cells["nome"].Value.ToString();
+                                    string validade = dataGridViewRow.Cells["Validade"].Value.ToString();
+                                    string estoque = dataGridViewRow.Cells["Estoque_Atual"].Value.ToString();
+                                    string minimo = dataGridViewRow.Cells["Minimo"].Value.ToString();
+                                    string maximo = dataGridViewRow.Cells["Maximo"].Value.ToString();
+                                    string status = dataGridViewRow.Cells["Status"].Value.ToString();
+
+                                    // Adiciona os dados ao Excel
+                                    worksheet.Cells[row, 1].Value = registro;
+                                    worksheet.Cells[row, 2].Value = materiaprima;
+                                    worksheet.Cells[row, 3].Value = validade;
+                                    worksheet.Cells[row, 4].Value = estoque;
+                                    worksheet.Cells[row, 5].Value = minimo;
+                                    worksheet.Cells[row, 6].Value = maximo;
+                                    worksheet.Cells[row, 7].Value = status;
+
+                                    row++;
+                                }
+                            }
+
+                            // Ajuste automático do tamanho das colunas
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                            // Salva o arquivo
+                            FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
+                            excelPackage.SaveAs(fileInfo);
+
+                            MessageBox.Show("Matéria Prima exportada com sucesso!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao exportar Matéria Prima: {ex.Message}");
+                    }
+                }
+            }
+            if (id_click == 2)
+            {
+                string dadosCotacao = $"Registro - Nome - Validade - Estoque Atual - Minimo - Maximo - Status";
+
+                dtv_clientes_ls.Items.Add(dadosCotacao);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos Excel | *.xlsx";
+                saveFileDialog.Title = "Salvar Componentes como...";
+                saveFileDialog.FileName = "Componentes_Materiais.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (ExcelPackage excelPackage = new ExcelPackage())
+                        {
+                            // Cria uma planilha
+                            ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Componentes");
+                            worksheet.Cells["A1"].Value = "Registro";
+                            worksheet.Cells["B1"].Value = "Materia Prima";
+                            worksheet.Cells["C1"].Value = "Válidade";
+                            worksheet.Cells["D1"].Value = "Estoque Atual";
+                            worksheet.Cells["E1"].Value = "Minimo";
+                            worksheet.Cells["F1"].Value = "Maximo";
+                            worksheet.Cells["G1"].Value = "Status";
+                            // Adiciona os cabeçalhos
+                            worksheet.Cells["A2"].Value = "Registro";
+                            worksheet.Cells["B2"].Value = "Materia Prima";
+                            worksheet.Cells["C2"].Value = "Válidade";
+                            worksheet.Cells["D2"].Value = "Estoque Atual";
+                            worksheet.Cells["E2"].Value = "Minimo";
+                            worksheet.Cells["F2"].Value = "Máximo";
+                            worksheet.Cells["G2"].Value = "Status";
+
+                            int row = 2; // Começa a partir da próxima linha após os cabeçalhos
+
+                            // Itera sobre as linhas do DataGridView
+                            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+                            {
+                                // Certifique-se de não pegar a linha de cabeçalho
+                                if (!dataGridViewRow.IsNewRow)
+                                {
+                                    // Supondo que a primeira célula contém o ID, a segunda o nome e a terceira o CNPJ
+                                    string registro = dataGridViewRow.Cells["id_produto"].Value.ToString();
+                                    string materiaprima = dataGridViewRow.Cells["nome"].Value.ToString();
+                                    string validade = dataGridViewRow.Cells["Validade"].Value.ToString();
+                                    string estoque = dataGridViewRow.Cells["Estoque_Atual"].Value.ToString();
+                                    string minimo = dataGridViewRow.Cells["Minimo"].Value.ToString();
+                                    string maximo = dataGridViewRow.Cells["Maximo"].Value.ToString();
+                                    string status = dataGridViewRow.Cells["Status"].Value.ToString();
+
+                                    // Adiciona os dados ao Excel
+                                    worksheet.Cells[row, 1].Value = registro;
+                                    worksheet.Cells[row, 2].Value = materiaprima;
+                                    worksheet.Cells[row, 3].Value = validade;
+                                    worksheet.Cells[row, 4].Value = estoque;
+                                    worksheet.Cells[row, 5].Value = minimo;
+                                    worksheet.Cells[row, 6].Value = maximo;
+                                    worksheet.Cells[row, 7].Value = status;
+
+                                    row++;
+                                }
+                            }
+
+                            // Ajuste automático do tamanho das colunas
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                            // Salva o arquivo
+                            FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
+                            excelPackage.SaveAs(fileInfo);
+
+                            MessageBox.Show("Componentes exportados com sucesso!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao exportar Componentes: {ex.Message}");
+                    }
+                }
+            }
+            if (id_click == 3)
+            {
+                string dadosCotacao = $"Registro - Nome - Validade - Estoque Atual - Material Consumo - Materia Prima Consumo - Cliente";
+
+                dtv_clientes_ls.Items.Add(dadosCotacao);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos Excel | *.xlsx";
+                saveFileDialog.Title = "Salvar Ficha Técnica Produtos como...";
+                saveFileDialog.FileName = "Ficha Técnica.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (ExcelPackage excelPackage = new ExcelPackage())
+                        {
+                            // Cria uma planilha
+                            ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Componentes");
+                            worksheet.Cells["A1"].Value = "Registro";
+                            worksheet.Cells["B1"].Value = "Nome";
+                            worksheet.Cells["C1"].Value = "Válidade";
+                            worksheet.Cells["D1"].Value = "Estoque Atual";
+                            worksheet.Cells["E1"].Value = "Material Consumo";
+                            worksheet.Cells["F1"].Value = "Matéria Prima Consumo";
+                            worksheet.Cells["G1"].Value = "Cliente";
+                            // Adiciona os cabeçalhos
+                            worksheet.Cells["A2"].Value = "Registro";
+                            worksheet.Cells["B2"].Value = "Nome";
+                            worksheet.Cells["C2"].Value = "Válidade";
+                            worksheet.Cells["D2"].Value = "Estoque Atual";
+                            worksheet.Cells["E2"].Value = "Material Consumo";
+                            worksheet.Cells["F2"].Value = "Matéria Prima Consumo";
+                            worksheet.Cells["G2"].Value = "Cliente";
+
+                            int row = 2; // Começa a partir da próxima linha após os cabeçalhos
+
+                            // Itera sobre as linhas do DataGridView
+                            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+                            {
+                                // Certifique-se de não pegar a linha de cabeçalho
+                                if (!dataGridViewRow.IsNewRow)
+                                {
+                                    // Supondo que a primeira célula contém o ID, a segunda o nome e a terceira o CNPJ
+                                    string registro = dataGridViewRow.Cells["id_produto"].Value.ToString();
+                                    string materiaprima = dataGridViewRow.Cells["nome"].Value.ToString();
+                                    string validade = dataGridViewRow.Cells["Validade"].Value.ToString();
+                                    string estoque = dataGridViewRow.Cells["Estoque_Atual"].Value.ToString();
+                                    string minimo = dataGridViewRow.Cells["Minimo"].Value.ToString();
+                                    string maximo = dataGridViewRow.Cells["Maximo"].Value.ToString();
+                                    string status = dataGridViewRow.Cells["Status"].Value.ToString();
+
+                                    // Adiciona os dados ao Excel
+                                    worksheet.Cells[row, 1].Value = registro;
+                                    worksheet.Cells[row, 2].Value = materiaprima;
+                                    worksheet.Cells[row, 3].Value = validade;
+                                    worksheet.Cells[row, 4].Value = estoque;
+                                    worksheet.Cells[row, 5].Value = minimo;
+                                    worksheet.Cells[row, 6].Value = maximo;
+                                    worksheet.Cells[row, 7].Value = status;
+
+                                    row++;
+                                }
+                            }
+
+                            // Ajuste automático do tamanho das colunas
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                            // Salva o arquivo
+                            FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
+                            excelPackage.SaveAs(fileInfo);
+
+                            MessageBox.Show("Ficha Técnica Produtos exportada com sucesso!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao exportar Ficha Técnica Produtos: {ex.Message}");
+                    }
+                }
+            }
         }
     }
 }

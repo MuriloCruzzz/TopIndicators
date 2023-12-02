@@ -70,6 +70,7 @@
             this.lbl_quantidade = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -584,6 +585,7 @@
             this.button4.TabIndex = 57;
             this.button4.Text = "EXPORTAR CSV";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label4
             // 
@@ -639,6 +641,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MistyRose;
+            this.panel3.Controls.Add(this.listBox1);
             this.panel3.Controls.Add(this.lbl_refugo_produto_acabado);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.button4);
@@ -652,6 +655,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1435, 251);
             this.panel3.TabIndex = 59;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(706, 204);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(82, 36);
+            this.listBox1.TabIndex = 58;
+            this.listBox1.Visible = false;
             // 
             // indicadores_turno
             // 
@@ -717,5 +730,6 @@
         private System.Windows.Forms.Label lb_Yeld;
         private System.Windows.Forms.Label lb_ku;
         private System.Windows.Forms.Label lb_pph;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
