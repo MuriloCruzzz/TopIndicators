@@ -254,15 +254,17 @@ namespace Connection
                                 int idProduto = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
                                 DateTime Data_Validade = DateTime.Parse(reader.GetString(1));
                                 string Nome = reader.GetString(2);
-                                int estoque_minimo = int.Parse(reader.GetString(3));
-                                int estoque_maximo = int.Parse(reader.GetString(4));
+                                int estoque = int.Parse(reader.GetString(3));
+                                int estoque_minimo = int.Parse(reader.GetString(4));
+                                int estoque_maximo = int.Parse(reader.GetString(5));
                                 string status = "OK";
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto,Quantidade, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, 0, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
+                                string queryCreate = "INSERT INTO produto_materia_prima (id_produto,Quantidade, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, @quantidade, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
+                                    commandCreate.Parameters.AddWithValue("@quantidade", estoque);
                                     commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
                                     commandCreate.Parameters.AddWithValue("@Nome", Nome);
                                     commandCreate.Parameters.AddWithValue("@estoque_minimo", estoque_minimo);
@@ -319,15 +321,17 @@ namespace Connection
                                 int idProduto = int.Parse(reader.GetString(0)); // Assumindo que a primeira coluna contém Id_Cliente
                                 DateTime Data_Validade = DateTime.Parse(reader.GetString(1));
                                 string Nome = reader.GetString(2);
-                                int estoque_minimo = int.Parse(reader.GetString(3));
-                                int estoque_maximo = int.Parse(reader.GetString(4));
+                                int estoque = int.Parse(reader.GetString(3));
+                                int estoque_minimo = int.Parse(reader.GetString(4));
+                                int estoque_maximo = int.Parse(reader.GetString(5));
                                 string status = "OK";
 
                                 // Inserir os dados na tabela do banco de dados
-                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Quantidade, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, 0, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
+                                string queryCreate = "INSERT INTO produto_materia_prima_componente (id_produto, Quantidade, Data_Validade, Nome, estoque_minimo, estoque_maximo, status) VALUES (@id_produto, @Quantidade, @Data_Validade, @Nome, @estoque_minimo, @estoque_maximo, @status)";
                                 MySqlCommand commandCreate = new MySqlCommand(queryCreate, connection);
                                 {
                                     commandCreate.Parameters.AddWithValue("@id_produto", idProduto);
+                                    commandCreate.Parameters.AddWithValue("@Quantidade", estoque);
                                     commandCreate.Parameters.AddWithValue("@Data_Validade", Data_Validade);
                                     commandCreate.Parameters.AddWithValue("@Nome", Nome);
                                     commandCreate.Parameters.AddWithValue("@estoque_minimo", estoque_minimo);

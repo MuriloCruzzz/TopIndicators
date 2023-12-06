@@ -167,13 +167,15 @@ namespace TopIndicators
                 Console.WriteLine("Usuario excluuido com sucesso!");
 
 
-                txb_nome.Text = "";
+                
                 cmb_setor.Text = "";
                 txb_senha.Text = "";
                 cod_colab.Text = "";
                 cmb_cargo.Text = "";
                 cmb_turno.Text = "";
 
+                MessageBox.Show("Usuario "+ txb_nome.Text + " Excluído!");
+                txb_nome.Text = "";
                 this.Close();
 
             }
@@ -225,18 +227,15 @@ namespace TopIndicators
                 commandUpdate.Parameters.AddWithValue("@ID", id_usuario);
                 commandUpdate.ExecuteNonQuery();
 
-                Console.WriteLine("Usuario ativado com sucesso!");
-
-
-                txb_nome.Text = "";
                 cmb_setor.Text = "";
                 txb_senha.Text = "";
                 cod_colab.Text = "";
                 cmb_cargo.Text = "";
                 cmb_turno.Text = "";
 
+                MessageBox.Show("Usuario "+ txb_nome.Text + "  Ativado!");
+                txb_nome.Text = "";
                 this.Close();
-
             }
 
         }

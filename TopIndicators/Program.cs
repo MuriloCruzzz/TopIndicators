@@ -21,7 +21,7 @@ using ConnectionMaria;
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_MenuDemanda());
+            Application.Run(new Frm_Login());
         }
     }
 }

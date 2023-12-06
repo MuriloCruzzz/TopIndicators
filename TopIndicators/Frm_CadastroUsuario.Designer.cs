@@ -471,15 +471,15 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Supervidor",
             "Operador",
             "Lider"});
-            this.comboBox1.Location = new System.Drawing.Point(602, 385);
+            this.comboBox1.Location = new System.Drawing.Point(600, 371);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(215, 30);
+            this.comboBox1.Size = new System.Drawing.Size(215, 44);
             this.comboBox1.TabIndex = 189;
             // 
             // label4
@@ -499,15 +499,15 @@
             // 
             // cmb_turno
             // 
-            this.cmb_turno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_turno.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.cmb_turno.FormattingEnabled = true;
             this.cmb_turno.Items.AddRange(new object[] {
             "1º",
             "2º",
             "3º"});
-            this.cmb_turno.Location = new System.Drawing.Point(1041, 385);
+            this.cmb_turno.Location = new System.Drawing.Point(1041, 374);
             this.cmb_turno.Name = "cmb_turno";
-            this.cmb_turno.Size = new System.Drawing.Size(215, 30);
+            this.cmb_turno.Size = new System.Drawing.Size(215, 44);
             this.cmb_turno.TabIndex = 191;
             this.cmb_turno.Text = "1º";
             // 

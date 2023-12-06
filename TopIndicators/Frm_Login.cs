@@ -83,12 +83,13 @@ namespace TopIndicators
                 connectionb.Open();
 
                 // Execute a consulta
-                string queryb = "SELECT ID, nome FROM usuario where nome = @nome";
+                string queryb = "SELECT ID, nome FROM usuario where nome = @nome AND status_usuario = 0;";
                 MySqlCommand commandb = new MySqlCommand(queryb, connectionb);
                 commandb.Parameters.AddWithValue("@nome", nome);
 
                 using (MySqlDataReader readerb = commandb.ExecuteReader())
                 {
+
                     if (readerb.HasRows)
                     {
                         // Itere sobre os resultados da consulta
@@ -146,11 +147,11 @@ namespace TopIndicators
 
             if(senha == senha_valido && nome == nome_valido)
             {
+                //this.Close();
                 Frm_MenuDemanda frm = new Frm_MenuDemanda();
                 frm.Id_Usuario = id_usuario;
                 //frm.id_turno = id_turno.ToString; 
                 frm.Show();
-
             }
         }
         private void Btn_OlharSenha_Click(object sender, EventArgs e)

@@ -28,26 +28,137 @@ namespace TopIndicators
         int id_componente;
         private void btn_importarMP_Click(object sender, EventArgs e)
         {
-            Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+            int id_verificação = 0;
+            string connectionStringA = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+            {
+                connection.Open();
 
-            _ = new ConnectionMaria.ProcessoDadosUsuarios();
+                string query = "SELECT MAX(id_produto) AS id_ultimo_registro FROM produto_materia_prima;";
+                MySqlCommand command = new MySqlCommand(query, connection);
 
-            InserirCliente.InserirTabelaMateriaPrima();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    try
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                id_verificação = int.Parse(reader["id_ultimo_registro"].ToString());
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        id_verificação = 0;
+                    }
+                }
 
-            MessageBox.Show("MATERIA PRIMA Inseridos Com Sucesso!!!");
-            AtualizarDadosMateriaPrima();
+            }
+            if (id_verificação == 0)
+            {
+                Connection.ProcessoDados InserirtabelaMateriaPrima = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirtabelaMateriaPrima.InserirTabelaMateriaPrima();
+
+                MessageBox.Show("MATERIA PRIMA Inseridos Com Sucesso!!!");
+                AtualizarDadosMateriaPrima();
+
+            }
+            if (id_verificação != 0)
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+                {
+                    connection.Open();
+
+                    string query = "DELETE FROM produto_materia_prima;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+
+                Connection.ProcessoDados InserirtabelaMateriaPrima = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+                InserirtabelaMateriaPrima.InserirTabelaMateriaPrima();
+
+
+                MessageBox.Show("MATERIA PRIMA Atualizada Com Sucesso!!!");
+                AtualizarDadosMateriaPrima();
+
+            }
         }
 
         private void btn_Importar_MT_Click(object sender, EventArgs e)
         {
-            Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+            int id_verificação = 0;
+            string connectionStringA = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+            {
+                connection.Open();
 
-            _ = new ConnectionMaria.ProcessoDadosUsuarios();
+                string query = "SELECT MAX(id_produto) AS id_ultimo_registro FROM produto_materia_prima;";
+                MySqlCommand command = new MySqlCommand(query, connection);
 
-            InserirCliente.InserirTabelaMaterial();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    try
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                id_verificação = int.Parse(reader["id_ultimo_registro"].ToString());
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        id_verificação = 0;
 
-            MessageBox.Show("COMPONENTES Inseridos Com Sucesso!!!");
-            AtualizarDadosComponentes();
+                    }
+                }
+
+            }
+            if(id_verificação == 0)
+            {
+                Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirCliente.InserirTabelaMaterial();
+
+                MessageBox.Show("COMPONENTES Inseridos Com Sucesso!!!");
+                AtualizarDadosComponentes();
+
+            }
+            if (id_verificação != 0)
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+                {
+                    connection.Open();
+
+                    string query = "DELETE FROM produto_materia_prima_componente;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirCliente.InserirTabelaMaterial();
+
+                MessageBox.Show("COMPONENTES Atualizados Com Sucesso!!!");
+                AtualizarDadosComponentes();
+            }
         }
 
         private void btn_Listar_materiaPrima_Click(object sender, EventArgs e)
@@ -73,6 +184,7 @@ namespace TopIndicators
 
                 string query = "SELECT id_produto FROM produto_materia_prima";
                 MySqlCommand command = new MySqlCommand(query, connection);
+
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -707,25 +819,131 @@ namespace TopIndicators
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+            int id_verificação = 0;
+            string connectionStringA = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+            {
+                connection.Open();
 
-            _ = new ConnectionMaria.ProcessoDadosUsuarios();
+                string query = "SELECT MAX(id_produto) AS id_ultimo_registro FROM produto_acabado;";
+                MySqlCommand command = new MySqlCommand(query, connection);
 
-            InserirCliente.InserirTabelaProdutoAcabado();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    try
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                id_verificação = int.Parse(reader["id_ultimo_registro"].ToString());
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        id_verificação = 0;
 
-            MessageBox.Show("produto Inseridos Com Sucesso!!!");
-            AtualizarDadosProdutoAcabado();
+                    }
+                }
+            }
+            if (id_verificação == 0)
+            {
+                Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirCliente.InserirTabelaProdutoAcabado();
+
+                MessageBox.Show("Ficha Técnica Inserida Com Sucesso!!!");
+                AtualizarDadosProdutoAcabado();
+            }
+            if (id_verificação != 0)
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+                {
+                    connection.Open();
+
+                    string query = "DELETE FROM produto_acabado;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirCliente.InserirTabelaProdutoAcabado();
+
+                MessageBox.Show("Ficha Técnica Atualizada Com Sucesso!!!");
+                AtualizarDadosProdutoAcabado();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+            int id_verificação = 0;
+            string connectionStringA = "Server=127.0.0.1;Database=topindicators;Uid=root;Pwd=123456789;";
+            using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+            {
+                connection.Open();
 
-            _ = new ConnectionMaria.ProcessoDadosUsuarios();
+                string query = "SELECT MAX(id_Cliente) AS id_ultimo_registro FROM cliente;";
+                MySqlCommand command = new MySqlCommand(query, connection);
 
-            InserirCliente.InserirTabelaClientes();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    try
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                id_verificação = int.Parse(reader["id_ultimo_registro"].ToString());
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        id_verificação = 0;
 
-            MessageBox.Show("Clientes Inseridos Com Sucesso!!!");
+                    }
+                }
+            }
+            if (id_verificação == 0)
+            {
+                Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirCliente.InserirTabelaClientes();
+
+                MessageBox.Show("Clientes Inseridos Com Sucesso!!!");
+            }
+            if (id_verificação != 0)
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionStringA))
+                {
+                    connection.Open();
+
+                    string query = "DELETE FROM cliente;";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                Connection.ProcessoDados InserirCliente = new Connection.ProcessoDados();
+
+                _ = new ConnectionMaria.ProcessoDadosUsuarios();
+
+                InserirCliente.InserirTabelaClientes();
+
+                MessageBox.Show("Clientes Atualizados Com Sucesso!!!");
+            }
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
